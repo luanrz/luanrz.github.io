@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.luanrz.cn","root":"/","images":"/images","scheme":"Gemini","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="本文介绍了手动下载并安装IDEA插件开发环境依赖的过程, 以解决IDEA插件开发环境过程中下载Gradle包过慢的问题如果你的网络环境可以正常下载依赖包, 本文对你来说是通篇废话, 请忽略.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IDEA插件开发环境搭建">
+<meta property="og:url" content="http://blog.luanrz.cn/2020/05/03/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/IDEA%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/index.html">
+<meta property="og:site_name" content="luanrz&#39;s blog">
+<meta property="og:description" content="本文介绍了手动下载并安装IDEA插件开发环境依赖的过程, 以解决IDEA插件开发环境过程中下载Gradle包过慢的问题如果你的网络环境可以正常下载依赖包, 本文对你来说是通篇废话, 请忽略.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-05-03T04:18:00.000Z">
+<meta property="article:modified_time" content="2022-04-18T02:49:31.103Z">
+<meta property="article:author" content="luanrz">
+<meta property="article:tag" content="IDEA">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://blog.luanrz.cn/2020/05/03/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/IDEA%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>IDEA插件开发环境搭建 | luanrz's blog</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">luanrz's blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">31</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">13</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#IDEA%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="nav-number">1.</span> <span class="nav-text">IDEA插件开发环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BE%9D%E8%B5%96"><span class="nav-number">1.1.</span> <span class="nav-text">一、依赖</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E8%8E%B7%E5%8F%96%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5%E5%B9%B6%E6%89%8B%E5%8A%A8%E4%B8%8B%E8%BD%BD%E4%BE%9D%E8%B5%96%E5%8C%85"><span class="nav-number">1.1.1.</span> <span class="nav-text">1. 获取下载链接并手动下载依赖包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%8E%B7%E5%8F%96%E4%BE%9D%E8%B5%96%E5%8C%85%E7%9A%84SHA1%E7%A0%81"><span class="nav-number">1.1.2.</span> <span class="nav-text">2. 获取依赖包的SHA1码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%9C%A8gradle%E6%9C%AC%E5%9C%B0%E7%BC%93%E5%AD%98%E7%9A%84%E6%8C%87%E5%AE%9A%E8%B7%AF%E5%BE%84%E4%B8%8B%E5%88%9B%E5%BB%BASHA1%E7%A0%81%E5%90%8C%E5%90%8D%E6%96%87%E4%BB%B6%E5%A4%B9%EF%BC%8C%E5%B0%86%E5%B9%B6%E5%B0%86%E4%BE%9D%E8%B5%96%E5%8C%85%E7%A7%BB%E5%8A%A8%E8%87%B3%E6%AD%A4"><span class="nav-number">1.1.3.</span> <span class="nav-text">3. 在gradle本地缓存的指定路径下创建SHA1码同名文件夹，将并将依赖包移动至此</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%84%EF%BC%9A%E5%90%84%E4%BE%9D%E8%B5%96%E5%8C%85%E7%9A%84%E8%B7%AF%E5%BE%84"><span class="nav-number">1.1.4.</span> <span class="nav-text">附：各依赖包的路径</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">luanrz</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/luanrz" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;luanrz" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:luanrz@qq.com" title="E-Mail → mailto:luanrz@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://blog.luanrz.cn/2020/05/03/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/IDEA%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="luanrz">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="luanrz's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          IDEA插件开发环境搭建
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-05-03 12:18:00" itemprop="dateCreated datePublished" datetime="2020-05-03T12:18:00+08:00">2020-05-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" itemprop="url" rel="index"><span itemprop="name">安装配置</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/%E5%BA%94%E7%94%A8%E8%BD%AF%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">应用软件</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1k</span>
+    </span>
+</div>
+
+            <div class="post-description">本文介绍了手动下载并安装IDEA插件开发环境依赖的过程, 以解决IDEA插件开发环境过程中下载Gradle包过慢的问题<br/>如果你的网络环境可以正常下载依赖包, 本文对你来说是通篇废话, 请忽略.</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="IDEA插件开发环境搭建"><a href="#IDEA插件开发环境搭建" class="headerlink" title="IDEA插件开发环境搭建"></a>IDEA插件开发环境搭建</h1><h2 id="一、依赖"><a href="#一、依赖" class="headerlink" title="一、依赖"></a>一、依赖</h2><p>由于在国下载内Gradle包的速度较慢，部分大文件会因为下载时间过长连接超时导致下载失败。</p>
+<p>在Idea插件项目中，主要会下载以下三个大文件：</p>
+<ol>
+<li>ideaIC-2020.1.zip    （500M左右）</li>
+<li>ideaIC-2020.1-sources.jar    （100M左右）</li>
+<li>jbr-11_0_6-linux-x64-b765.25.tar.gz    （100M左右）</li>
+</ol>
+<p>下面是<code>ideaIC-2020.1.zip</code>依赖的解决过程，其它依赖的解决过程与之类似。</p>
+<h3 id="1-获取下载链接并手动下载依赖包"><a href="#1-获取下载链接并手动下载依赖包" class="headerlink" title="1. 获取下载链接并手动下载依赖包"></a>1. 获取下载链接并手动下载依赖包</h3><p>在命令行下进入Gradle项目根目录，执行下述命令：</p>
+<p><code>./gradlew compileDebugSource --stacktrace -info</code></p>
+<p>在上述日志中找到下载链接，通过迅雷下载。（你也可以直接通过 <a href="#%E9%99%84%EF%BC%9A%E5%90%84%E4%BE%9D%E8%B5%96%E5%8C%85%E7%9A%84%E8%B7%AF%E5%BE%84">附录</a> 部分下载）</p>
+<h3 id="2-获取依赖包的SHA1码"><a href="#2-获取依赖包的SHA1码" class="headerlink" title="2. 获取依赖包的SHA1码"></a>2. 获取依赖包的SHA1码</h3><p>使用<code>sha1sum</code>命令获取文件的SHA1码。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sha1sum ideaIC-2020.1.zip </span><br></pre></td></tr></table></figure>
+
+<p>执行上述命令后，将得到：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cbeeb1f1aebd4c9ea8fb5ab990c5904a676fc41a  ideaIC-2020.1.zip</span><br></pre></td></tr></table></figure>
+
+<p><code>cbeeb1f1aebd4c9ea8fb5ab990c5904a676fc41a</code>就是<code>ideaIC-2020.1.zip</code>的SHA1码。</p>
+<h3 id="3-在gradle本地缓存的指定路径下创建SHA1码同名文件夹，将并将依赖包移动至此"><a href="#3-在gradle本地缓存的指定路径下创建SHA1码同名文件夹，将并将依赖包移动至此" class="headerlink" title="3. 在gradle本地缓存的指定路径下创建SHA1码同名文件夹，将并将依赖包移动至此"></a>3. 在gradle本地缓存的指定路径下创建SHA1码同名文件夹，将并将依赖包移动至此</h3><ul>
+<li><p>进入gradle本地缓存的路径</p>
+<p><code>cd ~/.gradle/caches/modules-2/files-2.1</code></p>
+</li>
+<li><p>进入<code>ideaIC-2020.1.zip</code>的所在路径</p>
+<p><code>cd com.jetbrains.intellij.idea/ideaIC/2020.1</code></p>
+</li>
+<li><p>创建SHA1码同名文件夹</p>
+<p><code>mkdir cbeeb1f1aebd4c9ea8fb5ab990c5904a676fc41a</code> </p>
+</li>
+<li><p>移动依赖包</p>
+<p><code>cp ~/Downloads/ideaIC-2020.1.zip cbeeb1f1aebd4c9ea8fb5ab990c5904a676fc41a</code></p>
+</li>
+</ul>
+<h3 id="附：各依赖包的路径"><a href="#附：各依赖包的路径" class="headerlink" title="附：各依赖包的路径"></a>附：各依赖包的路径</h3><ol>
+<li><code>com.jetbrains.intellij.idea/ideaIC/2020.1/xxx/ideaIC-2020.1.zip</code> <a target="_blank" rel="noopener" href="https://cache-redirector.jetbrains.com/www.jetbrains.com/intellij-repository/releases/com/jetbrains/intellij/idea/ideaIC/2020.1/ideaIC-2020.1.zip">下载</a></li>
+<li><code>com.jetbrains.intellij.idea/ideaIC/2020.1/xxx/ideaIC-2020.1-sources.jar</code> <a target="_blank" rel="noopener" href="https://cache-redirector.jetbrains.com/www.jetbrains.com/intellij-repository/releases/com/jetbrains/intellij/idea/ideaIC/2020.1/ideaIC-2020.1-sources.jar">下载</a></li>
+<li><code>com.jetbrains/jbre/jbr-11_0_6-linux-x64-b765.25.tar.gz</code> <a target="_blank" rel="noopener" href="https://cache-redirector.jetbrains.com/jetbrains.bintray.com/intellij-jbr/jbr-11_0_6-linux-x64-b765.25.tar.gz">下载</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/IDEA/" rel="tag"># IDEA</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/01/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/OpenJDK8u%E6%9E%84%E5%BB%BA%E6%8C%87%E5%8D%97/" rel="prev" title="OpenJDK8u构建指南">
+                  <i class="fa fa-chevron-left"></i> OpenJDK8u构建指南
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/09/03/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/%E9%AA%9A%E6%B0%94%E7%B4%AB%E5%BF%AB%E8%B5%B0%E5%BC%80%E2%80%94%E2%80%94%E4%BF%AE%E6%94%B9Ubuntu18.04%E7%9A%84%E8%83%8C%E6%99%AF%E8%89%B2/" rel="next" title="骚气紫快走开——修改Ubuntu18.04的背景色">
+                  骚气紫快走开——修改Ubuntu18.04的背景色 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">luanrz</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

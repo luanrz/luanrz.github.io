@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.luanrz.cn","root":"/","images":"/images","scheme":"Gemini","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="使用Vundle管理Vim插件与实用插件配置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vim配置">
+<meta property="og:url" content="http://blog.luanrz.cn/2018/11/20/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/Vim%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:site_name" content="luanrz&#39;s blog">
+<meta property="og:description" content="使用Vundle管理Vim插件与实用插件配置">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-11-20T09:05:00.000Z">
+<meta property="article:modified_time" content="2022-04-18T02:49:31.103Z">
+<meta property="article:author" content="luanrz">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://blog.luanrz.cn/2018/11/20/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/Vim%E9%85%8D%E7%BD%AE/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>Vim配置 | luanrz's blog</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">luanrz's blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">31</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">13</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Vim%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">Vim配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8Vundle"><span class="nav-number">1.1.</span> <span class="nav-text">一、安装插件管理器Vundle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E7%94%A8%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AE"><span class="nav-number">1.2.</span> <span class="nav-text">二、实用插件配置</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">luanrz</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/luanrz" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;luanrz" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:luanrz@qq.com" title="E-Mail → mailto:luanrz@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://blog.luanrz.cn/2018/11/20/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/Vim%E9%85%8D%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="luanrz">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="luanrz's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Vim配置
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-11-20 17:05:00" itemprop="dateCreated datePublished" datetime="2018-11-20T17:05:00+08:00">2018-11-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" itemprop="url" rel="index"><span itemprop="name">安装配置</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/%E5%BA%94%E7%94%A8%E8%BD%AF%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">应用软件</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.5k</span>
+    </span>
+</div>
+
+            <div class="post-description">使用Vundle管理Vim插件与实用插件配置</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Vim配置"><a href="#Vim配置" class="headerlink" title="Vim配置"></a>Vim配置</h1><h2 id="一、安装插件管理器Vundle"><a href="#一、安装插件管理器Vundle" class="headerlink" title="一、安装插件管理器Vundle"></a>一、安装插件管理器Vundle</h2><blockquote>
+<p>参见<a target="_blank" rel="noopener" href="https://linux.cn/article-9416-1.html">在 Linux 上使用 Vundle 管理 Vim 插件</a> 及<a target="_blank" rel="noopener" href="https://github.com/VundleVim/Vundle.vim">VundleVim/Vundle.vim</a></p>
+</blockquote>
+<ul>
+<li><p>下载Vundle</p>
+<p>  <code>git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim</code></p>
+</li>
+<li><p>配置Vundle</p>
+<p>  <code>vim ~/.vimrc</code></p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">set nocompatible              &quot; be iMproved, required</span><br><span class="line">filetype off                  &quot; required</span><br><span class="line"></span><br><span class="line">&quot; set the runtime path to include Vundle and initialize</span><br><span class="line">set rtp+&#x3D;~&#x2F;.vim&#x2F;bundle&#x2F;Vundle.vim</span><br><span class="line">call vundle#begin()</span><br><span class="line">&quot; alternatively, pass a path where Vundle should install plugins</span><br><span class="line">&quot;call vundle#begin(&#39;~&#x2F;some&#x2F;path&#x2F;here&#39;)</span><br><span class="line"></span><br><span class="line">&quot; let Vundle manage Vundle, required</span><br><span class="line">Plugin &#39;VundleVim&#x2F;Vundle.vim&#39;</span><br><span class="line"></span><br><span class="line">&quot; The following are examples of different formats supported.</span><br><span class="line">&quot; Keep Plugin commands between vundle#begin&#x2F;end.</span><br><span class="line"></span><br><span class="line">&quot; plugin on GitHub repo</span><br><span class="line">&quot; Plugin &#39;tpope&#x2F;vim-fugitive&#39;</span><br><span class="line">&quot; plugin from http:&#x2F;&#x2F;vim-scripts.org&#x2F;vim&#x2F;scripts.html</span><br><span class="line">&quot; Plugin &#39;L9&#39;</span><br><span class="line"></span><br><span class="line">&quot; Git plugin not hosted on GitHub</span><br><span class="line">&quot; Plugin &#39;git:&#x2F;&#x2F;git.wincent.com&#x2F;command-t.git&#39;</span><br><span class="line"></span><br><span class="line">&quot; git repos on your local machine (i.e. when working on your own plugin)</span><br><span class="line">&quot; Plugin &#39;file:&#x2F;&#x2F;&#x2F;home&#x2F;gmarik&#x2F;path&#x2F;to&#x2F;plugin&#39;</span><br><span class="line"></span><br><span class="line">&quot; The sparkup vim script is in a subdirectory of this repo called vim.</span><br><span class="line">&quot; Pass the path to set the runtimepath properly.</span><br><span class="line">&quot; Plugin &#39;rstacruz&#x2F;sparkup&#39;, &#123;&#39;rtp&#39;: &#39;vim&#x2F;&#39;&#125;</span><br><span class="line">&quot; Install L9 and avoid a Naming conflict if you&#39;ve already installed a</span><br><span class="line">&quot; different version somewhere else.</span><br><span class="line">&quot; Plugin &#39;ascenator&#x2F;L9&#39;, &#123;&#39;name&#39;: &#39;newL9&#39;&#125;</span><br><span class="line"></span><br><span class="line">&quot; All of your Plugins must be added before the following line</span><br><span class="line">call vundle#end()            &quot; required</span><br><span class="line">filetype plugin indent on    &quot; required</span><br><span class="line">&quot; To ignore plugin indent changes, instead use:</span><br><span class="line">&quot;filetype plugin on</span><br><span class="line">&quot;</span><br><span class="line">&quot; Brief help</span><br><span class="line">&quot; :PluginList       - lists configured plugins</span><br><span class="line">&quot; :PluginInstall    - installs plugins; append &#96;!&#96; to update or just :PluginUpdate</span><br><span class="line">&quot; :PluginSearch foo - searches for foo; append &#96;!&#96; to refresh local cache</span><br><span class="line">&quot; :PluginClean      - confirms removal of unused plugins; append &#96;!&#96; to auto-approve removal</span><br><span class="line">&quot;</span><br><span class="line">&quot; see :h vundle for more details or wiki for FAQ</span><br><span class="line">&quot; Put your non-Plugin stuff after this line</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="二、实用插件配置"><a href="#二、实用插件配置" class="headerlink" title="二、实用插件配置"></a>二、实用插件配置</h2><ul>
+<li><p>编辑插件地址：在~/.vimrc文件的<code>call vundle#begin()</code>与<code>call vundle#end() </code>之间写入<code>Plugin &#39;......&#39;    </code></p>
+</li>
+<li><p>编辑插件配置：在~/.vimrc文件末尾写入配置信息</p>
+</li>
+<li><p>安装插件：vim –&gt; : –&gt;PluginInstall</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/chuanj1985/article/details/6873830">语法高亮与行号显示</a></p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">set nu!                                          &quot;显示行号</span><br><span class="line">syntax on                                    &quot;语法高亮度显示</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/scrooloose/nerdtree" title="文件系统资源管理器">NERDTree</a></p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Plugin &#39;scrooloose&#x2F;nerdtree&#39;	</span><br><span class="line">&quot; --------------------NerdTree--------------------</span><br><span class="line">&quot; 设置NerdTree,按F3即可显示或隐藏NerdTree区域</span><br><span class="line">map &lt;F3&gt; :NERDTreeMirror&lt;CR&gt;</span><br><span class="line">map &lt;F3&gt; :NERDTreeToggle&lt;CR&gt;</span><br><span class="line">&quot;打开vim时自动打开NERDTree</span><br><span class="line">autocmd vimenter * NERDTree</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/plasticboy/vim-markdown" title="Markdown">vim-markdown</a></p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Plugin &#39;godlygeek&#x2F;tabular&#39;</span><br><span class="line">Plugin &#39;plasticboy&#x2F;vim-markdown&#39;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/suan/vim-instant-markdown" title="Markdown实时预览">vim-instant-markdown</a></p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Plugin &#39;suan&#x2F;vim-instant-markdown&#39;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/dhruvasagar/vim-table-mode">vim-table-mode</a></p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Plugin &#39;dhruvasagar&#x2F;vim-table-mode&#39;	&quot;使用\tm开启Table Model</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/jiangmiao/auto-pairs" title="自动插入和格式化方括号和圆括号">auto-pairs</a></p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Plugin &#39;jiangmiao&#x2F;auto-pairs&#39;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/vim-syntastic/syntastic" title="语法检测">syntastic</a></p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Plugin &#39;scrooloose&#x2F;syntastic&#39;</span><br><span class="line">&quot; --------------------syntastic--------------------</span><br><span class="line">&quot; syntastic官方推荐的默认设置</span><br><span class="line">set statusline+&#x3D;%#warningmsg#</span><br><span class="line">set statusline+&#x3D;%&#123;SyntasticStatuslineFlag()&#125;</span><br><span class="line">set statusline+&#x3D;%*</span><br><span class="line">let g:syntastic_always_populate_loc_list &#x3D; 1</span><br><span class="line">let g:syntastic_auto_loc_list &#x3D; 1</span><br><span class="line">let g:syntastic_check_on_open &#x3D; 1</span><br><span class="line">let g:syntastic_check_on_wq &#x3D; 0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/valloric/youcompleteme" title="代码补全">youcompleteme</a></p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Plugin &#39;valloric&#x2F;youcompleteme&#39;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/ervandew/supertab" title="代码补全">supertab</a></p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Plugin &#39;ervandew&#x2F;supertab&#39;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/scrooloose/nerdcommenter" title="注释"> NERD Commenter</a></p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Plugin &#39;scrooloose&#x2F;nerdcommenter&#39;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/11/11/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/Nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/" rel="prev" title="Nginx反向代理配置">
+                  <i class="fa fa-chevron-left"></i> Nginx反向代理配置
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/12/12/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/%E6%A0%91%E8%8E%93%E6%B4%BE%E9%85%8D%E7%BD%AE/" rel="next" title="树莓派配置">
+                  树莓派配置 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">luanrz</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

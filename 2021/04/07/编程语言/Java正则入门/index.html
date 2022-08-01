@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.luanrz.cn","root":"/","images":"/images","scheme":"Gemini","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="一、前言正则表达式一般用于字符串的模式匹配与替换，Java通过Pattern类与Matcher类原生支持正则表达式。在此基础上，String类封装了正则的细节，提供了一种更便捷的正则操作的方式。 本文将从String类说起，通过它的matches与replace系列方法，介绍String的匹配与替换。随后，将介绍Java正则中的Pattern与Matcher两大核心类的基本使用方法。最后，将从St">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java正则入门">
+<meta property="og:url" content="http://blog.luanrz.cn/2021/04/07/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java%E6%AD%A3%E5%88%99%E5%85%A5%E9%97%A8/index.html">
+<meta property="og:site_name" content="luanrz&#39;s blog">
+<meta property="og:description" content="一、前言正则表达式一般用于字符串的模式匹配与替换，Java通过Pattern类与Matcher类原生支持正则表达式。在此基础上，String类封装了正则的细节，提供了一种更便捷的正则操作的方式。 本文将从String类说起，通过它的matches与replace系列方法，介绍String的匹配与替换。随后，将介绍Java正则中的Pattern与Matcher两大核心类的基本使用方法。最后，将从St">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-07T10:01:00.000Z">
+<meta property="article:modified_time" content="2022-07-06T03:59:21.395Z">
+<meta property="article:author" content="luanrz">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://blog.luanrz.cn/2021/04/07/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java%E6%AD%A3%E5%88%99%E5%85%A5%E9%97%A8/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>Java正则入门 | luanrz's blog</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">luanrz's blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">31</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">13</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">一、前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81String%E5%8C%B9%E9%85%8D%E4%B8%8E%E6%9B%BF%E6%8D%A2"><span class="nav-number">2.</span> <span class="nav-text">二、String匹配与替换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89String%E5%8C%B9%E9%85%8D"><span class="nav-number">2.1.</span> <span class="nav-text">（一）String匹配</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%88%E4%BA%8C%EF%BC%89String%E6%9B%BF%E6%8D%A2"><span class="nav-number">2.2.</span> <span class="nav-text">（二）String替换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81Pattern%E4%B8%8EMatcher"><span class="nav-number">3.</span> <span class="nav-text">三、Pattern与Matcher</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81String%E6%AD%A3%E5%88%99%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90"><span class="nav-number">4.</span> <span class="nav-text">四、String正则源码分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89String%E6%AD%A3%E5%88%99%E5%8C%B9%E9%85%8D%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90"><span class="nav-number">4.1.</span> <span class="nav-text">（一）String正则匹配源码分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%88%E4%BA%8C%EF%BC%89String%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90"><span class="nav-number">4.2.</span> <span class="nav-text">（二）String正则替换源码分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%84%E5%BD%95"><span class="nav-number">5.</span> <span class="nav-text">附录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E9%80%9A%E7%94%A8%E7%9F%A5%E8%AF%86"><span class="nav-number">5.1.</span> <span class="nav-text">正则表达式通用知识</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">luanrz</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/luanrz" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;luanrz" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:luanrz@qq.com" title="E-Mail → mailto:luanrz@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://blog.luanrz.cn/2021/04/07/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java%E6%AD%A3%E5%88%99%E5%85%A5%E9%97%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="luanrz">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="luanrz's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java正则入门
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-07 18:01:00" itemprop="dateCreated datePublished" datetime="2021-04-07T18:01:00+08:00">2021-04-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>4.1k</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><p>正则表达式一般用于字符串的模式<strong>匹配</strong>与<strong>替换</strong>，Java通过Pattern类与Matcher类原生支持正则表达式。在此基础上，String类封装了正则的细节，提供了一种更便捷的正则操作的方式。</p>
+<p>本文将从String类说起，通过它的matches与replace系列方法，介绍<a href="#%E4%BA%8C%E3%80%81String%E5%8C%B9%E9%85%8D%E4%B8%8E%E6%9B%BF%E6%8D%A2">String的匹配与替换</a>。随后，将介绍Java正则中的<a href="#%E4%B8%89%E3%80%81Pattern%E4%B8%8EMatcher">Pattern与Matcher</a>两大核心类的基本使用方法。最后，将从<a href="#%E5%9B%9B%E3%80%81String%E6%AD%A3%E5%88%99%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90">String类源码</a>层面，简单分析String类的正则匹配和正则替换是如何通过Pattern类和Matcher类实现的。</p>
+<p>有关正则表达式的前置知识介绍，请参照本文<a href="#%E9%99%84%E5%BD%95">附录</a>中的<a href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E9%80%9A%E7%94%A8%E7%9F%A5%E8%AF%86">正则表达式通用知识</a>。</p>
+<span id="more"></span>
+
+<h2 id="二、String匹配与替换"><a href="#二、String匹配与替换" class="headerlink" title="二、String匹配与替换"></a>二、String匹配与替换</h2><h3 id="（一）String匹配"><a href="#（一）String匹配" class="headerlink" title="（一）String匹配"></a>（一）String匹配</h3><p>可以使用String的<code>matches</code>方法对字符串进行匹配，它的定义为：<code>boolean matches(String regex)</code>，<code>matches</code>方法可以用来判断目标字符串是否符合指定的正则表达式(regex)，一个简单的示例如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 待匹配的目标字符串</span></span><br><span class="line">String targetString = <span class="string">&quot;&lt;Name&gt;Violet&lt;/Name&gt;&quot;</span>;</span><br><span class="line"><span class="comment">// 正则表达式</span></span><br><span class="line">String regex = <span class="string">&quot;&lt;Name&gt;.*&lt;/Name&gt;&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 正则匹配</span></span><br><span class="line"><span class="keyword">boolean</span> isMatched = targetString.matches(regex);</span><br></pre></td></tr></table></figure>
+
+<p>上述示例中，对<code>&quot;&lt;Name&gt;Violet&lt;/Name&gt;&quot;</code>字符串按照<code>&quot;&lt;Name&gt;.*&lt;/Name&gt;&quot;</code>这个正则表达式进行匹配，因为目标字符串符合规则，所以匹配成功。</p>
+<blockquote>
+<p>部分场景下，如果只需要判断字符串中是否有某个子串，可以直接使用String的<code>contains</code>方法，这种方法在匹配是否包含子串是很有效，但在更复杂的匹配规则下就不适用了，此时还是需要使用上述的<code>matches</code>方法。</p>
+</blockquote>
+<h3 id="（二）String替换"><a href="#（二）String替换" class="headerlink" title="（二）String替换"></a>（二）String替换</h3><p>可以使用String的<code>replace</code>系列方法对字符串进行替换，包括：<code>replace</code>、<code>replaceAll</code>、<code>replaceFirst</code>，它们的定义如下：</p>
+<ol>
+<li><code>String replace(char oldChar, char newChar)</code><br> <strong>字符</strong>简单替换，将目标字符串中所有的<code>oldChar</code>字符替换为<code>newChar</code>字符，<strong>不涉及到正则表达式</strong></li>
+<li><code>String replace(CharSequence target, CharSequence replacement)</code><br> 字符串简单替换，将目标字符串中所有的<code>target</code>字符串替换为<code>replacement</code>字符串，<strong>不涉及正则表达式</strong></li>
+<li><code>String replaceAll(String regex, String replacement)</code><br> 字符串<strong>正则</strong>替换，将目标字符串中所有符合的<code>regex</code>正则表达式的子串替换为<code>replacement</code></li>
+<li><code>String replaceFirst(String regex, String replacement)</code><br> 字符串<strong>正则</strong>替换，将目标字符串中<strong>第一个</strong>符合的<code>regex</code>正则表达式的子串替换为<code>replacement</code></li>
+</ol>
+<p>一个简单的示例如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 待替换的目标字符串</span></span><br><span class="line">String targetString = <span class="string">&quot;&lt;Name&gt;Violet&lt;/Name&gt;&quot;</span>;</span><br><span class="line"><span class="comment">// 正则表达式</span></span><br><span class="line">String regex = <span class="string">&quot;&lt;Name&gt;.*&lt;/Name&gt;&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 1. 简单替换所有匹配到的字符</span></span><br><span class="line">String newString1 = targetString.replace(<span class="string">&#x27;V&#x27;</span>,<span class="string">&#x27;v&#x27;</span>);  <span class="comment">//结果为: &quot;&lt;Name&gt;violet&lt;/Name&gt;&quot;</span></span><br><span class="line"><span class="comment">// 2. 简单替换所有匹配到的字符串</span></span><br><span class="line">String newString2 = targetString.replace(<span class="string">&quot;Violet&quot;</span>,<span class="string">&quot;Violet.Evergarden&quot;</span>);  <span class="comment">//结果为: &quot;&lt;Name&gt;Violet.Evergarden&lt;/Name&gt;&quot;</span></span><br><span class="line"><span class="comment">// 3. 正则替换所有匹配到的字符串</span></span><br><span class="line">String newString3 = targetString.replaceAll(regex,<span class="string">&quot;&lt;Name&gt;Violet.Evergarden&lt;/Name&gt;&quot;</span>);  <span class="comment">//结果为: &quot;&lt;Name&gt;Violet.Evergarden&lt;/Name&gt;&quot;</span></span><br><span class="line"><span class="comment">// 4. 正则替换第一个匹配到的字符串</span></span><br><span class="line">String newString4 = targetString.replaceFirst(regex,<span class="string">&quot;&lt;Name&gt;Violet.Evergarden&lt;/Name&gt;&quot;</span>);  <span class="comment">//结果为: &quot;&lt;Name&gt;Violet.Evergarden&lt;/Name&gt;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="三、Pattern与Matcher"><a href="#三、Pattern与Matcher" class="headerlink" title="三、Pattern与Matcher"></a>三、Pattern与Matcher</h2><p>Pattern与Matcher是Java支持正则表达式的两大核心类，上述<a href="#%E4%BA%8C%E3%80%81String%E5%8C%B9%E9%85%8D%E4%B8%8E%E6%9B%BF%E6%8D%A2">String匹配与替换</a>中的正则匹配与正则替换在底层都是通过Pattern与Matcher来实现的，具体实现过程请参见<a href="#%E5%9B%9B%E3%80%81String%E6%AD%A3%E5%88%99%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90">String正则源码分析</a>。</p>
+<p>一个Pattern与Matcher的基本使用方法的示例如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 待替换的目标字符串</span></span><br><span class="line">String targetString = <span class="string">&quot;&lt;Name&gt;Violet&lt;/Name&gt;&quot;</span>;</span><br><span class="line"><span class="comment">// 正则表达式</span></span><br><span class="line">String regex = <span class="string">&quot;&lt;Name&gt;.*&lt;/Name&gt;&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 以正则表达式字符串regex为基础，定义Pattern</span></span><br><span class="line">Pattern pattern = Pattern.compile(regex);</span><br><span class="line"><span class="comment">// 以Pattern与目标字符串为基础，定义Matcher</span></span><br><span class="line"><span class="comment">// 后续的所有正则匹配与正则替换，都是对Matcher进行操作</span></span><br><span class="line">Matcher matcher = pattern.matcher(targetString);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 正则匹配，等同于String.matches(String regex)</span></span><br><span class="line"><span class="keyword">boolean</span> isMatched = matcher.matches();</span><br><span class="line"><span class="comment">// 正则替换，等同于String.replaceAll(String regex, String replacement)</span></span><br><span class="line">String newString = matcher.replaceAll(<span class="string">&quot;&lt;Name&gt;Violet.Evergarden&lt;/Name&gt;&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Pattern与Matcher还有很多其它的用法，此处暂时不做展开，后续如果有需要在此处进行补充。</p>
+</blockquote>
+<h2 id="四、String正则源码分析"><a href="#四、String正则源码分析" class="headerlink" title="四、String正则源码分析"></a>四、String正则源码分析</h2><h3 id="（一）String正则匹配源码分析"><a href="#（一）String正则匹配源码分析" class="headerlink" title="（一）String正则匹配源码分析"></a>（一）String正则匹配源码分析</h3><p>String的<code>matches</code>方法实现如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">matches</span><span class="params">(String regex)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Pattern.matches(regex, <span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>String的<code>matches</code>方法很简单，只是简单地调用了<code>Pattern</code>类的<code>matches</code>方法。</p>
+<p>进入到<code>Pattern</code>类的<code>matches</code>方法，如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">matches</span><span class="params">(String regex, CharSequence input)</span> </span>&#123;</span><br><span class="line">    Pattern p = Pattern.compile(regex);</span><br><span class="line">    Matcher m = p.matcher(input);</span><br><span class="line">    <span class="keyword">return</span> m.matches();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以发现里面的内容与上一节<a href="#%E4%B8%89%E3%80%81Pattern%E4%B8%8EMatcher">Pattern与Matcher</a>中的使用示例大同小异：首先根据正则表达式实例化Pattern对象，然后根据Pattern对象与目标字符串实例化Matcher对象，最后调用Matcher对象的matches方法。最终起作用的正是<code>Matcher</code>对象的<code>matches</code>方法。</p>
+<h3 id="（二）String正则替换源码分析"><a href="#（二）String正则替换源码分析" class="headerlink" title="（二）String正则替换源码分析"></a>（二）String正则替换源码分析</h3><p>String的<code>replaceFirst</code>与<code>replaceAll</code>方法实现如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">replaceFirst</span><span class="params">(String regex, String replacement)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Pattern.compile(regex).matcher(<span class="keyword">this</span>).replaceFirst(replacement);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">replaceAll</span><span class="params">(String regex, String replacement)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Pattern.compile(regex).matcher(<span class="keyword">this</span>).replaceAll(replacement);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>String的<code>replace</code>系列方法也很简单：首先调用<code>Pattern.compile(regex)</code>实例化Pattern对象，然后调用Pattern对象的<code>matcher(this)</code>实例化Matcher对象（此处的this就是当前字符串)，最后调用Matcher对象的<code>replaceFirst</code>与<code>replaceAll</code>方法。与<a href="#%EF%BC%88%E4%B8%80%EF%BC%89String%E6%AD%A3%E5%88%99%E5%8C%B9%E9%85%8D%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90">String的正则匹配实现方法</a>类似，最终起作用的正是<code>Matcher</code>对象的<code>replaceFirst</code>与<code>replaceAll</code>方法。</p>
+<p>本小节简单分析了如何通过Pattern类和Matcher类来实现String正则匹配与正则替换，具体实现细节可以继续往下深挖，受限于篇幅，此处就不介绍了（其实是因为我是个懒狗，还没看完，挖个坑，后面有时间补上）。</p>
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><h3 id="正则表达式通用知识"><a href="#正则表达式通用知识" class="headerlink" title="正则表达式通用知识"></a>正则表达式通用知识</h3><p>(内容正在快马加鞭赶来…)</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/04/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%AD%E7%9A%84%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="prev" title="数据结构中的排序算法">
+                  <i class="fa fa-chevron-left"></i> 数据结构中的排序算法
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/07/16/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/%E5%B8%B8%E7%94%A8%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8%E9%85%8D%E7%BD%AE/" rel="next" title="常用包管理器配置">
+                  常用包管理器配置 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">luanrz</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

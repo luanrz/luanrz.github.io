@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.luanrz.cn","root":"/","images":"/images","scheme":"Gemini","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta property="og:type" content="website">
+<meta property="og:title" content="luanrz&#39;s blog">
+<meta property="og:url" content="http://blog.luanrz.cn/page/3/index.html">
+<meta property="og:site_name" content="luanrz&#39;s blog">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="luanrz">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://blog.luanrz.cn/page/3/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>luanrz's blog</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">luanrz's blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">31</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">13</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">luanrz</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/luanrz" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;luanrz" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:luanrz@qq.com" title="E-Mail → mailto:luanrz@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://blog.luanrz.cn/2022/04/15/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E4%B8%AD%E7%9A%84%E4%B8%80%E4%B8%AA%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="luanrz">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="luanrz's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/04/15/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E4%B8%AD%E7%9A%84%E4%B8%80%E4%B8%AA%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">Java单例模式中的一个多线程问题</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-04-15 14:43:37" itemprop="dateCreated datePublished" datetime="2022-04-15T14:43:37+08:00">2022-04-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>4.4k</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>合理使用单例模式可以节约内存资源，但错误的使用可能会导致严重的生产问题，如：多线程下，一个线程可能会覆盖上一个线程的单例属性，导致两次不同的请求得到同样的响应。</p>
+<p>下面将结合一个例子来分析这种情况。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/04/15/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E4%B8%AD%E7%9A%84%E4%B8%80%E4%B8%AA%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%97%AE%E9%A2%98/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://blog.luanrz.cn/2022/03/31/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Spring%E7%9A%847%E4%B8%AA%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="luanrz">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="luanrz's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/03/31/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Spring%E7%9A%847%E4%B8%AA%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/" class="post-title-link" itemprop="url">Spring的7个使用场景</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-03-31 09:31:48" itemprop="dateCreated datePublished" datetime="2022-03-31T09:31:48+08:00">2022-03-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.9k</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><a target="_blank" rel="noopener" href="https://spring.io/">Spring官网</a>中描述了Spring能做的7件事，如下所示：</p>
+<img src='data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiBjb250ZW50U3R5bGVUeXBlPSJ0ZXh0L2NzcyIgaGVpZ2h0PSI0MTZweCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSIgc3R5bGU9IndpZHRoOjMzNnB4O2hlaWdodDo0MTZweDtiYWNrZ3JvdW5kOiNGRkZGRkY7IiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAzMzYgNDE2IiB3aWR0aD0iMzM2cHgiIHpvb21BbmRQYW49Im1hZ25pZnkiPjxkZWZzLz48Zz48cmVjdCBmaWxsPSIjRjFGMUYxIiBoZWlnaHQ9IjM2LjI5NjkiIHJ4PSIxMi41IiByeT0iMTIuNSIgc3R5bGU9InN0cm9rZTojMTgxODE4O3N0cm9rZS13aWR0aDoxLjU7IiB3aWR0aD0iNjciIHg9IjEwIiB5PSIxODguODkwNiIvPjx0ZXh0IGZpbGw9IiMwMDAwMDAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjQ3IiB4PSIyMCIgeT0iMjExLjg4NTciPlNwcmluZzwvdGV4dD48cmVjdCBmaWxsPSIjRjFGMUYxIiBoZWlnaHQ9IjM2LjI5NjkiIHJ4PSIxMi41IiByeT0iMTIuNSIgc3R5bGU9InN0cm9rZTojMTgxODE4O3N0cm9rZS13aWR0aDoxLjU7IiB3aWR0aD0iMTg3IiB4PSIxMjciIHk9IjIwIi8+PHRleHQgZmlsbD0iIzAwMDAwMCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGxlbmd0aEFkanVzdD0ic3BhY2luZyIgdGV4dExlbmd0aD0iMTY3IiB4PSIxMzciIHk9IjQyLjk5NTEiPk1pY3Jvc2VydmljZXPvvIjlvq7mnI3liqHvvIk8L3RleHQ+PHBhdGggZD0iTTc3LDIwNy4wMzkxIEw4NywyMDcuMDM5MSBDMTAyLDIwNy4wMzkxIDEwMiwzOC4xNDg0IDExNywzOC4xNDg0IEwxMjcsMzguMTQ4NCAiIGZpbGw9Im5vbmUiIHN0eWxlPSJzdHJva2U6IzE4MTgxODtzdHJva2Utd2lkdGg6MS4wOyIvPjxyZWN0IGZpbGw9IiNGMUYxRjEiIGhlaWdodD0iMzYuMjk2OSIgcng9IjEyLjUiIHJ5PSIxMi41IiBzdHlsZT0ic3Ryb2tlOiMxODE4MTg7c3Ryb2tlLXdpZHRoOjEuNTsiIHdpZHRoPSIxNTMiIHg9IjEyNyIgeT0iNzYuMjk2OSIvPjx0ZXh0IGZpbGw9IiMwMDAwMDAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjEzMyIgeD0iMTM3IiB5PSI5OS4yOTIiPlJlYWN0aXZl77yI5ZON5bqU5byP77yJPC90ZXh0PjxwYXRoIGQ9Ik03NywyMDcuMDM5MSBMODcsMjA3LjAzOTEgQzEwMiwyMDcuMDM5MSAxMDIsOTQuNDQ1MyAxMTcsOTQuNDQ1MyBMMTI3LDk0LjQ0NTMgIiBmaWxsPSJub25lIiBzdHlsZT0ic3Ryb2tlOiMxODE4MTg7c3Ryb2tlLXdpZHRoOjEuMDsiLz48cmVjdCBmaWxsPSIjRjFGMUYxIiBoZWlnaHQ9IjM2LjI5NjkiIHJ4PSIxMi41IiByeT0iMTIuNSIgc3R5bGU9InN0cm9rZTojMTgxODE4O3N0cm9rZS13aWR0aDoxLjU7IiB3aWR0aD0iMTAyIiB4PSIxMjciIHk9IjEzMi41OTM4Ii8+PHRleHQgZmlsbD0iIzAwMDAwMCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGxlbmd0aEFkanVzdD0ic3BhY2luZyIgdGV4dExlbmd0aD0iODIiIHg9IjEzNyIgeT0iMTU1LjU4ODkiPkNsb3Vk77yI5LqR77yJPC90ZXh0PjxwYXRoIGQ9Ik03NywyMDcuMDM5MSBMODcsMjA3LjAzOTEgQzEwMiwyMDcuMDM5MSAxMDIsMTUwLjc0MjIgMTE3LDE1MC43NDIyIEwxMjcsMTUwLjc0MjIgIiBmaWxsPSJub25lIiBzdHlsZT0ic3Ryb2tlOiMxODE4MTg7c3Ryb2tlLXdpZHRoOjEuMDsiLz48cmVjdCBmaWxsPSIjRjFGMUYxIiBoZWlnaHQ9IjM2LjI5NjkiIHJ4PSIxMi41IiByeT0iMTIuNSIgc3R5bGU9InN0cm9rZTojMTgxODE4O3N0cm9rZS13aWR0aDoxLjU7IiB3aWR0aD0iMTc2IiB4PSIxMjciIHk9IjE4OC44OTA2Ii8+PHRleHQgZmlsbD0iIzAwMDAwMCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGxlbmd0aEFkanVzdD0ic3BhY2luZyIgdGV4dExlbmd0aD0iMTU2IiB4PSIxMzciIHk9IjIxMS44ODU3Ij5XZWIgYXBwc++8iOe9kemhteW6lOeUqO+8iTwvdGV4dD48cGF0aCBkPSJNNzcsMjA3LjAzOTEgTDg3LDIwNy4wMzkxIEMxMDIsMjA3LjAzOTEgMTAyLDIwNy4wMzkxIDExNywyMDcuMDM5MSBMMTI3LDIwNy4wMzkxICIgZmlsbD0ibm9uZSIgc3R5bGU9InN0cm9rZTojMTgxODE4O3N0cm9rZS13aWR0aDoxLjA7Ii8+PHJlY3QgZmlsbD0iI0YxRjFGMSIgaGVpZ2h0PSIzNi4yOTY5IiByeD0iMTIuNSIgcnk9IjEyLjUiIHN0eWxlPSJzdHJva2U6IzE4MTgxODtzdHJva2Utd2lkdGg6MS41OyIgd2lkdGg9IjE3OCIgeD0iMTI3IiB5PSIyNDUuMTg3NSIvPjx0ZXh0IGZpbGw9IiMwMDAwMDAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjE1OCIgeD0iMTM3IiB5PSIyNjguMTgyNiI+U2VydmVybGVzc++8iOaXoOacjeWKoeWZqO+8iTwvdGV4dD48cGF0aCBkPSJNNzcsMjA3LjAzOTEgTDg3LDIwNy4wMzkxIEMxMDIsMjA3LjAzOTEgMTAyLDI2My4zMzU5IDExNywyNjMuMzM1OSBMMTI3LDI2My4zMzU5ICIgZmlsbD0ibm9uZSIgc3R5bGU9InN0cm9rZTojMTgxODE4O3N0cm9rZS13aWR0aDoxLjA7Ii8+PHJlY3QgZmlsbD0iI0YxRjFGMSIgaGVpZ2h0PSIzNi4yOTY5IiByeD0iMTIuNSIgcnk9IjEyLjUiIHN0eWxlPSJzdHJva2U6IzE4MTgxODtzdHJva2Utd2lkdGg6MS41OyIgd2lkdGg9IjE5NyIgeD0iMTI3IiB5PSIzMDEuNDg0NCIvPjx0ZXh0IGZpbGw9IiMwMDAwMDAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjE3NyIgeD0iMTM3IiB5PSIzMjQuNDc5NSI+RXZlbnQgRHJpdmVu77yI5LqL5Lu26amx5Yqo77yJPC90ZXh0PjxwYXRoIGQ9Ik03NywyMDcuMDM5MSBMODcsMjA3LjAzOTEgQzEwMiwyMDcuMDM5MSAxMDIsMzE5LjYzMjggMTE3LDMxOS42MzI4IEwxMjcsMzE5LjYzMjggIiBmaWxsPSJub25lIiBzdHlsZT0ic3Ryb2tlOiMxODE4MTg7c3Ryb2tlLXdpZHRoOjEuMDsiLz48cmVjdCBmaWxsPSIjRjFGMUYxIiBoZWlnaHQ9IjM2LjI5NjkiIHJ4PSIxMi41IiByeT0iMTIuNSIgc3R5bGU9InN0cm9rZTojMTgxODE4O3N0cm9rZS13aWR0aDoxLjU7IiB3aWR0aD0iMTMyIiB4PSIxMjciIHk9IjM1Ny43ODEzIi8+PHRleHQgZmlsbD0iIzAwMDAwMCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGxlbmd0aEFkanVzdD0ic3BhY2luZyIgdGV4dExlbmd0aD0iMTEyIiB4PSIxMzciIHk9IjM4MC43NzY0Ij5CYXRjaO+8iOaJueWkhOeQhu+8iTwvdGV4dD48cGF0aCBkPSJNNzcsMjA3LjAzOTEgTDg3LDIwNy4wMzkxIEMxMDIsMjA3LjAzOTEgMTAyLDM3NS45Mjk3IDExNywzNzUuOTI5NyBMMTI3LDM3NS45Mjk3ICIgZmlsbD0ibm9uZSIgc3R5bGU9InN0cm9rZTojMTgxODE4O3N0cm9rZS13aWR0aDoxLjA7Ii8+PCEtLU1ENT1bYjkxNjZiM2RjMTIzZWRmZDBiNzMzYzliYjI2MzQyMzldCkBzdGFydG1pbmRtYXANCiogU3ByaW5nDQoJKiBNaWNyb3NlcnZpY2Vz77yI5b6u5pyN5Yqh77yJDQoJKiBSZWFjdGl2Ze+8iOWTjeW6lOW8j++8iQ0KCSogQ2xvdWTvvIjkupHvvIkNCgkqIFdlYiBhcHBz77yI572R6aG15bqU55So77yJDQoJKiBTZXJ2ZXJsZXNz77yI5peg5pyN5Yqh5Zmo77yJDQoJKiBFdmVudCBEcml2ZW7vvIjkuovku7bpqbHliqjvvIkNCgkqIEJhdGNo77yI5om55aSE55CG77yJDQpAZW5kbWluZG1hcA0KClBsYW50VU1MIHZlcnNpb24gMS4yMDIyLjdiZXRhMihVbmtub3duIGNvbXBpbGUgdGltZSkKKEdQTCBzb3VyY2UgZGlzdHJpYnV0aW9uKQpKYXZhIFJ1bnRpbWU6IEphdmEoVE0pIFNFIFJ1bnRpbWUgRW52aXJvbm1lbnQKSlZNOiBKYXZhIEhvdFNwb3QoVE0pIDY0LUJpdCBTZXJ2ZXIgVk0KRGVmYXVsdCBFbmNvZGluZzogVVRGLTgKTGFuZ3VhZ2U6IGVuCkNvdW50cnk6IFVTCi0tPjwvZz48L3N2Zz4='>
+
+<p>下面将简单介绍各场景的概念与其关联的项目。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/31/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Spring%E7%9A%847%E4%B8%AA%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://blog.luanrz.cn/2021/12/31/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/JVM%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98%E5%B7%A5%E5%85%B7%E6%B1%87%E6%80%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="luanrz">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="luanrz's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/12/31/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/JVM%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98%E5%B7%A5%E5%85%B7%E6%B1%87%E6%80%BB/" class="post-title-link" itemprop="url">JVM性能调优工具汇总</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-12-31 10:25:57" itemprop="dateCreated datePublished" datetime="2021-12-31T10:25:57+08:00">2021-12-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>477</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="一、命令行工具"><a href="#一、命令行工具" class="headerlink" title="一、命令行工具"></a>一、命令行工具</h2><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>名称</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><code>jps</code></td>
+<td>虚拟机进程状况工具，主要用于查找vmid，是后续命令的基础</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>jstat</code></td>
+<td>虚拟机统计信息监视工具，查找虚拟机进程中类加载、内存、GC等信息</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>jinfo</code></td>
+<td>Java配置信息工具，实时查看和调整虚拟机各项参数</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>jmap</code></td>
+<td>Java内存映像工具，生成堆转储快照（headump、dump），与<code>jhat</code>配合使用</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>jhat</code></td>
+<td>虚拟机堆转储快照分析工具，分析<code>jmap</code>生成的堆转储快照文件，与<code>jmap</code>配合使用</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>jstack</code></td>
+<td>Java堆栈跟踪工具，生成虚拟机当前时刻的线程快照（threaddump、javacore）</td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>jcmd</code></td>
+<td>Java命令行工具集，整合了上述众多命令</td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>clhsdb</code></td>
+<td>HotSpot命令行调试器，也整合了上述众多命令，它在JDK9时被纳入了<code>jhsdb</code></td>
+</tr>
+</tbody></table>
+<h2 id="二、可视化工具"><a href="#二、可视化工具" class="headerlink" title="二、可视化工具"></a>二、可视化工具</h2><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>名称</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><code>JHSDB</code></td>
+<td>基于服务性代理的调试工具，JDK内置（从JDK9开始提供）</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>JConsole</code></td>
+<td>Java监视与管理控制台，JDK内置</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>VisualVM</code></td>
+<td>多合一故障处理工具，需要单独<a target="_blank" rel="noopener" href="https://visualvm.github.io/">下载</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>JMC</code></td>
+<td>可持续在线的监控工具，需要单独<a target="_blank" rel="noopener" href="https://www.oracle.com/javase/jmc/">下载</a></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>参考文档</p>
+</blockquote>
+<ol>
+<li>《深入理解Java虚拟机第3版 周志明 著》</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://blog.luanrz.cn/2021/10/21/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/C++%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="luanrz">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="luanrz's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/21/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/C++%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">C++常用数据结构的简单使用</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-10-21 14:09:23" itemprop="dateCreated datePublished" datetime="2021-10-21T14:09:23+08:00">2021-10-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.6k</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="一、常用数据结构一览"><a href="#一、常用数据结构一览" class="headerlink" title="一、常用数据结构一览"></a>一、常用数据结构一览</h2><table>
+<thead>
+<tr>
+<th>数据结构</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>vector</td>
+<td>动态数组</td>
+</tr>
+<tr>
+<td>stack</td>
+<td>先入后出的线性表</td>
+</tr>
+<tr>
+<td>queue</td>
+<td>先入先出的线性表</td>
+</tr>
+<tr>
+<td>map</td>
+<td>键值对元素集合</td>
+</tr>
+<tr>
+<td>set</td>
+<td>无序非重复集合</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>持续完善与更新中…</p>
+</blockquote>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/10/21/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/C++%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E4%BD%BF%E7%94%A8/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://blog.luanrz.cn/2021/08/21/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java8%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="luanrz">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="luanrz's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/21/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java8%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/" class="post-title-link" itemprop="url">Java8函数式编程入门</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-08-21 09:38:30" itemprop="dateCreated datePublished" datetime="2021-08-21T09:38:30+08:00">2021-08-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>14k</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="一、Lambda表达式"><a href="#一、Lambda表达式" class="headerlink" title="一、Lambda表达式"></a>一、Lambda表达式</h2><p>什么是Lambda表达式?</p>
+<p>Lambda表达式是一个函数，有入参和出参，它表示一个行为。</p>
+<p>Lambda表达式是一个对象，Java中函数是二等公民，只能依附于类存在，Lambda表达式的目标类型被称之为函数接口。</p>
+<h3 id="（一）Lambda表达式与匿名内部类对象"><a href="#（一）Lambda表达式与匿名内部类对象" class="headerlink" title="（一）Lambda表达式与匿名内部类对象"></a>（一）Lambda表达式与匿名内部类对象</h3><p>Lambda表达式和匿名内部类对象很像，在正式介绍Lambda表达式之前，先看看一个匿名内部类对象的例子。</p>
+<p>一般情况下，接口不可以直接实例化，但可以在new接口的过程中重写接口中的方法来创建一个匿名内部类对象。如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Runnable anonymousClassesRunnable = <span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我是一个匿名类内部类对象&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>有没有更简单的方式呢？请看下述代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Runnable lambdaRunnable &#x3D; () -&gt; System.out.println(&quot;我是一个lambda表达式&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>上述代码中<code>=</code>右侧的<code>() -&gt; System.out.println(&quot;我是一个lambda表达式&quot;)</code>是一个<code>Lambda表达式</code>。</p>
+<p>这个Lambda表达式由三部分组成：</p>
+<ol>
+<li><code>()</code> : 请求参数，这里为空（对应了上述匿名内部类中run方法的请求参数）</li>
+<li><code>System.out.println(&quot;我是一个lambda表达式&quot;)</code>: 方法体（对应了上述匿名内部类中run方法的方法体）</li>
+<li><code>-&gt;</code> : Lambda表达式标识符，连接左侧的请求参数和右侧的方法体</li>
+</ol>
+<p>可以看到，Lambda表达式与匿名内部类对象完全等价，它们都在<code>=</code>右侧，都可以被赋值给<code>=</code>左侧的接口变量，换言之，<strong>Lambda表达式本质上是一个接口的实例化对象</strong>（在Java中，万物皆对象，lambda表达式也不例外）。那么，任意接口都可以是Lambda表达式的目标类型吗？</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/08/21/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java8%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">luanrz</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

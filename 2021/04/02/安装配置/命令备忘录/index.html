@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.luanrz.cn","root":"/","images":"/images","scheme":"Gemini","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="gdbgitideajavalinuxvimGDB编译gcc Hello.cpp  生成可执行文件a.out gcc -o Hello.o Hello.cpp  生成可执行文件Hello.o gcc -g -o Hello.o Hello.cpp  生成可调试的可执行文件Hello.o 调试gdb Hello.o 常用GDB命令break ：新增断点。后接一个参数，表示在指定位置增加断点，参数格式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="命令备忘录">
+<meta property="og:url" content="http://blog.luanrz.cn/2021/04/02/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/index.html">
+<meta property="og:site_name" content="luanrz&#39;s blog">
+<meta property="og:description" content="gdbgitideajavalinuxvimGDB编译gcc Hello.cpp  生成可执行文件a.out gcc -o Hello.o Hello.cpp  生成可执行文件Hello.o gcc -g -o Hello.o Hello.cpp  生成可调试的可执行文件Hello.o 调试gdb Hello.o 常用GDB命令break ：新增断点。后接一个参数，表示在指定位置增加断点，参数格式">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-02T01:50:12.000Z">
+<meta property="article:modified_time" content="2022-04-18T02:49:31.103Z">
+<meta property="article:author" content="luanrz">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://blog.luanrz.cn/2021/04/02/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>命令备忘录 | luanrz's blog</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">luanrz's blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">31</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">13</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#GDB"><span class="nav-number">1.</span> <span class="nav-text">GDB</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%AF%91"><span class="nav-number">1.1.</span> <span class="nav-text">编译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E8%AF%95"><span class="nav-number">1.2.</span> <span class="nav-text">调试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8GDB%E5%91%BD%E4%BB%A4"><span class="nav-number">1.3.</span> <span class="nav-text">常用GDB命令</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Git"><span class="nav-number">2.</span> <span class="nav-text">Git</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF"><span class="nav-number">2.1.</span> <span class="nav-text">删除远程分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%8B%E9%9A%86%E6%8C%87%E5%AE%9A%E5%88%86%E6%94%AF%E5%88%B0%E6%8C%87%E5%AE%9A%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="nav-number">2.2.</span> <span class="nav-text">克隆指定分支到指定文件夹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%98%E6%9B%B4%E7%BB%9F%E8%AE%A1"><span class="nav-number">2.3.</span> <span class="nav-text">变更统计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9commit%E8%AE%B0%E5%BD%95"><span class="nav-number">2.4.</span> <span class="nav-text">修改commit记录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%92%A4%E9%94%80commit"><span class="nav-number">2.5.</span> <span class="nav-text">撤销commit</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IDEA"><span class="nav-number">3.</span> <span class="nav-text">IDEA</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Editor-Basics"><span class="nav-number">3.1.</span> <span class="nav-text">Editor Basics</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Actions"><span class="nav-number">3.1.1.</span> <span class="nav-text">Actions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Select"><span class="nav-number">3.1.2.</span> <span class="nav-text">Select</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Comment-Line"><span class="nav-number">3.1.3.</span> <span class="nav-text">Comment Line</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Delete-Line"><span class="nav-number">3.1.4.</span> <span class="nav-text">Delete Line</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Duplicate"><span class="nav-number">3.1.5.</span> <span class="nav-text">Duplicate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Move"><span class="nav-number">3.1.6.</span> <span class="nav-text">Move</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Collapse"><span class="nav-number">3.1.7.</span> <span class="nav-text">Collapse</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multiple-Selections"><span class="nav-number">3.1.8.</span> <span class="nav-text">Multiple Selections</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code-Completion"><span class="nav-number">3.2.</span> <span class="nav-text">Code Completion</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-Completion"><span class="nav-number">3.2.1.</span> <span class="nav-text">Basic Completion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Smart-Type-Completion"><span class="nav-number">3.2.2.</span> <span class="nav-text">Smart Type Completion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Statement-Completion"><span class="nav-number">3.2.3.</span> <span class="nav-text">Statement Completion</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Refactorings"><span class="nav-number">3.3.</span> <span class="nav-text">Refactorings</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Rename"><span class="nav-number">3.3.1.</span> <span class="nav-text">Rename</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Extract-Variable-Field"><span class="nav-number">3.3.2.</span> <span class="nav-text">Extract Variable&#x2F;Field</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Refactoring-Basics"><span class="nav-number">3.3.3.</span> <span class="nav-text">Refactoring Basics</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code-Assistance"><span class="nav-number">3.4.</span> <span class="nav-text">Code Assistance</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-Formatting"><span class="nav-number">3.4.1.</span> <span class="nav-text">Code Formatting</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parameter-Info"><span class="nav-number">3.4.2.</span> <span class="nav-text">Parameter Info</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Quick-Popups"><span class="nav-number">3.4.3.</span> <span class="nav-text">Quick Popups</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Editor-Coding-Assistance"><span class="nav-number">3.4.4.</span> <span class="nav-text">Editor Coding Assistance</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Navigation"><span class="nav-number">3.5.</span> <span class="nav-text">Navigation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Jump-to-source"><span class="nav-number">3.5.1.</span> <span class="nav-text">Jump to source</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Declaration-Implementation"><span class="nav-number">3.5.2.</span> <span class="nav-text">Declaration&#x2F;Implementation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#File-Structure"><span class="nav-number">3.5.3.</span> <span class="nav-text">File Structure</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Next-Previous-Occurrences"><span class="nav-number">3.5.4.</span> <span class="nav-text">Next&#x2F;Previous Occurrences</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java"><span class="nav-number">4.</span> <span class="nav-text">Java</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java%E5%BA%8F%E5%88%97%E5%8C%96"><span class="nav-number">4.1.</span> <span class="nav-text">Java序列化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEVM%E5%8F%82%E6%95%B0%E2%80%9Djavaagent%E2%80%9D%E4%BB%A5%E6%94%AF%E6%8C%81%E5%88%87%E9%9D%A2%E7%BC%96%E7%A8%8B"><span class="nav-number">4.2.</span> <span class="nav-text">配置VM参数”javaagent”以支持切面编程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E7%94%A8%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95"><span class="nav-number">4.3.</span> <span class="nav-text">启用远程调试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jasypt%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86"><span class="nav-number">4.4.</span> <span class="nav-text">jasypt加密解密</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux"><span class="nav-number">5.</span> <span class="nav-text">Linux</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%9A%E8%AF%9D%E7%AE%A1%E7%90%86%E2%80%94%E2%80%94%E4%BD%BF%E7%94%A8screen%E6%81%A2%E5%A4%8D%E6%8E%89%E7%BA%BF%E7%9A%84shell%E4%BC%9A%E8%AF%9D"><span class="nav-number">5.1.</span> <span class="nav-text">会话管理——使用screen恢复掉线的shell会话</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E7%9B%AE%E5%BD%95%E6%89%80%E5%8D%A0%E7%94%A8%E7%9A%84%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4"><span class="nav-number">5.2.</span> <span class="nav-text">显示当前目录所占用的磁盘空间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BF%E9%97%AENFS%E6%9C%8D%E5%8A%A1"><span class="nav-number">5.3.</span> <span class="nav-text">访问NFS服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BF%E9%97%AESMB%E6%9C%8D%E5%8A%A1"><span class="nav-number">5.4.</span> <span class="nav-text">访问SMB服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E9%94%AE%E5%88%A0%E9%99%A4%E6%89%80%E6%9C%89%E9%A1%B9%E7%9B%AE%E4%B8%8B%E7%9A%84target"><span class="nav-number">5.5.</span> <span class="nav-text">一键删除所有项目下的target</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%AB%E6%8F%8F%E5%B1%80%E5%9F%9F%E7%BD%91%E6%89%80%E6%9C%89IP%E4%B8%8E%E7%AB%AF%E5%8F%A3"><span class="nav-number">5.6.</span> <span class="nav-text">扫描局域网所有IP与端口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%8B%E7%BC%A9%E4%B8%8E%E8%A7%A3%E5%8E%8B"><span class="nav-number">5.7.</span> <span class="nav-text">压缩与解压</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vim"><span class="nav-number">6.</span> <span class="nav-text">Vim</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88"><span class="nav-number">6.1.</span> <span class="nav-text">浏览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%BE%91"><span class="nav-number">6.2.</span> <span class="nav-text">编辑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%BF%E6%8D%A2"><span class="nav-number">6.3.</span> <span class="nav-text">替换</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">luanrz</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/luanrz" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;luanrz" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:luanrz@qq.com" title="E-Mail → mailto:luanrz@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://blog.luanrz.cn/2021/04/02/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="luanrz">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="luanrz's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          命令备忘录
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-02 09:50:12" itemprop="dateCreated datePublished" datetime="2021-04-02T09:50:12+08:00">2021-04-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" itemprop="url" rel="index"><span itemprop="name">安装配置</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/%E5%BA%94%E7%94%A8%E8%BD%AF%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">应用软件</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>5.3k</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <div class="tabs" id="command"><ul class="nav-tabs"><li class="tab active"><a href="#command-1">gdb</a></li><li class="tab"><a href="#command-2">git</a></li><li class="tab"><a href="#command-3">idea</a></li><li class="tab"><a href="#command-4">java</a></li><li class="tab"><a href="#command-5">linux</a></li><li class="tab"><a href="#command-6">vim</a></li></ul><div class="tab-content"><div class="tab-pane active" id="command-1"><h1 id="GDB"><a href="#GDB" class="headerlink" title="GDB"></a>GDB</h1><h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><p><code>gcc Hello.cpp</code>  生成可执行文件a.out</p>
+<p><code>gcc -o Hello.o Hello.cpp</code>  生成可执行文件Hello.o</p>
+<p><code>gcc -g -o Hello.o Hello.cpp</code>  生成可调试的可执行文件Hello.o</p>
+<h2 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h2><p><code>gdb Hello.o</code></p>
+<h2 id="常用GDB命令"><a href="#常用GDB命令" class="headerlink" title="常用GDB命令"></a>常用GDB命令</h2><p><code>break</code> ：新增断点。后接一个参数，表示在指定位置增加断点，参数格式为：[源文件名:]&lt;方法名&gt; | [源文件名:]&lt;行数&gt;</p>
+<p><code>delete</code>：删除断点。后接零个参数，表示删除所有断点。后接一个参数，表示删除指定序号的断点，参数格式为：&lt;序号&gt;</p>
+<p><code>step</code>：往下执行语句，会进入函数。后接零个参数，表示往下执行一条语句。后接一个参数，表示往下执行指定数目的多条语句，参数格式为：&lt;向下行数&gt;</p>
+<p><code>next</code>：往下执行语句，不会进入函数。参数规范与step类似</p>
+<p><code>continue</code>：继续运行</p>
+<p><code>finish</code>：运行至当前函数返回后退出</p>
+<p><code>list</code>：查看代码</p>
+<p><code>frame</code>：查看帧栈</p>
+<p><code>backstrace</code>：查看整个调用栈</p>
+<p><code>info </code>：查看信息。后接一个参数，参数格式为：&lt;args | locals&gt;，args表示查看函数参数，locals表示查看局部变量</p>
+<p><code>print</code>：打印值。</p></div><div class="tab-pane" id="command-2"><h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><h2 id="删除远程分支"><a href="#删除远程分支" class="headerlink" title="删除远程分支"></a>删除远程分支</h2><p><code>git push origin --del rzluan-orderchange/ndc_xml_api_v3</code></p>
+<h2 id="克隆指定分支到指定文件夹"><a href="#克隆指定分支到指定文件夹" class="headerlink" title="克隆指定分支到指定文件夹"></a>克隆指定分支到指定文件夹</h2><p><code>git clone -b [branch_name] [git_url] [dir_path]</code></p>
+<h2 id="变更统计"><a href="#变更统计" class="headerlink" title="变更统计"></a>变更统计</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git log --author&#x3D;rzluan --after&#x3D;&quot;2019-11-01 00:00:00&quot; --before&#x3D;&quot;2019-11-30 23:59:59&quot; --name-only | grep &#39;^src&#x2F;*&#39; | sort |  uniq </span><br><span class="line">git log --author&#x3D;rzluan --after&#x3D;&quot;2019-11-01 00:00:00&quot; --before&#x3D;&quot;2019-11-30 23:59:59&quot; --numstat | grep &quot;src&quot; | awk &#39;&#123;a[$3]+&#x3D;$1;b[$3]+&#x3D;$2&#125;END&#123;for(j in a) print j,&quot;代码变更&quot;(a[j]+b[j])&quot;行&quot;&#125;&#39;</span><br><span class="line">git log --author&#x3D;rzluan --after&#x3D;&quot;2019-11-01 00:00:00&quot; --before&#x3D;&quot;2019-11-30 23:59:59&quot; --numstat | grep &quot;src&quot; | awk &#39;&#123;a[$3]+&#x3D;($1+$2)&#125;END&#123;for(j in a) b+&#x3D;a[j]&#125; END&#123;print &quot;总行数&quot;,b&#125;&#39;</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改commit记录"><a href="#修改commit记录" class="headerlink" title="修改commit记录"></a>修改commit记录</h2><ol>
+<li><p>修改提交时间：<code>git commit --amend --date=&quot;May 8 12:00:30 2020 +0800&quot;</code></p>
+</li>
+<li><p>修改提交人信息：<code>git commit --amend --author &quot;luanrzh luanrzh@qq.com&quot;</code></p>
+</li>
+<li><p>强制推送至远程仓库：<code>git push &lt;remote&gt; &lt;branch&gt; -f</code></p>
+</li>
+</ol>
+<h2 id="撤销commit"><a href="#撤销commit" class="headerlink" title="撤销commit"></a>撤销commit</h2><ol>
+<li><code>1git reset HEAD</code> : 撤销commit，撤销暂存区，工作空间代码改动不变</li>
+<li><code>git reset --mixed HEAD^</code> : 同上</li>
+<li><code>git reset --soft HEAD^</code> : 撤销commit，暂存区不变，工作空间代码改动不变</li>
+<li><code>git reset --hard HEAD^</code> : 撤销commit，清空暂存区，清空工作空间代码改变</li>
+<li><code>git reset HEAD~n</code> : 撤销n次commit</li>
+<li><code>git commit --amend</code> : 修改commit注释</li>
+</ol></div><div class="tab-pane" id="command-3"><h1 id="IDEA"><a href="#IDEA" class="headerlink" title="IDEA"></a>IDEA</h1><h2 id="Editor-Basics"><a href="#Editor-Basics" class="headerlink" title="Editor Basics"></a>Editor Basics</h2><h3 id="Actions"><a href="#Actions" class="headerlink" title="Actions"></a>Actions</h3><p><code>Ctrl + Shift + A</code></p>
+<h3 id="Select"><a href="#Select" class="headerlink" title="Select"></a>Select</h3><p><code>Ctrl + Shift + →</code>    Select a word</p>
+<p><code>Ctrl + Shift + ←</code>    Select a word</p>
+<p><code>Ctrl + W</code>    Extend the select</p>
+<p><code>Ctrl + Shift + W</code>    Shrink the select</p>
+<p><code>Ctrl + A </code>    Select whole file</p>
+<h3 id="Comment-Line"><a href="#Comment-Line" class="headerlink" title="Comment Line"></a>Comment Line</h3><p><code>Ctrl + /</code>    Comment out or uncomment line(s)</p>
+<h3 id="Delete-Line"><a href="#Delete-Line" class="headerlink" title="Delete Line"></a>Delete Line</h3><p><code>Ctrl + Y</code>    Delete line(s)</p>
+<p><code>Ctrl + Z</code>     Restore the deleted line(s)</p>
+<h3 id="Duplicate"><a href="#Duplicate" class="headerlink" title="Duplicate"></a>Duplicate</h3><p><code>Ctrl + D</code>     Duplicate line(s)</p>
+<h3 id="Move"><a href="#Move" class="headerlink" title="Move"></a>Move</h3><p><code>Alt + Shift + ↓</code>    pull down line(s)</p>
+<p><code>Alt + Shift + ↑</code>    pull up line(s)</p>
+<p><code>Ctrl + Shift + ↓</code>    pull down class member</p>
+<p><code>Ctrl + Shift + ↑</code>    pull up class member</p>
+<h3 id="Collapse"><a href="#Collapse" class="headerlink" title="Collapse"></a>Collapse</h3><p><code>Ctrl + -</code>    collapse a region(eg. method)</p>
+<p><code>Ctrl + +</code>    expand a region</p>
+<p><code>Ctrl + Shift + -</code>    collapse all regions</p>
+<p><code>Ctrl + Shfit + +</code>    expand all regions</p>
+<h3 id="Multiple-Selections"><a href="#Multiple-Selections" class="headerlink" title="Multiple Selections"></a>Multiple Selections</h3><p><code>Alt + J</code>    Select the symbol at the caret or select the next occurrence of this symbol</p>
+<p><code>Alt + Shift + J</code>    deselect the last occurrence</p>
+<p><code>Ctrl + Alt + Shfit + J</code>    select all occurrence in the file</p>
+<h2 id="Code-Completion"><a href="#Code-Completion" class="headerlink" title="Code Completion"></a>Code Completion</h2><h3 id="Basic-Completion"><a href="#Basic-Completion" class="headerlink" title="Basic Completion"></a>Basic Completion</h3><p><code>Ctrl + SpaceKey </code>    activate basic completion(replace <code>Enter</code> with <code>tab</code> to overwrite the word rather than simply insert it)</p>
+<h3 id="Smart-Type-Completion"><a href="#Smart-Type-Completion" class="headerlink" title="Smart Type Completion"></a>Smart Type Completion</h3><p><code>Ctrl + Shift + SpaceKey </code>    activate smart type completion</p>
+<h3 id="Statement-Completion"><a href="#Statement-Completion" class="headerlink" title="Statement Completion"></a>Statement Completion</h3><p><code>Ctrl + Shift + Enter</code>    complete the statement</p>
+<h2 id="Refactorings"><a href="#Refactorings" class="headerlink" title="Refactorings"></a>Refactorings</h2><h3 id="Rename"><a href="#Rename" class="headerlink" title="Rename"></a>Rename</h3><p><code>Shift + F6</code>    rename</p>
+<h3 id="Extract-Variable-Field"><a href="#Extract-Variable-Field" class="headerlink" title="Extract Variable/Field"></a>Extract Variable/Field</h3><p><code>Alt + Shift + V</code>    introduce local variable or field(you can also use <code>Alt + Enter</code> and select the list item )</p>
+<h3 id="Refactoring-Basics"><a href="#Refactoring-Basics" class="headerlink" title="Refactoring Basics"></a>Refactoring Basics</h3><p><code>Ctrl + Alt + C</code>    extract the selected expression into a constant</p>
+<p><code>Ctrl + Alt + M</code>    extract the selected code block into a method</p>
+<p><code>Ctrl + Alt + P</code>    extract the selected expression into a parameter (<em>not work</em>)</p>
+<h2 id="Code-Assistance"><a href="#Code-Assistance" class="headerlink" title="Code Assistance"></a>Code Assistance</h2><h3 id="Code-Formatting"><a href="#Code-Formatting" class="headerlink" title="Code Formatting"></a>Code Formatting</h3><p><code>Alt + Shift + L</code>    correct code formatting</p>
+<h3 id="Parameter-Info"><a href="#Parameter-Info" class="headerlink" title="Parameter Info"></a>Parameter Info</h3><p><code>Ctrl + P</code> see the method signature</p>
+<h3 id="Quick-Popups"><a href="#Quick-Popups" class="headerlink" title="Quick Popups"></a>Quick Popups</h3><p><code>Ctrl + Q</code>    see documentation  for the symbol at the caret(<code>Esc</code> to close the popup)</p>
+<p><code>Ctrl + Shift + I</code>    see the definition of the symbol at the caret</p>
+<h3 id="Editor-Coding-Assistance"><a href="#Editor-Coding-Assistance" class="headerlink" title="Editor Coding Assistance"></a>Editor Coding Assistance</h3><p><code>F2</code>    go to the next highlighted error in the file</p>
+<p><code>Ctrl + 1</code>    see the error description</p>
+<p><code>Alt + Enter</code>    show suggestions and fix it</p>
+<p><code>Ctrl + Alt + T</code>    surround with</p>
+<p><code>Ctrl + Shift + 7</code>    highlight all usages of the symbol at the caret</p>
+<h2 id="Navigation"><a href="#Navigation" class="headerlink" title="Navigation"></a>Navigation</h2><h3 id="Jump-to-source"><a href="#Jump-to-source" class="headerlink" title="Jump to source"></a>Jump to source</h3><p><code>F4</code>    jump to source(include jdk classes)</p>
+<h3 id="Declaration-Implementation"><a href="#Declaration-Implementation" class="headerlink" title="Declaration/Implementation"></a>Declaration/Implementation</h3><p><code>Ctrl + B</code>    jump to the declaration of a class or interface</p>
+<p><code>Ctrl + Alt + B</code>    see implementations of a class/interface</p>
+<h3 id="File-Structure"><a href="#File-Structure" class="headerlink" title="File Structure"></a>File Structure</h3><p><code>Ctrl + 0</code>    see file structure</p>
+<h3 id="Next-Previous-Occurrences"><a href="#Next-Previous-Occurrences" class="headerlink" title="Next/Previous Occurrences"></a>Next/Previous Occurrences</h3><p><code>Ctrl + F</code>    find all word  you selected</p>
+<p><code>F3</code>    find next occurrences</p>
+<p><code>Shfit + F3</code>    find previous occurrences</p></div><div class="tab-pane" id="command-4"><h1 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h1><h2 id="Java序列化"><a href="#Java序列化" class="headerlink" title="Java序列化"></a>Java序列化</h2><p><code>new ObjectOutputStream(new FileOutputStream(&quot;resp&quot;)).writeObject(resp);</code></p>
+<h2 id="配置VM参数”javaagent”以支持切面编程"><a href="#配置VM参数”javaagent”以支持切面编程" class="headerlink" title="配置VM参数”javaagent”以支持切面编程"></a>配置VM参数”javaagent”以支持切面编程</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- javaagent:/home/luanrzh/.m2/repository/org/aspectj/aspectjweaver/<span class="number">1.9</span><span class="number">.4</span>/aspectjweaver-<span class="number">1.9</span><span class="number">.4</span>.jar</span><br></pre></td></tr></table></figure>
+
+<h2 id="启用远程调试"><a href="#启用远程调试" class="headerlink" title="启用远程调试"></a>启用远程调试</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">java -jar \</span><br><span class="line">-Dserver.port=<span class="number">8080</span> \</span><br><span class="line">-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=<span class="number">8081</span> \</span><br><span class="line">parent-<span class="number">0.0</span><span class="number">.1</span>-SNAPSHOT.jar</span><br></pre></td></tr></table></figure>
+
+<h2 id="jasypt加密解密"><a href="#jasypt加密解密" class="headerlink" title="jasypt加密解密"></a>jasypt加密解密</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">java -cp jasypt-<span class="number">1.9</span><span class="number">.2</span>.jar org.jasypt.intf.cli.JasyptPBEStringEncryptionCLI input=<span class="number">123456</span> password=<span class="number">1234</span>-<span class="number">1234</span>-<span class="number">1234</span>-<span class="number">1234</span> algorithm=PBEWithMD5AndDES</span><br><span class="line"></span><br><span class="line">java -cp jasypt-<span class="number">1.9</span><span class="number">.2</span>.jar org.jasypt.intf.cli.JasyptPBEStringDecryptionCLI input=<span class="string">&quot;jvp0W0qUkv0WmG/JzwyUTA==&quot;</span> password=<span class="number">1234</span>-<span class="number">1234</span>-<span class="number">1234</span>-<span class="number">1234</span> algorithm=PBEWithMD5AndDES</span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="command-5"><h1 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h1><h2 id="会话管理——使用screen恢复掉线的shell会话"><a href="#会话管理——使用screen恢复掉线的shell会话" class="headerlink" title="会话管理——使用screen恢复掉线的shell会话"></a>会话管理——使用<code>screen</code>恢复掉线的shell会话</h2><p><code>screen -S myScreen</code></p>
+<p><code>screen -r myScreen</code></p>
+<h2 id="显示当前目录所占用的磁盘空间"><a href="#显示当前目录所占用的磁盘空间" class="headerlink" title="显示当前目录所占用的磁盘空间"></a>显示当前目录所占用的磁盘空间</h2><p><code>du -h --max-depth=1</code></p>
+<h2 id="访问NFS服务"><a href="#访问NFS服务" class="headerlink" title="访问NFS服务"></a>访问NFS服务</h2><p><code>sudo pacman -S core/nfs-utils</code> #ArchLinux下安装nfs-utils，不然没有showmount命令</p>
+<p><code>showmount -e 192.168.1.105</code> #显示指定IP上挂载的卷</p>
+<p><code>sudo mount -t nfs -o proto=tcp,nolock 192.168.1.105:/volume1/homes homes/</code> #开始挂载</p>
+<h2 id="访问SMB服务"><a href="#访问SMB服务" class="headerlink" title="访问SMB服务"></a>访问SMB服务</h2><p><code>sudo pacman -S smbclient</code> #安装</p>
+<p><code> smbclient -L 192.168.0.100 -U username%password</code> # 显示共享目录</p>
+<p><code> smbclient //192.168.0.100/directory -U username%password</code> # 进入上述共享目录中的directory目录</p>
+<h2 id="一键删除所有项目下的target"><a href="#一键删除所有项目下的target" class="headerlink" title="一键删除所有项目下的target"></a>一键删除所有项目下的target</h2><p><code>find . -name target | awk &#39;{print &quot;rm -rf &quot;$1}&#39; | sh</code></p>
+<h2 id="扫描局域网所有IP与端口"><a href="#扫描局域网所有IP与端口" class="headerlink" title="扫描局域网所有IP与端口"></a>扫描局域网所有IP与端口</h2><p><code>nmap -sP 192.168.1.0/24</code></p>
+<p><code>nmap -A 192.168.1.100</code></p>
+<h2 id="压缩与解压"><a href="#压缩与解压" class="headerlink" title="压缩与解压"></a>压缩与解压</h2><table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">压缩</th>
+<th align="center">解压</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">tar.gz</td>
+<td align="center">tar czvf  test.tar.gz  test/</td>
+<td align="center">tar xzvf  test.tar.gz</td>
+</tr>
+<tr>
+<td align="center">tar.xz</td>
+<td align="center">tar cJvf  test.tar.xz test/</td>
+<td align="center">tar xvf  test.tar.xz</td>
+</tr>
+<tr>
+<td align="center">zip</td>
+<td align="center">zip test.zip test/*</td>
+<td align="center">unzip test.zip</td>
+</tr>
+<tr>
+<td align="center">rar</td>
+<td align="center">rar test.rar test/*</td>
+<td align="center">(un)rar x(e) test.rar</td>
+</tr>
+</tbody></table></div><div class="tab-pane" id="command-6"><h1 id="Vim"><a href="#Vim" class="headerlink" title="Vim"></a>Vim</h1><h2 id="浏览"><a href="#浏览" class="headerlink" title="浏览"></a>浏览</h2><ul>
+<li><code>ctrl-f</code>  向下一翻页（f = forword ）</li>
+<li><code>ctrl-b</code> 向上一翻页（b = backward）</li>
+<li><code>ctrl-d</code> 向下翻半页（d = down）</li>
+<li><code>ctlr-u</code> 向上翻半页（u = up）</li>
+<li><code>ctrl-e</code> 向下滚一行</li>
+<li><code>ctrl-y</code> 向上滚一行</li>
+<li><code>zz</code> 让光标所在的行居屏幕中央</li>
+<li><code>zt</code> 让光标所在的行居屏幕最上一行 t=top</li>
+<li><code>zb</code> 让光标所在的行居屏幕最下一行 b=bottom</li>
+</ul>
+<h2 id="编辑"><a href="#编辑" class="headerlink" title="编辑"></a>编辑</h2><ul>
+<li><code>u</code> 撤销</li>
+<li><code>Ctrl-r</code> 恢复撤销</li>
+</ul>
+<h2 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h2><ul>
+<li><code>:%s/a/b/g</code> 将所有的a替换为b</li>
+</ul></div></div></div>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/09/04/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/i3wm%E9%85%8D%E7%BD%AE/" rel="prev" title="i3wm配置">
+                  <i class="fa fa-chevron-left"></i> i3wm配置
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/04/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%AD%E7%9A%84%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="next" title="数据结构中的排序算法">
+                  数据结构中的排序算法 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">luanrz</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

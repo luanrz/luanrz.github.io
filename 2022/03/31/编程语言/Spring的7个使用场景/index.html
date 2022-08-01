@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.luanrz.cn","root":"/","images":"/images","scheme":"Gemini","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="Spring官网中描述了Spring能做的7件事，如下所示：   下面将简单介绍各场景的概念与其关联的项目。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring的7个使用场景">
+<meta property="og:url" content="http://blog.luanrz.cn/2022/03/31/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Spring%E7%9A%847%E4%B8%AA%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/index.html">
+<meta property="og:site_name" content="luanrz&#39;s blog">
+<meta property="og:description" content="Spring官网中描述了Spring能做的7件事，如下所示：   下面将简单介绍各场景的概念与其关联的项目。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiBjb250ZW50U3R5bGVUeXBlPSJ0ZXh0L2NzcyIgaGVpZ2h0PSI0MTZweCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSIgc3R5bGU9IndpZHRoOjMzNnB4O2hlaWdodDo0MTZweDtiYWNrZ3JvdW5kOiNGRkZGRkY7IiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAzMzYgNDE2IiB3aWR0aD0iMzM2cHgiIHpvb21BbmRQYW49Im1hZ25pZnkiPjxkZWZzLz48Zz48cmVjdCBmaWxsPSIjRjFGMUYxIiBoZWlnaHQ9IjM2LjI5NjkiIHJ4PSIxMi41IiByeT0iMTIuNSIgc3R5bGU9InN0cm9rZTojMTgxODE4O3N0cm9rZS13aWR0aDoxLjU7IiB3aWR0aD0iNjciIHg9IjEwIiB5PSIxODguODkwNiIvPjx0ZXh0IGZpbGw9IiMwMDAwMDAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjQ3IiB4PSIyMCIgeT0iMjExLjg4NTciPlNwcmluZzwvdGV4dD48cmVjdCBmaWxsPSIjRjFGMUYxIiBoZWlnaHQ9IjM2LjI5NjkiIHJ4PSIxMi41IiByeT0iMTIuNSIgc3R5bGU9InN0cm9rZTojMTgxODE4O3N0cm9rZS13aWR0aDoxLjU7IiB3aWR0aD0iMTg3IiB4PSIxMjciIHk9IjIwIi8+PHRleHQgZmlsbD0iIzAwMDAwMCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGxlbmd0aEFkanVzdD0ic3BhY2luZyIgdGV4dExlbmd0aD0iMTY3IiB4PSIxMzciIHk9IjQyLjk5NTEiPk1pY3Jvc2VydmljZXPvvIjlvq7mnI3liqHvvIk8L3RleHQ+PHBhdGggZD0iTTc3LDIwNy4wMzkxIEw4NywyMDcuMDM5MSBDMTAyLDIwNy4wMzkxIDEwMiwzOC4xNDg0IDExNywzOC4xNDg0IEwxMjcsMzguMTQ4NCAiIGZpbGw9Im5vbmUiIHN0eWxlPSJzdHJva2U6IzE4MTgxODtzdHJva2Utd2lkdGg6MS4wOyIvPjxyZWN0IGZpbGw9IiNGMUYxRjEiIGhlaWdodD0iMzYuMjk2OSIgcng9IjEyLjUiIHJ5PSIxMi41IiBzdHlsZT0ic3Ryb2tlOiMxODE4MTg7c3Ryb2tlLXdpZHRoOjEuNTsiIHdpZHRoPSIxNTMiIHg9IjEyNyIgeT0iNzYuMjk2OSIvPjx0ZXh0IGZpbGw9IiMwMDAwMDAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjEzMyIgeD0iMTM3IiB5PSI5OS4yOTIiPlJlYWN0aXZl77yI5ZON5bqU5byP77yJPC90ZXh0PjxwYXRoIGQ9Ik03NywyMDcuMDM5MSBMODcsMjA3LjAzOTEgQzEwMiwyMDcuMDM5MSAxMDIsOTQuNDQ1MyAxMTcsOTQuNDQ1MyBMMTI3LDk0LjQ0NTMgIiBmaWxsPSJub25lIiBzdHlsZT0ic3Ryb2tlOiMxODE4MTg7c3Ryb2tlLXdpZHRoOjEuMDsiLz48cmVjdCBmaWxsPSIjRjFGMUYxIiBoZWlnaHQ9IjM2LjI5NjkiIHJ4PSIxMi41IiByeT0iMTIuNSIgc3R5bGU9InN0cm9rZTojMTgxODE4O3N0cm9rZS13aWR0aDoxLjU7IiB3aWR0aD0iMTAyIiB4PSIxMjciIHk9IjEzMi41OTM4Ii8+PHRleHQgZmlsbD0iIzAwMDAwMCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGxlbmd0aEFkanVzdD0ic3BhY2luZyIgdGV4dExlbmd0aD0iODIiIHg9IjEzNyIgeT0iMTU1LjU4ODkiPkNsb3Vk77yI5LqR77yJPC90ZXh0PjxwYXRoIGQ9Ik03NywyMDcuMDM5MSBMODcsMjA3LjAzOTEgQzEwMiwyMDcuMDM5MSAxMDIsMTUwLjc0MjIgMTE3LDE1MC43NDIyIEwxMjcsMTUwLjc0MjIgIiBmaWxsPSJub25lIiBzdHlsZT0ic3Ryb2tlOiMxODE4MTg7c3Ryb2tlLXdpZHRoOjEuMDsiLz48cmVjdCBmaWxsPSIjRjFGMUYxIiBoZWlnaHQ9IjM2LjI5NjkiIHJ4PSIxMi41IiByeT0iMTIuNSIgc3R5bGU9InN0cm9rZTojMTgxODE4O3N0cm9rZS13aWR0aDoxLjU7IiB3aWR0aD0iMTc2IiB4PSIxMjciIHk9IjE4OC44OTA2Ii8+PHRleHQgZmlsbD0iIzAwMDAwMCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGxlbmd0aEFkanVzdD0ic3BhY2luZyIgdGV4dExlbmd0aD0iMTU2IiB4PSIxMzciIHk9IjIxMS44ODU3Ij5XZWIgYXBwc++8iOe9kemhteW6lOeUqO+8iTwvdGV4dD48cGF0aCBkPSJNNzcsMjA3LjAzOTEgTDg3LDIwNy4wMzkxIEMxMDIsMjA3LjAzOTEgMTAyLDIwNy4wMzkxIDExNywyMDcuMDM5MSBMMTI3LDIwNy4wMzkxICIgZmlsbD0ibm9uZSIgc3R5bGU9InN0cm9rZTojMTgxODE4O3N0cm9rZS13aWR0aDoxLjA7Ii8+PHJlY3QgZmlsbD0iI0YxRjFGMSIgaGVpZ2h0PSIzNi4yOTY5IiByeD0iMTIuNSIgcnk9IjEyLjUiIHN0eWxlPSJzdHJva2U6IzE4MTgxODtzdHJva2Utd2lkdGg6MS41OyIgd2lkdGg9IjE3OCIgeD0iMTI3IiB5PSIyNDUuMTg3NSIvPjx0ZXh0IGZpbGw9IiMwMDAwMDAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjE1OCIgeD0iMTM3IiB5PSIyNjguMTgyNiI+U2VydmVybGVzc++8iOaXoOacjeWKoeWZqO+8iTwvdGV4dD48cGF0aCBkPSJNNzcsMjA3LjAzOTEgTDg3LDIwNy4wMzkxIEMxMDIsMjA3LjAzOTEgMTAyLDI2My4zMzU5IDExNywyNjMuMzM1OSBMMTI3LDI2My4zMzU5ICIgZmlsbD0ibm9uZSIgc3R5bGU9InN0cm9rZTojMTgxODE4O3N0cm9rZS13aWR0aDoxLjA7Ii8+PHJlY3QgZmlsbD0iI0YxRjFGMSIgaGVpZ2h0PSIzNi4yOTY5IiByeD0iMTIuNSIgcnk9IjEyLjUiIHN0eWxlPSJzdHJva2U6IzE4MTgxODtzdHJva2Utd2lkdGg6MS41OyIgd2lkdGg9IjE5NyIgeD0iMTI3IiB5PSIzMDEuNDg0NCIvPjx0ZXh0IGZpbGw9IiMwMDAwMDAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjE3NyIgeD0iMTM3IiB5PSIzMjQuNDc5NSI+RXZlbnQgRHJpdmVu77yI5LqL5Lu26amx5Yqo77yJPC90ZXh0PjxwYXRoIGQ9Ik03NywyMDcuMDM5MSBMODcsMjA3LjAzOTEgQzEwMiwyMDcuMDM5MSAxMDIsMzE5LjYzMjggMTE3LDMxOS42MzI4IEwxMjcsMzE5LjYzMjggIiBmaWxsPSJub25lIiBzdHlsZT0ic3Ryb2tlOiMxODE4MTg7c3Ryb2tlLXdpZHRoOjEuMDsiLz48cmVjdCBmaWxsPSIjRjFGMUYxIiBoZWlnaHQ9IjM2LjI5NjkiIHJ4PSIxMi41IiByeT0iMTIuNSIgc3R5bGU9InN0cm9rZTojMTgxODE4O3N0cm9rZS13aWR0aDoxLjU7IiB3aWR0aD0iMTMyIiB4PSIxMjciIHk9IjM1Ny43ODEzIi8+PHRleHQgZmlsbD0iIzAwMDAwMCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGxlbmd0aEFkanVzdD0ic3BhY2luZyIgdGV4dExlbmd0aD0iMTEyIiB4PSIxMzciIHk9IjM4MC43NzY0Ij5CYXRjaO+8iOaJueWkhOeQhu+8iTwvdGV4dD48cGF0aCBkPSJNNzcsMjA3LjAzOTEgTDg3LDIwNy4wMzkxIEMxMDIsMjA3LjAzOTEgMTAyLDM3NS45Mjk3IDExNywzNzUuOTI5NyBMMTI3LDM3NS45Mjk3ICIgZmlsbD0ibm9uZSIgc3R5bGU9InN0cm9rZTojMTgxODE4O3N0cm9rZS13aWR0aDoxLjA7Ii8+PCEtLU1ENT1bYjkxNjZiM2RjMTIzZWRmZDBiNzMzYzliYjI2MzQyMzldCkBzdGFydG1pbmRtYXANCiogU3ByaW5nDQoJKiBNaWNyb3NlcnZpY2Vz77yI5b6u5pyN5Yqh77yJDQoJKiBSZWFjdGl2Ze+8iOWTjeW6lOW8j++8iQ0KCSogQ2xvdWTvvIjkupHvvIkNCgkqIFdlYiBhcHBz77yI572R6aG15bqU55So77yJDQoJKiBTZXJ2ZXJsZXNz77yI5peg5pyN5Yqh5Zmo77yJDQoJKiBFdmVudCBEcml2ZW7vvIjkuovku7bpqbHliqjvvIkNCgkqIEJhdGNo77yI5om55aSE55CG77yJDQpAZW5kbWluZG1hcA0KClBsYW50VU1MIHZlcnNpb24gMS4yMDIyLjdiZXRhMihVbmtub3duIGNvbXBpbGUgdGltZSkKKEdQTCBzb3VyY2UgZGlzdHJpYnV0aW9uKQpKYXZhIFJ1bnRpbWU6IEphdmEoVE0pIFNFIFJ1bnRpbWUgRW52aXJvbm1lbnQKSlZNOiBKYXZhIEhvdFNwb3QoVE0pIDY0LUJpdCBTZXJ2ZXIgVk0KRGVmYXVsdCBFbmNvZGluZzogVVRGLTgKTGFuZ3VhZ2U6IGVuCkNvdW50cnk6IFVTCi0tPjwvZz48L3N2Zz4=">
+<meta property="article:published_time" content="2022-03-31T01:31:48.000Z">
+<meta property="article:modified_time" content="2022-07-06T03:59:21.395Z">
+<meta property="article:author" content="luanrz">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Spring">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiBjb250ZW50U3R5bGVUeXBlPSJ0ZXh0L2NzcyIgaGVpZ2h0PSI0MTZweCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSIgc3R5bGU9IndpZHRoOjMzNnB4O2hlaWdodDo0MTZweDtiYWNrZ3JvdW5kOiNGRkZGRkY7IiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAzMzYgNDE2IiB3aWR0aD0iMzM2cHgiIHpvb21BbmRQYW49Im1hZ25pZnkiPjxkZWZzLz48Zz48cmVjdCBmaWxsPSIjRjFGMUYxIiBoZWlnaHQ9IjM2LjI5NjkiIHJ4PSIxMi41IiByeT0iMTIuNSIgc3R5bGU9InN0cm9rZTojMTgxODE4O3N0cm9rZS13aWR0aDoxLjU7IiB3aWR0aD0iNjciIHg9IjEwIiB5PSIxODguODkwNiIvPjx0ZXh0IGZpbGw9IiMwMDAwMDAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjQ3IiB4PSIyMCIgeT0iMjExLjg4NTciPlNwcmluZzwvdGV4dD48cmVjdCBmaWxsPSIjRjFGMUYxIiBoZWlnaHQ9IjM2LjI5NjkiIHJ4PSIxMi41IiByeT0iMTIuNSIgc3R5bGU9InN0cm9rZTojMTgxODE4O3N0cm9rZS13aWR0aDoxLjU7IiB3aWR0aD0iMTg3IiB4PSIxMjciIHk9IjIwIi8+PHRleHQgZmlsbD0iIzAwMDAwMCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGxlbmd0aEFkanVzdD0ic3BhY2luZyIgdGV4dExlbmd0aD0iMTY3IiB4PSIxMzciIHk9IjQyLjk5NTEiPk1pY3Jvc2VydmljZXPvvIjlvq7mnI3liqHvvIk8L3RleHQ+PHBhdGggZD0iTTc3LDIwNy4wMzkxIEw4NywyMDcuMDM5MSBDMTAyLDIwNy4wMzkxIDEwMiwzOC4xNDg0IDExNywzOC4xNDg0IEwxMjcsMzguMTQ4NCAiIGZpbGw9Im5vbmUiIHN0eWxlPSJzdHJva2U6IzE4MTgxODtzdHJva2Utd2lkdGg6MS4wOyIvPjxyZWN0IGZpbGw9IiNGMUYxRjEiIGhlaWdodD0iMzYuMjk2OSIgcng9IjEyLjUiIHJ5PSIxMi41IiBzdHlsZT0ic3Ryb2tlOiMxODE4MTg7c3Ryb2tlLXdpZHRoOjEuNTsiIHdpZHRoPSIxNTMiIHg9IjEyNyIgeT0iNzYuMjk2OSIvPjx0ZXh0IGZpbGw9IiMwMDAwMDAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjEzMyIgeD0iMTM3IiB5PSI5OS4yOTIiPlJlYWN0aXZl77yI5ZON5bqU5byP77yJPC90ZXh0PjxwYXRoIGQ9Ik03NywyMDcuMDM5MSBMODcsMjA3LjAzOTEgQzEwMiwyMDcuMDM5MSAxMDIsOTQuNDQ1MyAxMTcsOTQuNDQ1MyBMMTI3LDk0LjQ0NTMgIiBmaWxsPSJub25lIiBzdHlsZT0ic3Ryb2tlOiMxODE4MTg7c3Ryb2tlLXdpZHRoOjEuMDsiLz48cmVjdCBmaWxsPSIjRjFGMUYxIiBoZWlnaHQ9IjM2LjI5NjkiIHJ4PSIxMi41IiByeT0iMTIuNSIgc3R5bGU9InN0cm9rZTojMTgxODE4O3N0cm9rZS13aWR0aDoxLjU7IiB3aWR0aD0iMTAyIiB4PSIxMjciIHk9IjEzMi41OTM4Ii8+PHRleHQgZmlsbD0iIzAwMDAwMCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGxlbmd0aEFkanVzdD0ic3BhY2luZyIgdGV4dExlbmd0aD0iODIiIHg9IjEzNyIgeT0iMTU1LjU4ODkiPkNsb3Vk77yI5LqR77yJPC90ZXh0PjxwYXRoIGQ9Ik03NywyMDcuMDM5MSBMODcsMjA3LjAzOTEgQzEwMiwyMDcuMDM5MSAxMDIsMTUwLjc0MjIgMTE3LDE1MC43NDIyIEwxMjcsMTUwLjc0MjIgIiBmaWxsPSJub25lIiBzdHlsZT0ic3Ryb2tlOiMxODE4MTg7c3Ryb2tlLXdpZHRoOjEuMDsiLz48cmVjdCBmaWxsPSIjRjFGMUYxIiBoZWlnaHQ9IjM2LjI5NjkiIHJ4PSIxMi41IiByeT0iMTIuNSIgc3R5bGU9InN0cm9rZTojMTgxODE4O3N0cm9rZS13aWR0aDoxLjU7IiB3aWR0aD0iMTc2IiB4PSIxMjciIHk9IjE4OC44OTA2Ii8+PHRleHQgZmlsbD0iIzAwMDAwMCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGxlbmd0aEFkanVzdD0ic3BhY2luZyIgdGV4dExlbmd0aD0iMTU2IiB4PSIxMzciIHk9IjIxMS44ODU3Ij5XZWIgYXBwc++8iOe9kemhteW6lOeUqO+8iTwvdGV4dD48cGF0aCBkPSJNNzcsMjA3LjAzOTEgTDg3LDIwNy4wMzkxIEMxMDIsMjA3LjAzOTEgMTAyLDIwNy4wMzkxIDExNywyMDcuMDM5MSBMMTI3LDIwNy4wMzkxICIgZmlsbD0ibm9uZSIgc3R5bGU9InN0cm9rZTojMTgxODE4O3N0cm9rZS13aWR0aDoxLjA7Ii8+PHJlY3QgZmlsbD0iI0YxRjFGMSIgaGVpZ2h0PSIzNi4yOTY5IiByeD0iMTIuNSIgcnk9IjEyLjUiIHN0eWxlPSJzdHJva2U6IzE4MTgxODtzdHJva2Utd2lkdGg6MS41OyIgd2lkdGg9IjE3OCIgeD0iMTI3IiB5PSIyNDUuMTg3NSIvPjx0ZXh0IGZpbGw9IiMwMDAwMDAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjE1OCIgeD0iMTM3IiB5PSIyNjguMTgyNiI+U2VydmVybGVzc++8iOaXoOacjeWKoeWZqO+8iTwvdGV4dD48cGF0aCBkPSJNNzcsMjA3LjAzOTEgTDg3LDIwNy4wMzkxIEMxMDIsMjA3LjAzOTEgMTAyLDI2My4zMzU5IDExNywyNjMuMzM1OSBMMTI3LDI2My4zMzU5ICIgZmlsbD0ibm9uZSIgc3R5bGU9InN0cm9rZTojMTgxODE4O3N0cm9rZS13aWR0aDoxLjA7Ii8+PHJlY3QgZmlsbD0iI0YxRjFGMSIgaGVpZ2h0PSIzNi4yOTY5IiByeD0iMTIuNSIgcnk9IjEyLjUiIHN0eWxlPSJzdHJva2U6IzE4MTgxODtzdHJva2Utd2lkdGg6MS41OyIgd2lkdGg9IjE5NyIgeD0iMTI3IiB5PSIzMDEuNDg0NCIvPjx0ZXh0IGZpbGw9IiMwMDAwMDAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjE3NyIgeD0iMTM3IiB5PSIzMjQuNDc5NSI+RXZlbnQgRHJpdmVu77yI5LqL5Lu26amx5Yqo77yJPC90ZXh0PjxwYXRoIGQ9Ik03NywyMDcuMDM5MSBMODcsMjA3LjAzOTEgQzEwMiwyMDcuMDM5MSAxMDIsMzE5LjYzMjggMTE3LDMxOS42MzI4IEwxMjcsMzE5LjYzMjggIiBmaWxsPSJub25lIiBzdHlsZT0ic3Ryb2tlOiMxODE4MTg7c3Ryb2tlLXdpZHRoOjEuMDsiLz48cmVjdCBmaWxsPSIjRjFGMUYxIiBoZWlnaHQ9IjM2LjI5NjkiIHJ4PSIxMi41IiByeT0iMTIuNSIgc3R5bGU9InN0cm9rZTojMTgxODE4O3N0cm9rZS13aWR0aDoxLjU7IiB3aWR0aD0iMTMyIiB4PSIxMjciIHk9IjM1Ny43ODEzIi8+PHRleHQgZmlsbD0iIzAwMDAwMCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGxlbmd0aEFkanVzdD0ic3BhY2luZyIgdGV4dExlbmd0aD0iMTEyIiB4PSIxMzciIHk9IjM4MC43NzY0Ij5CYXRjaO+8iOaJueWkhOeQhu+8iTwvdGV4dD48cGF0aCBkPSJNNzcsMjA3LjAzOTEgTDg3LDIwNy4wMzkxIEMxMDIsMjA3LjAzOTEgMTAyLDM3NS45Mjk3IDExNywzNzUuOTI5NyBMMTI3LDM3NS45Mjk3ICIgZmlsbD0ibm9uZSIgc3R5bGU9InN0cm9rZTojMTgxODE4O3N0cm9rZS13aWR0aDoxLjA7Ii8+PCEtLU1ENT1bYjkxNjZiM2RjMTIzZWRmZDBiNzMzYzliYjI2MzQyMzldCkBzdGFydG1pbmRtYXANCiogU3ByaW5nDQoJKiBNaWNyb3NlcnZpY2Vz77yI5b6u5pyN5Yqh77yJDQoJKiBSZWFjdGl2Ze+8iOWTjeW6lOW8j++8iQ0KCSogQ2xvdWTvvIjkupHvvIkNCgkqIFdlYiBhcHBz77yI572R6aG15bqU55So77yJDQoJKiBTZXJ2ZXJsZXNz77yI5peg5pyN5Yqh5Zmo77yJDQoJKiBFdmVudCBEcml2ZW7vvIjkuovku7bpqbHliqjvvIkNCgkqIEJhdGNo77yI5om55aSE55CG77yJDQpAZW5kbWluZG1hcA0KClBsYW50VU1MIHZlcnNpb24gMS4yMDIyLjdiZXRhMihVbmtub3duIGNvbXBpbGUgdGltZSkKKEdQTCBzb3VyY2UgZGlzdHJpYnV0aW9uKQpKYXZhIFJ1bnRpbWU6IEphdmEoVE0pIFNFIFJ1bnRpbWUgRW52aXJvbm1lbnQKSlZNOiBKYXZhIEhvdFNwb3QoVE0pIDY0LUJpdCBTZXJ2ZXIgVk0KRGVmYXVsdCBFbmNvZGluZzogVVRGLTgKTGFuZ3VhZ2U6IGVuCkNvdW50cnk6IFVTCi0tPjwvZz48L3N2Zz4=">
+
+
+<link rel="canonical" href="http://blog.luanrz.cn/2022/03/31/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Spring%E7%9A%847%E4%B8%AA%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>Spring的7个使用场景 | luanrz's blog</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">luanrz's blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">31</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">13</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81Microservices"><span class="nav-number">1.</span> <span class="nav-text">一、Microservices</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81Reactive"><span class="nav-number">2.</span> <span class="nav-text">二、Reactive</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81Cloud"><span class="nav-number">3.</span> <span class="nav-text">三、Cloud</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81Web-apps"><span class="nav-number">4.</span> <span class="nav-text">四、Web apps</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81Serverless-https-spring-io-why-spring"><span class="nav-number">5.</span> <span class="nav-text">五、Serverless](https:&#x2F;&#x2F;spring.io&#x2F;why-spring)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81Event-Driven"><span class="nav-number">6.</span> <span class="nav-text">六、Event Driven</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81Batch"><span class="nav-number">7.</span> <span class="nav-text">七、Batch</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">luanrz</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/luanrz" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;luanrz" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:luanrz@qq.com" title="E-Mail → mailto:luanrz@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://blog.luanrz.cn/2022/03/31/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Spring%E7%9A%847%E4%B8%AA%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="luanrz">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="luanrz's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Spring的7个使用场景
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-03-31 09:31:48" itemprop="dateCreated datePublished" datetime="2022-03-31T09:31:48+08:00">2022-03-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.9k</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><a target="_blank" rel="noopener" href="https://spring.io/">Spring官网</a>中描述了Spring能做的7件事，如下所示：</p>
+<img src='data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiBjb250ZW50U3R5bGVUeXBlPSJ0ZXh0L2NzcyIgaGVpZ2h0PSI0MTZweCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSIgc3R5bGU9IndpZHRoOjMzNnB4O2hlaWdodDo0MTZweDtiYWNrZ3JvdW5kOiNGRkZGRkY7IiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAzMzYgNDE2IiB3aWR0aD0iMzM2cHgiIHpvb21BbmRQYW49Im1hZ25pZnkiPjxkZWZzLz48Zz48cmVjdCBmaWxsPSIjRjFGMUYxIiBoZWlnaHQ9IjM2LjI5NjkiIHJ4PSIxMi41IiByeT0iMTIuNSIgc3R5bGU9InN0cm9rZTojMTgxODE4O3N0cm9rZS13aWR0aDoxLjU7IiB3aWR0aD0iNjciIHg9IjEwIiB5PSIxODguODkwNiIvPjx0ZXh0IGZpbGw9IiMwMDAwMDAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjQ3IiB4PSIyMCIgeT0iMjExLjg4NTciPlNwcmluZzwvdGV4dD48cmVjdCBmaWxsPSIjRjFGMUYxIiBoZWlnaHQ9IjM2LjI5NjkiIHJ4PSIxMi41IiByeT0iMTIuNSIgc3R5bGU9InN0cm9rZTojMTgxODE4O3N0cm9rZS13aWR0aDoxLjU7IiB3aWR0aD0iMTg3IiB4PSIxMjciIHk9IjIwIi8+PHRleHQgZmlsbD0iIzAwMDAwMCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGxlbmd0aEFkanVzdD0ic3BhY2luZyIgdGV4dExlbmd0aD0iMTY3IiB4PSIxMzciIHk9IjQyLjk5NTEiPk1pY3Jvc2VydmljZXPvvIjlvq7mnI3liqHvvIk8L3RleHQ+PHBhdGggZD0iTTc3LDIwNy4wMzkxIEw4NywyMDcuMDM5MSBDMTAyLDIwNy4wMzkxIDEwMiwzOC4xNDg0IDExNywzOC4xNDg0IEwxMjcsMzguMTQ4NCAiIGZpbGw9Im5vbmUiIHN0eWxlPSJzdHJva2U6IzE4MTgxODtzdHJva2Utd2lkdGg6MS4wOyIvPjxyZWN0IGZpbGw9IiNGMUYxRjEiIGhlaWdodD0iMzYuMjk2OSIgcng9IjEyLjUiIHJ5PSIxMi41IiBzdHlsZT0ic3Ryb2tlOiMxODE4MTg7c3Ryb2tlLXdpZHRoOjEuNTsiIHdpZHRoPSIxNTMiIHg9IjEyNyIgeT0iNzYuMjk2OSIvPjx0ZXh0IGZpbGw9IiMwMDAwMDAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjEzMyIgeD0iMTM3IiB5PSI5OS4yOTIiPlJlYWN0aXZl77yI5ZON5bqU5byP77yJPC90ZXh0PjxwYXRoIGQ9Ik03NywyMDcuMDM5MSBMODcsMjA3LjAzOTEgQzEwMiwyMDcuMDM5MSAxMDIsOTQuNDQ1MyAxMTcsOTQuNDQ1MyBMMTI3LDk0LjQ0NTMgIiBmaWxsPSJub25lIiBzdHlsZT0ic3Ryb2tlOiMxODE4MTg7c3Ryb2tlLXdpZHRoOjEuMDsiLz48cmVjdCBmaWxsPSIjRjFGMUYxIiBoZWlnaHQ9IjM2LjI5NjkiIHJ4PSIxMi41IiByeT0iMTIuNSIgc3R5bGU9InN0cm9rZTojMTgxODE4O3N0cm9rZS13aWR0aDoxLjU7IiB3aWR0aD0iMTAyIiB4PSIxMjciIHk9IjEzMi41OTM4Ii8+PHRleHQgZmlsbD0iIzAwMDAwMCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGxlbmd0aEFkanVzdD0ic3BhY2luZyIgdGV4dExlbmd0aD0iODIiIHg9IjEzNyIgeT0iMTU1LjU4ODkiPkNsb3Vk77yI5LqR77yJPC90ZXh0PjxwYXRoIGQ9Ik03NywyMDcuMDM5MSBMODcsMjA3LjAzOTEgQzEwMiwyMDcuMDM5MSAxMDIsMTUwLjc0MjIgMTE3LDE1MC43NDIyIEwxMjcsMTUwLjc0MjIgIiBmaWxsPSJub25lIiBzdHlsZT0ic3Ryb2tlOiMxODE4MTg7c3Ryb2tlLXdpZHRoOjEuMDsiLz48cmVjdCBmaWxsPSIjRjFGMUYxIiBoZWlnaHQ9IjM2LjI5NjkiIHJ4PSIxMi41IiByeT0iMTIuNSIgc3R5bGU9InN0cm9rZTojMTgxODE4O3N0cm9rZS13aWR0aDoxLjU7IiB3aWR0aD0iMTc2IiB4PSIxMjciIHk9IjE4OC44OTA2Ii8+PHRleHQgZmlsbD0iIzAwMDAwMCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGxlbmd0aEFkanVzdD0ic3BhY2luZyIgdGV4dExlbmd0aD0iMTU2IiB4PSIxMzciIHk9IjIxMS44ODU3Ij5XZWIgYXBwc++8iOe9kemhteW6lOeUqO+8iTwvdGV4dD48cGF0aCBkPSJNNzcsMjA3LjAzOTEgTDg3LDIwNy4wMzkxIEMxMDIsMjA3LjAzOTEgMTAyLDIwNy4wMzkxIDExNywyMDcuMDM5MSBMMTI3LDIwNy4wMzkxICIgZmlsbD0ibm9uZSIgc3R5bGU9InN0cm9rZTojMTgxODE4O3N0cm9rZS13aWR0aDoxLjA7Ii8+PHJlY3QgZmlsbD0iI0YxRjFGMSIgaGVpZ2h0PSIzNi4yOTY5IiByeD0iMTIuNSIgcnk9IjEyLjUiIHN0eWxlPSJzdHJva2U6IzE4MTgxODtzdHJva2Utd2lkdGg6MS41OyIgd2lkdGg9IjE3OCIgeD0iMTI3IiB5PSIyNDUuMTg3NSIvPjx0ZXh0IGZpbGw9IiMwMDAwMDAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjE1OCIgeD0iMTM3IiB5PSIyNjguMTgyNiI+U2VydmVybGVzc++8iOaXoOacjeWKoeWZqO+8iTwvdGV4dD48cGF0aCBkPSJNNzcsMjA3LjAzOTEgTDg3LDIwNy4wMzkxIEMxMDIsMjA3LjAzOTEgMTAyLDI2My4zMzU5IDExNywyNjMuMzM1OSBMMTI3LDI2My4zMzU5ICIgZmlsbD0ibm9uZSIgc3R5bGU9InN0cm9rZTojMTgxODE4O3N0cm9rZS13aWR0aDoxLjA7Ii8+PHJlY3QgZmlsbD0iI0YxRjFGMSIgaGVpZ2h0PSIzNi4yOTY5IiByeD0iMTIuNSIgcnk9IjEyLjUiIHN0eWxlPSJzdHJva2U6IzE4MTgxODtzdHJva2Utd2lkdGg6MS41OyIgd2lkdGg9IjE5NyIgeD0iMTI3IiB5PSIzMDEuNDg0NCIvPjx0ZXh0IGZpbGw9IiMwMDAwMDAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBsZW5ndGhBZGp1c3Q9InNwYWNpbmciIHRleHRMZW5ndGg9IjE3NyIgeD0iMTM3IiB5PSIzMjQuNDc5NSI+RXZlbnQgRHJpdmVu77yI5LqL5Lu26amx5Yqo77yJPC90ZXh0PjxwYXRoIGQ9Ik03NywyMDcuMDM5MSBMODcsMjA3LjAzOTEgQzEwMiwyMDcuMDM5MSAxMDIsMzE5LjYzMjggMTE3LDMxOS42MzI4IEwxMjcsMzE5LjYzMjggIiBmaWxsPSJub25lIiBzdHlsZT0ic3Ryb2tlOiMxODE4MTg7c3Ryb2tlLXdpZHRoOjEuMDsiLz48cmVjdCBmaWxsPSIjRjFGMUYxIiBoZWlnaHQ9IjM2LjI5NjkiIHJ4PSIxMi41IiByeT0iMTIuNSIgc3R5bGU9InN0cm9rZTojMTgxODE4O3N0cm9rZS13aWR0aDoxLjU7IiB3aWR0aD0iMTMyIiB4PSIxMjciIHk9IjM1Ny43ODEzIi8+PHRleHQgZmlsbD0iIzAwMDAwMCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGxlbmd0aEFkanVzdD0ic3BhY2luZyIgdGV4dExlbmd0aD0iMTEyIiB4PSIxMzciIHk9IjM4MC43NzY0Ij5CYXRjaO+8iOaJueWkhOeQhu+8iTwvdGV4dD48cGF0aCBkPSJNNzcsMjA3LjAzOTEgTDg3LDIwNy4wMzkxIEMxMDIsMjA3LjAzOTEgMTAyLDM3NS45Mjk3IDExNywzNzUuOTI5NyBMMTI3LDM3NS45Mjk3ICIgZmlsbD0ibm9uZSIgc3R5bGU9InN0cm9rZTojMTgxODE4O3N0cm9rZS13aWR0aDoxLjA7Ii8+PCEtLU1ENT1bYjkxNjZiM2RjMTIzZWRmZDBiNzMzYzliYjI2MzQyMzldCkBzdGFydG1pbmRtYXANCiogU3ByaW5nDQoJKiBNaWNyb3NlcnZpY2Vz77yI5b6u5pyN5Yqh77yJDQoJKiBSZWFjdGl2Ze+8iOWTjeW6lOW8j++8iQ0KCSogQ2xvdWTvvIjkupHvvIkNCgkqIFdlYiBhcHBz77yI572R6aG15bqU55So77yJDQoJKiBTZXJ2ZXJsZXNz77yI5peg5pyN5Yqh5Zmo77yJDQoJKiBFdmVudCBEcml2ZW7vvIjkuovku7bpqbHliqjvvIkNCgkqIEJhdGNo77yI5om55aSE55CG77yJDQpAZW5kbWluZG1hcA0KClBsYW50VU1MIHZlcnNpb24gMS4yMDIyLjdiZXRhMihVbmtub3duIGNvbXBpbGUgdGltZSkKKEdQTCBzb3VyY2UgZGlzdHJpYnV0aW9uKQpKYXZhIFJ1bnRpbWU6IEphdmEoVE0pIFNFIFJ1bnRpbWUgRW52aXJvbm1lbnQKSlZNOiBKYXZhIEhvdFNwb3QoVE0pIDY0LUJpdCBTZXJ2ZXIgVk0KRGVmYXVsdCBFbmNvZGluZzogVVRGLTgKTGFuZ3VhZ2U6IGVuCkNvdW50cnk6IFVTCi0tPjwvZz48L3N2Zz4='>
+
+<p>下面将简单介绍各场景的概念与其关联的项目。</p>
+<span id="more"></span>
+
+
+
+<h2 id="一、Microservices"><a href="#一、Microservices" class="headerlink" title="一、Microservices"></a>一、<a target="_blank" rel="noopener" href="https://spring.io/microservices">Microservices</a></h2><p>微服务（Microservice）是一个小型的、高度自含的、随时可运行的软件实体，多个相互独立的微服务协同工作构成的微服务架构，可以替代掉传统的大而全的单体服务架构，带来更高的灵活性。</p>
+<p>微服务在Spring中涉及到的项目如下：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="https://spring.io/projects/spring-boot">Spring Boot</a></td>
+<td>快速搭建一个微服务（Java微服务的事实标准）</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://spring.io/projects/spring-cloud">Spring Cloud</a></td>
+<td>使多个微服务更好地支持分布式特性（服务发现、负载均衡、熔断、分布式跟踪、监控等）</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://spring.io/projects/spring-cloud-stream">Spring Cloud Stream</a></td>
+<td>使微服务可以处理实时消息，以构建一个高度可伸缩的、事件驱动的系统</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://micrometer.io/">Micrometer</a></td>
+<td>监控微服务的各项指标</td>
+</tr>
+</tbody></table>
+<h2 id="二、Reactive"><a href="#二、Reactive" class="headerlink" title="二、Reactive"></a>二、<a target="_blank" rel="noopener" href="https://spring.io/reactive">Reactive</a></h2><p>响应式（Reactive）系统可以实现低延迟与高吞吐，它有几个特性：快速响应（responsive）、可恢复（resilient）、有弹性（elastic）与消息驱动（ message-driven）。响应式处理是一种范式，它可以帮助开发者开发出非阻塞的、异步的应用，这种应用可以处理回压（back-pressure），其中，“回压”是指在应用处理能力达到阀值时的一种反馈现象。</p>
+<p>响应式在Spring中涉及到的项目如下：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="https://projectreactor.io/">Reactor</a></td>
+<td>Spring响应式的基础，Spring WebFlux、Spring Data和Spring Cloud Gateway都用到了它</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html">Spring WebFlux</a></td>
+<td>非阻塞性Web框架，相对于Spring MVC而言，可以使用更少的资源处理更多的请求</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://spring.io/projects/spring-data">Spring Data</a></td>
+<td>（原生）支持以响应式的方式访问数据库资源（如MongoDB、Redis 和 Cassandra）</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/r2dbc">R2DBC</a></td>
+<td>（三方）支持以响应式的方式访问数据库资源（如Postgres、Microsoft SQL Server、 MySQL、H2和 Google Spanner)）</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://spring.io/projects/spring-cloud-stream">Spring Cloud Stream</a></td>
+<td>支持以响应式的方式访问消息资源（如RabbitMQ和Kafka）</td>
+</tr>
+</tbody></table>
+<h2 id="三、Cloud"><a href="#三、Cloud" class="headerlink" title="三、Cloud"></a>三、<a target="_blank" rel="noopener" href="https://spring.io/cloud">Cloud</a></h2><p>云（Cloud）原生应用要求微服务在分布式场景中满足<a target="_blank" rel="noopener" href="https://12factor.net/zh_cn/">12-Factor </a>，Spring Cloud套件包含了许多让应用程序在云中运行所需的服务（如服务发现、网关、配置、熔断、链路跟踪等）。</p>
+<p>云原生在Spring中涉及到的项目如下：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/Netflix/eureka">Eureka</a></td>
+<td>服务发现</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.consul.io/">Consul</a></td>
+<td>服务发现</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://spring.io/projects/spring-cloud-zookeeper">Zookeeper</a></td>
+<td>服务发现</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://spring.io/projects/spring-cloud-gateway">Spring Cloud Gateway</a></td>
+<td>网关</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://spring.io/projects/spring-cloud-config">Spring Cloud Config</a></td>
+<td>配置</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://spring.io/projects/spring-cloud-circuitbreaker">Spring Cloud Circuit Breaker</a></td>
+<td>熔断</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://resilience4j.readme.io/docs/getting-started">Resilience4J</a></td>
+<td>熔断</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/alibaba/Sentinel/wiki/Circuit-Breaking">Sentinel</a></td>
+<td>熔断</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://github.com/Netflix/Hystrix/wiki">Hystrix</a></td>
+<td>熔断</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://spring.io/projects/spring-cloud-sleuth">Spring Cloud Sleuth</a></td>
+<td>链路跟踪</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://zipkin.io/">Zipkin</a></td>
+<td>链路跟踪</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://spring.io/projects/spring-cloud-contract">Spring Cloud Contract</a></td>
+<td>测试</td>
+</tr>
+</tbody></table>
+<h2 id="四、Web-apps"><a href="#四、Web-apps" class="headerlink" title="四、Web apps"></a>四、<a target="_blank" rel="noopener" href="https://spring.io/web-applications">Web apps</a></h2><p>使用Spring构建的网页应用（Web apps）去掉了大量样板代码和配置（得益于SpringBoot的支持），它简化了服务端HTML应用、REST接口等的开发。</p>
+<p>网页应用在Spring中涉及到的项目如下：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="https://spring.io/projects/spring-boot">Spring Boot</a></td>
+<td>网页应用脚手架</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://spring.io/projects/spring-security">Spring Security</a></td>
+<td>网页应用安全支持</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://spring.io/projects/spring-data">Spring Data</a></td>
+<td>网页应用数据访问支持</td>
+</tr>
+</tbody></table>
+<h2 id="五、Serverless-https-spring-io-why-spring"><a href="#五、Serverless-https-spring-io-why-spring" class="headerlink" title="五、Serverless](https://spring.io/why-spring)"></a>五、Serverless](<a target="_blank" rel="noopener" href="https://spring.io/why-spring">https://spring.io/why-spring</a>)</h2><p>无服务器（Serverless）顾名思义，就是指无需关注服务器等基础设施而只需要关注业务逻辑的一种模型，它在一些情况下与FaaS（功能即服务）等价，国内的Serverless实现有腾讯云的“云函数 SCF”与阿里云的“函数计算 FC”。</p>
+<p>无服务器在Spring中涉及到的项目如下：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="https://spring.io/projects/spring-cloud-function">Spring Cloud Function</a></td>
+<td>提供无服务器（FaaS）支持</td>
+</tr>
+</tbody></table>
+<h2 id="六、Event-Driven"><a href="#六、Event-Driven" class="headerlink" title="六、Event Driven"></a>六、<a target="_blank" rel="noopener" href="https://spring.io/event-driven">Event Driven</a></h2><p>事件驱动（Event Driven）也可使称之为消息驱动，每一个事件驱动的系统都是基于消息处理来实现的。</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="https://spring.io/projects/spring-cloud-stream">Spring Cloud Stream</a></td>
+<td>提供“Binders”、“Bindings”和“Messages”三个核心概念来帮助更好地连接Kafka与RabbitMQ等消息组件</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://spring.io/projects/spring-cloud-function">Spring Cloud Function</a></td>
+<td>更好地处理多个消息的输入与输出，如合并、连接等操作</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://dataflow.spring.io/">Spring Cloud Data Flow</a></td>
+<td>提供跨多个云原生平台处理各种数据源的工具</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://spring.io/projects/spring-amqp">Spring AMQP</a></td>
+<td>支持AMQP（Advanced Message Queuing Protocol，高级消息队列协议）</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://spring.io/projects/spring-kafka">Spring Kafka</a></td>
+<td>支持Apache  Kafka</td>
+</tr>
+</tbody></table>
+<h2 id="七、Batch"><a href="#七、Batch" class="headerlink" title="七、Batch"></a>七、<a target="_blank" rel="noopener" href="https://spring.io/batch">Batch</a></h2><p>批处理（Batch）用于处理大量数据，处理过程中不需要外部交互且不会中断。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+              <a href="/tags/Spring/" rel="tag"># Spring</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/12/31/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/JVM%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98%E5%B7%A5%E5%85%B7%E6%B1%87%E6%80%BB/" rel="prev" title="JVM性能调优工具汇总">
+                  <i class="fa fa-chevron-left"></i> JVM性能调优工具汇总
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/04/15/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E4%B8%AD%E7%9A%84%E4%B8%80%E4%B8%AA%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%97%AE%E9%A2%98/" rel="next" title="Java单例模式中的一个多线程问题">
+                  Java单例模式中的一个多线程问题 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">luanrz</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

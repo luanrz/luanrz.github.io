@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.luanrz.cn","root":"/","images":"/images","scheme":"Gemini","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="前言文件分为文本文件和非文本文件（二进制文件，如音频、图片文件等），此处讨论的主要是文本文件。 文件的读写操作基于Java的I&#x2F;O流，Java流分为字节流与字符流，它们都可以实现文件的读写操作。一般而言，字符流专注于处理文本文件，而字节流则更为通用，所有类型的文件均可操作。基于此，文本文件的读写操作有两种不同的策略：字节流文件读写与字符流文件读写。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java文件流与策略模式的综合运用：用两种方式完成文件读写操作">
+<meta property="og:url" content="http://blog.luanrz.cn/2019/05/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java%E6%96%87%E4%BB%B6%E6%B5%81%E4%B8%8E%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E7%9A%84%E7%BB%BC%E5%90%88%E8%BF%90%E7%94%A8%EF%BC%9A%E7%94%A8%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F%E5%AE%8C%E6%88%90%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99%E6%93%8D%E4%BD%9C/index.html">
+<meta property="og:site_name" content="luanrz&#39;s blog">
+<meta property="og:description" content="前言文件分为文本文件和非文本文件（二进制文件，如音频、图片文件等），此处讨论的主要是文本文件。 文件的读写操作基于Java的I&#x2F;O流，Java流分为字节流与字符流，它们都可以实现文件的读写操作。一般而言，字符流专注于处理文本文件，而字节流则更为通用，所有类型的文件均可操作。基于此，文本文件的读写操作有两种不同的策略：字节流文件读写与字符流文件读写。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-05-20T08:44:45.000Z">
+<meta property="article:modified_time" content="2022-04-18T02:49:31.103Z">
+<meta property="article:author" content="luanrz">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="设计模式">
+<meta property="article:tag" content="IO">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://blog.luanrz.cn/2019/05/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java%E6%96%87%E4%BB%B6%E6%B5%81%E4%B8%8E%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E7%9A%84%E7%BB%BC%E5%90%88%E8%BF%90%E7%94%A8%EF%BC%9A%E7%94%A8%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F%E5%AE%8C%E6%88%90%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99%E6%93%8D%E4%BD%9C/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>Java文件流与策略模式的综合运用：用两种方式完成文件读写操作 | luanrz's blog</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">luanrz's blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">31</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">13</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E6%B5%81%E7%9A%84%E7%BB%A7%E6%89%BF%E5%85%B3%E7%B3%BB"><span class="nav-number">2.</span> <span class="nav-text">文件流的继承关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E7%BB%84%E7%BB%87%E4%BB%A3%E7%A0%81%E7%BB%93%E6%9E%84"><span class="nav-number">3.</span> <span class="nav-text">用策略模式组织代码结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%BD%E8%B1%A1%E7%AD%96%E7%95%A5%E7%B1%BB%E2%80%94%E2%80%94%E5%BE%85%E5%AE%9E%E7%8E%B0%E5%8A%9F%E8%83%BD%E7%9A%84%E6%8E%A5%E5%8F%A3%E6%8F%8F%E8%BF%B0"><span class="nav-number">3.1.</span> <span class="nav-text">抽象策略类——待实现功能的接口描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E7%AD%96%E7%95%A5%E7%B1%BB%E2%80%94%E2%80%94%E5%BE%85%E5%AE%9E%E7%8E%B0%E5%8A%9F%E8%83%BD%E7%9A%84%E5%85%B7%E4%BD%93%E6%96%B9%E6%A1%88"><span class="nav-number">3.2.</span> <span class="nav-text">具体策略类——待实现功能的具体方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E7%B1%BB"><span class="nav-number">3.3.</span> <span class="nav-text">环境类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E7%B1%BB"><span class="nav-number">3.4.</span> <span class="nav-text">主类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">luanrz</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/luanrz" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;luanrz" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:luanrz@qq.com" title="E-Mail → mailto:luanrz@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://blog.luanrz.cn/2019/05/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java%E6%96%87%E4%BB%B6%E6%B5%81%E4%B8%8E%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E7%9A%84%E7%BB%BC%E5%90%88%E8%BF%90%E7%94%A8%EF%BC%9A%E7%94%A8%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F%E5%AE%8C%E6%88%90%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99%E6%93%8D%E4%BD%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="luanrz">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="luanrz's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java文件流与策略模式的综合运用：用两种方式完成文件读写操作
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-05-20 16:44:45" itemprop="dateCreated datePublished" datetime="2019-05-20T16:44:45+08:00">2019-05-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>5.6k</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>文件分为文本文件和非文本文件（二进制文件，如音频、图片文件等），此处讨论的主要是文本文件。</p>
+<p>文件的读写操作基于Java的I/O流，Java流分为字节流与字符流，它们都可以实现文件的读写操作。一般而言，字符流专注于处理文本文件，而字节流则更为通用，所有类型的文件均可操作。基于此，文本文件的读写操作有两种不同的策略：字节流文件读写与字符流文件读写。</p>
+<span id="more"></span>
+
+<h2 id="文件流的继承关系"><a href="#文件流的继承关系" class="headerlink" title="文件流的继承关系"></a>文件流的继承关系</h2>
+
+<h2 id="用策略模式组织代码结构"><a href="#用策略模式组织代码结构" class="headerlink" title="用策略模式组织代码结构"></a>用策略模式组织代码结构</h2><p>策略模式的核心设计思想是：多种算法相互可替换，每一种算法称之为一种策略。本案例中文本文件的读写操作存在两个策略，即基于字节流的文件读写策略与基于字符流的文件读写策略。</p>
+<h3 id="抽象策略类——待实现功能的接口描述"><a href="#抽象策略类——待实现功能的接口描述" class="headerlink" title="抽象策略类——待实现功能的接口描述"></a>抽象策略类——待实现功能的接口描述</h3><p>文本文件的操作主要分为读和写两种，抽象策略类（接口）包含了这两个方法，其规定了其子类（具体策略类）需要实现的具体功能。</p>
+<blockquote>
+<p>RWStrategy.java</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;抽象策略类</span><br><span class="line">public interface RWStrategy &#123;</span><br><span class="line">	&#x2F;&#x2F; 文件操作：读</span><br><span class="line">	public String read(File file);</span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F; 文件操作：写</span><br><span class="line">	public void write(File file, String content);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="具体策略类——待实现功能的具体方案"><a href="#具体策略类——待实现功能的具体方案" class="headerlink" title="具体策略类——待实现功能的具体方案"></a>具体策略类——待实现功能的具体方案</h3><p>具体策略类是抽象具体类（接口）的实现。下述代码中，<code>StrategyA</code>表示字节流文件读写策略，<code>StrategyB</code>表示字符流文件读写策略。</p>
+<blockquote>
+<p>RWStrategyA.java</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;具体策略类</span><br><span class="line">public class RWStrategyA implements RWStrategy &#123;</span><br><span class="line"></span><br><span class="line">	public String read(File file) &#123;</span><br><span class="line">		String content &#x3D; &quot;&quot;;</span><br><span class="line">		try (FileInputStream fis &#x3D; new FileInputStream(file); BufferedInputStream bis &#x3D; new BufferedInputStream(fis);) &#123;</span><br><span class="line">			Long length &#x3D; file.length();</span><br><span class="line">			byte[] bytes &#x3D; new byte[length.intValue()];</span><br><span class="line">			bis.read(bytes);</span><br><span class="line">			content &#x3D; new String(bytes);</span><br><span class="line">		&#125; catch (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		return content;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void write(File file, String content) &#123;</span><br><span class="line">		try (FileOutputStream fos &#x3D; new FileOutputStream(file);</span><br><span class="line">				BufferedOutputStream bos &#x3D; new BufferedOutputStream(fos);) &#123;</span><br><span class="line">			byte[] bytes &#x3D; content.getBytes();</span><br><span class="line">			bos.write(bytes);</span><br><span class="line">		&#125; catch (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F; 单例</span><br><span class="line">	private static RWStrategyA strategy;</span><br><span class="line"></span><br><span class="line">	public static RWStrategyA newInstance() &#123;</span><br><span class="line">		if (strategy &#x3D;&#x3D; null) &#123;</span><br><span class="line">			strategy &#x3D; new RWStrategyA();</span><br><span class="line">		&#125;</span><br><span class="line">		return strategy;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	private RWStrategyA() &#123;</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>RWStrategyB.java</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;具体策略类</span><br><span class="line">public class RWStrategyB implements RWStrategy &#123;</span><br><span class="line"></span><br><span class="line">	public String read(File file) &#123;</span><br><span class="line">		String content &#x3D; &quot;&quot;;</span><br><span class="line">		try (FileReader fr &#x3D; new FileReader(file); BufferedReader br &#x3D; new BufferedReader(fr)) &#123;</span><br><span class="line">			Long length &#x3D; file.length();</span><br><span class="line">			char[] chars &#x3D; new char[length.intValue()];&#x2F;&#x2F; 实际字符数组长度比这个小</span><br><span class="line">			br.read(chars);</span><br><span class="line">			content &#x3D; new String(chars);</span><br><span class="line">		&#125; catch (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		return content;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void write(File file, String content) &#123;</span><br><span class="line">		try (FileWriter fw &#x3D; new FileWriter(file); BufferedWriter bw &#x3D; new BufferedWriter(fw);) &#123;</span><br><span class="line">			char[] chars &#x3D; content.toCharArray();</span><br><span class="line">			bw.write(chars);</span><br><span class="line">&#x2F;&#x2F;			bw.write(content);</span><br><span class="line">		&#125; catch (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F; 单例</span><br><span class="line">	private static RWStrategyB strategy;</span><br><span class="line"></span><br><span class="line">	public static RWStrategyB newInstance() &#123;</span><br><span class="line">		if (strategy &#x3D;&#x3D; null) &#123;</span><br><span class="line">			strategy &#x3D; new RWStrategyB();</span><br><span class="line">		&#125;</span><br><span class="line">		return strategy;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	private RWStrategyB() &#123;</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>由于具体策略类不需要创建多个对象，故使用到了单例模式。<br>在具体策略类中使用newInstance()方法获取单例对象，使类的创建与类的使用分离，这样其它类获取当前类的实例时就不需要使用new关键字了。</p>
+<h3 id="环境类"><a href="#环境类" class="headerlink" title="环境类"></a>环境类</h3><p>环境类是主类（使用策略的类）与策略类的桥梁。<br>环境类维护了一个具体策略类，这个具体策略类的选择由构造函数的参数决定。</p>
+<ul>
+<li>构造方法一：直接注入具体策略类对象，这个具体策略类对象由主类创建</li>
+<li>构造方法二：根据枚举值自动创建具体策略类对象</li>
+<li>构造方法三：默认创建某一个具体策略类</li>
+</ul>
+<p>同时，环境类提供了对应的接口方法，该方法将调用具体策略类中的对应方法，这样做的好处是可以隐藏策略类的细节，即使主类不需要知道策略类的具体方法名也能够调用对应的策略方法。</p>
+<blockquote>
+<p>RWContext.java</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;环境类</span><br><span class="line">public class RWContext &#123;</span><br><span class="line">	&#x2F;&#x2F; 策略对象</span><br><span class="line">	private RWStrategy strategy;</span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F; 构造函数：传入策略对象</span><br><span class="line">	public RWContext(RWStrategy strategy) &#123;</span><br><span class="line">		this.strategy &#x3D; strategy;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F; 构造函数：传入策略枚举值</span><br><span class="line">	public RWContext(RWStrategyEnum strategyEnum) &#123;</span><br><span class="line">		switch (strategyEnum) &#123;</span><br><span class="line">		case BYTE_STREAM_STRATEG:</span><br><span class="line">			strategy &#x3D; RWStrategyA.newInstance();</span><br><span class="line">			break;</span><br><span class="line">		case CHARACTER_STREAM_STRATEGY:</span><br><span class="line">			strategy &#x3D; RWStrategyB.newInstance();</span><br><span class="line">			break;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F; 构造函数：默认</span><br><span class="line">	public RWContext() &#123;</span><br><span class="line">		strategy &#x3D; RWStrategyA.newInstance();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F; 策略方法：从文件中读取内容</span><br><span class="line">	public String readFromFile(File file) &#123;</span><br><span class="line">		return strategy.read(file);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F; 策略方法：向文件中写入内容</span><br><span class="line">	public void writeToFile(File file, String content) &#123;</span><br><span class="line">		strategy.write(file, content);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>枚举中有两个值，对应着两种策略，主要用于环境类中选择性创建具体策略类对象。</p>
+<blockquote>
+<p>RWStrategyEnum.java</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public enum RWStrategyEnum &#123;</span><br><span class="line">	BYTE_STREAM_STRATEG, CHARACTER_STREAM_STRATEGY;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="主类"><a href="#主类" class="headerlink" title="主类"></a>主类</h3><p>通过主类类来测试两个具体策略类是否正常运行。</p>
+<blockquote>
+<p>RWMain.java</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">public class RWMain &#123;</span><br><span class="line"></span><br><span class="line">	static File file;</span><br><span class="line">	static String content;</span><br><span class="line"></span><br><span class="line">	public static void main(String args[]) throws IOException &#123;</span><br><span class="line">		file &#x3D; new File(&quot;filerw.txt&quot;);</span><br><span class="line">		if (!file.exists()) &#123;</span><br><span class="line">			file.createNewFile();</span><br><span class="line">		&#125;</span><br><span class="line">		runStrategyA();</span><br><span class="line">		runStrategyB();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static void runStrategyA() &#123;</span><br><span class="line">		content &#x3D; new SimpleDateFormat(&quot;yyyy-MM-dd hh:mm:ss &quot;).format(new Date()) + &quot;A\n&quot;;</span><br><span class="line">		RWContext context &#x3D; new RWContext(RWStrategyEnum.BYTE_STREAM_STRATEG);</span><br><span class="line">		String beforeWrite &#x3D; context.readFromFile(file);</span><br><span class="line">		context.writeToFile(file, beforeWrite + content);</span><br><span class="line">		String afterWrite &#x3D; context.readFromFile(file);</span><br><span class="line">		System.out.println(&quot;A策略：\n写入前：\n&quot; + beforeWrite + &quot;\n写入后:\n&quot; + afterWrite);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static void runStrategyB() &#123;</span><br><span class="line">		content &#x3D; new SimpleDateFormat(&quot;yyyy-MM-dd hh:mm:ss &quot;).format(new Date()) + &quot;B\n&quot;;</span><br><span class="line">		RWContext context &#x3D; new RWContext(RWStrategyEnum.CHARACTER_STREAM_STRATEGY);</span><br><span class="line">		String beforeWrite &#x3D; context.readFromFile(file);</span><br><span class="line">		context.writeToFile(file, beforeWrite + content);</span><br><span class="line">		String afterWrite &#x3D; context.readFromFile(file);</span><br><span class="line">		System.out.println(&quot;B策略：\n写入前：\n&quot; + beforeWrite + &quot;写入后:\n&quot; + afterWrite);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>字节流可以处理所有文件，字节流只能处理文本文件，同时，字符流的底层实现依赖于字节流。虽然本案例中用到了两种方式对文本文件进行了读写操作，但是术业有专攻，一般更推荐使用字符流的方式处理文本文件。字符输入流的readline()方法可读取一行。</p>
+<p>关于字节流，read()与read(bytes[])分别在什么时候用？</p>
+<p>我的理解是：</p>
+<ul>
+<li>当流中的字节数未知时使用read()，必须使用<code>while(InputStream.read()!=0)</code>一个字节一个字节读。</li>
+<li>当流中的字节数已知时使用read(byte[]) ，创建指定长度的字节数组，然后调用<code>InputStream.read(byte[])</code>即可整体读入。</li>
+</ul>
+<p>那么问题来了，什么时候字节数已知呢？</p>
+<ul>
+<li>如果是文件流，那字节数组肯定已知，因为可以直接调用<code>File.length</code>获取字节长度。</li>
+<li>其它情况统统按字节数未知处理，老老实实一个一个字节读。</li>
+</ul>
+<p>over。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+              <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag"># 设计模式</a>
+              <a href="/tags/IO/" rel="tag"># IO</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/12/12/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/%E6%A0%91%E8%8E%93%E6%B4%BE%E9%85%8D%E7%BD%AE/" rel="prev" title="树莓派配置">
+                  <i class="fa fa-chevron-left"></i> 树莓派配置
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/12/11/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/ArchLinux%E5%AE%89%E8%A3%85%EF%BC%88%E4%B8%80%EF%BC%89/" rel="next" title="ArchLinux安装（一）">
+                  ArchLinux安装（一） <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">luanrz</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

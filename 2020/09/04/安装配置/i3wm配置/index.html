@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.luanrz.cn","root":"/","images":"/images","scheme":"Gemini","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="i3wm是Linux下的一款窗口管理器(Windowns Manager), 通常简称为i3.  本文档基于Archlinux(其它发行版大同小异), 简单介绍了i3的常用软件与配置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="i3wm配置">
+<meta property="og:url" content="http://blog.luanrz.cn/2020/09/04/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/i3wm%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:site_name" content="luanrz&#39;s blog">
+<meta property="og:description" content="i3wm是Linux下的一款窗口管理器(Windowns Manager), 通常简称为i3.  本文档基于Archlinux(其它发行版大同小异), 简单介绍了i3的常用软件与配置">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-09-04T08:21:00.000Z">
+<meta property="article:modified_time" content="2022-04-18T02:49:31.103Z">
+<meta property="article:author" content="luanrz">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://blog.luanrz.cn/2020/09/04/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/i3wm%E9%85%8D%E7%BD%AE/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>i3wm配置 | luanrz's blog</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">luanrz's blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">31</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">13</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEpolybar"><span class="nav-number">2.1.</span> <span class="nav-text">配置polybar</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AErofi"><span class="nav-number">2.2.</span> <span class="nav-text">配置rofi</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%85%B3%E5%81%9C%E8%84%9A%E6%9C%AC"><span class="nav-number">2.3.</span> <span class="nav-text">配置关停脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEi3"><span class="nav-number">2.4.</span> <span class="nav-text">配置i3</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">luanrz</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/luanrz" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;luanrz" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:luanrz@qq.com" title="E-Mail → mailto:luanrz@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://blog.luanrz.cn/2020/09/04/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/i3wm%E9%85%8D%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="luanrz">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="luanrz's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          i3wm配置
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-09-04 16:21:00" itemprop="dateCreated datePublished" datetime="2020-09-04T16:21:00+08:00">2020-09-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" itemprop="url" rel="index"><span itemprop="name">安装配置</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/%E5%BA%94%E7%94%A8%E8%BD%AF%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">应用软件</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.4k</span>
+    </span>
+</div>
+
+            <div class="post-description">i3wm是Linux下的一款窗口管理器(Windowns Manager), 通常简称为i3. <br> 本文档基于Archlinux(其它发行版大同小异), 简单介绍了i3的常用软件与配置</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S i3-gaps polybar rofi feh picom</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yay i3lock-fancy-rapid</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>软件</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>01</td>
+<td>i3-gaps</td>
+<td>i3-wm的增强版，支持间隙等特性</td>
+</tr>
+<tr>
+<td>02</td>
+<td>polybar</td>
+<td>状态栏，i3-bar的替代者</td>
+</tr>
+<tr>
+<td>03</td>
+<td>rofi</td>
+<td>启动菜单，dmenu的替代者</td>
+</tr>
+<tr>
+<td>04</td>
+<td>feh</td>
+<td>设置桌面壁纸</td>
+</tr>
+<tr>
+<td>05</td>
+<td>picom</td>
+<td>透明支持</td>
+</tr>
+<tr>
+<td>06</td>
+<td>i3lock-fancy-rapid</td>
+<td>锁屏，i3lock的升级版，支持背景虚化</td>
+</tr>
+</tbody></table>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="配置polybar"><a href="#配置polybar" class="headerlink" title="配置polybar"></a>配置polybar</h3><ol>
+<li>生成polybar配置文件</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir ~&#x2F;.config&#x2F;polybar</span><br><span class="line">cp &#x2F;usr&#x2F;share&#x2F;doc&#x2F;polybar&#x2F;config ~&#x2F;.config&#x2F;polybar&#x2F;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>编辑polybar配置文件</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.config/polybar/config </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">------------------------------------------</span><br><span class="line">[bar&#x2F;example]</span><br><span class="line">...</span><br><span class="line">border-size &#x3D; 0</span><br><span class="line">...</span><br><span class="line">modules-left &#x3D; i3 </span><br><span class="line">modules-center &#x3D; date</span><br><span class="line">modules-right &#x3D; memory cpu battery wlan eth</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">[module&#x2F;wlan]</span><br><span class="line">type &#x3D; internal&#x2F;network</span><br><span class="line">interface &#x3D; wlp0s20f3</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">[module&#x2F;eth]</span><br><span class="line">type &#x3D; internal&#x2F;network</span><br><span class="line">interface &#x3D; enp0s31f6</span><br><span class="line">...</span><br><span class="line">------------------------------------------</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>新建polybar启动文件</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.config/polybar/launch.sh</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">killall -q polybar</span><br><span class="line">while pgrep -u $UID -x polybar &gt;/dev/null; do sleep 1; done</span><br><span class="line">polybar example</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x launch.sh</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>启用polybar（参见<a href="#%E9%85%8D%E7%BD%AEi3">配置i3</a>）</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.config/i3/config</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exec --no-startup-id ~/.config/polybar/launch.sh</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置rofi"><a href="#配置rofi" class="headerlink" title="配置rofi"></a>配置rofi</h3><ol>
+<li>拷贝主题文件</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir ~/.config/rofi</span><br><span class="line">cp -r /usr/share/rofi/themes ~/.config/rofi</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>预览主题</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rofi-theme-selector</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>修改rofi配置</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rofi -dump-config &gt; ~/.config/rofi/config.rasi</span><br><span class="line">vim ~/.config/rofi/config.rasi</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">------------------------------------------</span><br><span class="line">configuration &#123;</span><br><span class="line">    ...</span><br><span class="line">    modi: <span class="string">&quot;window,run,ssh,drun&quot;</span>;</span><br><span class="line">    show-icons: true;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line">....</span><br><span class="line">------------------------------------------</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>启用rofi（参见<a href="#%E9%85%8D%E7%BD%AEi3">配置i3</a>）</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.config/i3/config</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 绑定rofi：drun</span></span></span><br><span class="line">bindsym --release $mod+space exec --no-startup-id rofi -show drun -theme ~/.config/rofi/themes/arthur.rasi</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 绑定rofi：window</span></span></span><br><span class="line">bindsym $mod+Tab exec --no-startup-id rofi -show window -theme ~/.config/rofi/themes/sidebar.rasi</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置关停脚本"><a href="#配置关停脚本" class="headerlink" title="配置关停脚本"></a>配置关停脚本</h3><p>详情请参考<a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/I3_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#%E5%85%B3%E6%9C%BA%EF%BC%8C%E9%87%8D%E5%90%AF%E5%92%8C%E9%94%81%E5%B1%8F">ArchLinux Wiki</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~&#x2F;i3exit.sh</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">------------------------------------------</span><br><span class="line"><span class="meta">#</span><span class="bash">!/bin/sh</span></span><br><span class="line">lock() &#123;</span><br><span class="line">    i3lock-fancy-rapid 5 3</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">case &quot;$1&quot; in</span><br><span class="line">    lock)</span><br><span class="line">        lock</span><br><span class="line">        ;;</span><br><span class="line">    logout)</span><br><span class="line">        i3-msg exit</span><br><span class="line">        ;;</span><br><span class="line">    suspend)</span><br><span class="line">        lock &amp;&amp; systemctl suspend</span><br><span class="line">        ;;</span><br><span class="line">    hibernate)</span><br><span class="line">        lock &amp;&amp; systemctl hibernate</span><br><span class="line">        ;;</span><br><span class="line">    reboot)</span><br><span class="line">        systemctl reboot</span><br><span class="line">        ;;</span><br><span class="line">    shutdown)</span><br><span class="line">        systemctl poweroff</span><br><span class="line">        ;;</span><br><span class="line">    *)</span><br><span class="line">        echo &quot;Usage: $0 &#123;lock|logout|suspend|hibernate|reboot|shutdown&#125;&quot;</span><br><span class="line">        exit 2</span><br><span class="line">esac</span><br><span class="line"></span><br><span class="line">exit 0</span><br><span class="line"></span><br><span class="line">------------------------------------------</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x ~&#x2F;i3exit.sh</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="配置i3"><a href="#配置i3" class="headerlink" title="配置i3"></a>配置i3</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.config/i3/config</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">------------------------------------------</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 将mod设置为Win键</span></span></span><br><span class="line">set $mod Mod1</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 设置标题字体</span></span></span><br><span class="line">font pango:monospace 10</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 关闭当前窗口（注释原有映射，与Mac保持一致）</span></span><br><span class="line"><span class="meta">#</span><span class="bash">bindsym <span class="variable">$mod</span>+Shift+q <span class="built_in">kill</span></span></span><br><span class="line">bindsym $mod+q kill</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 关闭底部常驻的i3bar（注释掉bar）</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">bar &#123;</span></span><br><span class="line"><span class="meta">#</span><span class="bash">        status_command i3status</span></span><br><span class="line"><span class="meta">#</span><span class="bash">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 设置窗口边框等等</span></span></span><br><span class="line">new_window none</span><br><span class="line">new_float normal</span><br><span class="line">hide_edge_borders both</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 设置窗口间距</span></span></span><br><span class="line">gaps inner 2</span><br><span class="line">gaps outer 2</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 启动polybar</span></span></span><br><span class="line">exec --no-startup-id ~/.config/polybar/launch.sh</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 设置背景图片</span></span></span><br><span class="line">exec --no-startup-id feh --bg-fill ~/Pictures/156274745324.jpg</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 设置透明</span></span></span><br><span class="line">exec --no-startup-id picom -b</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 启动中文输入法支持</span></span></span><br><span class="line">exec --no-startup-id fcitx </span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># Deepin系应用前置处理</span></span></span><br><span class="line">exec --no-startup-id /usr/lib/gsd-xsettings &amp;</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 将显示器DP2设置为主屏</span></span></span><br><span class="line">exec --no-startup-id xrandr --output DP2 --primary</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 绑定rofi：drun</span></span></span><br><span class="line">bindsym --release $mod+space exec --no-startup-id rofi -show drun -theme ~/.config/rofi/themes/arthur.rasi</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 绑定rofi：window</span></span></span><br><span class="line">bindsym $mod+Tab exec --no-startup-id rofi -show window -theme ~/.config/rofi/themes/sidebar.rasi</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 绑定便签本：把当前窗口设为便笺本</span></span></span><br><span class="line">bindsym $mod+Shift+minus move scratchpad</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 绑定便签本：呼出第一个便笺本</span></span></span><br><span class="line">bindsym $mod+minus scratchpad show </span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 绑定锁屏功能</span></span></span><br><span class="line">bindsym Mod4+l exec --no-startup-id /data/doc/synology/drive/Note/shell/bak/i3exit.sh lock</span><br><span class="line">------------------------------------------</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/09/03/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/%E9%AA%9A%E6%B0%94%E7%B4%AB%E5%BF%AB%E8%B5%B0%E5%BC%80%E2%80%94%E2%80%94%E4%BF%AE%E6%94%B9Ubuntu18.04%E7%9A%84%E8%83%8C%E6%99%AF%E8%89%B2/" rel="prev" title="骚气紫快走开——修改Ubuntu18.04的背景色">
+                  <i class="fa fa-chevron-left"></i> 骚气紫快走开——修改Ubuntu18.04的背景色
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/04/02/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/" rel="next" title="命令备忘录">
+                  命令备忘录 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">luanrz</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
