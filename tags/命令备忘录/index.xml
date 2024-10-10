@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>命令备忘录 on luanrz's blog</title><link>https://luanrz.github.io/tags/%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/</link><description>Recent content in 命令备忘录 on luanrz's blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Wed, 09 Oct 2024 14:15:29 +0800</lastBuildDate><atom:link href="https://luanrz.github.io/tags/%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/index.xml" rel="self" type="application/rss+xml"/><item><title>Linux命令备忘录</title><link>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/linux%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/</link><pubDate>Wed, 09 Oct 2024 14:15:29 +0800</pubDate><guid>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/linux%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/</guid><description>&lt;h2 id="会话管理使用screen恢复掉线的shell会话">会话管理——使用&lt;code>screen&lt;/code>恢复掉线的shell会话&lt;/h2>
+&lt;p>&lt;code>screen -S myScreen&lt;/code>&lt;/p>
+&lt;p>&lt;code>screen -r myScreen&lt;/code>&lt;/p>
+&lt;h2 id="显示当前目录所占用的磁盘空间">显示当前目录所占用的磁盘空间&lt;/h2>
+&lt;p>&lt;code>du -h --max-depth=1&lt;/code>&lt;/p>
+&lt;h2 id="访问nfs服务">访问NFS服务&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># ArchLinux下安装nfs-utils，不然没有showmount命令&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo pacman -S nfs-utils
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 显示指定IP上挂载的卷&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>showmount -e 192.168.1.105
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 开始挂载&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo mount -t nfs -o proto&lt;span style="color:#f92672">=&lt;/span>tcp,nolock 192.168.1.105:/volume1/homes homes/
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="访问smb服务">访问SMB服务&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 安装&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo pacman -S smbclient
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 显示共享目录&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>smbclient -L 192.168.0.100 -U username%password
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 进入上述共享目录中的directory目录&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>smbclient //192.168.0.100/directory -U username%password
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="一键删除所有项目下的target">一键删除所有项目下的target&lt;/h2>
+&lt;p>&lt;code>find . -name target | awk '{print &amp;quot;rm -rf &amp;quot;$1}' | sh&lt;/code>&lt;/p></description></item><item><title>Docker命令备忘录</title><link>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/docker%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/</link><pubDate>Sat, 14 Sep 2024 11:32:57 +0800</pubDate><guid>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/docker%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/</guid><description>&lt;h3 id="mysqlmariadb">MySQL(MariaDB)&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># MySQL&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>docker run &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>-d &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>-e MYSQL_ROOT_PASSWORD&lt;span style="color:#f92672">=&lt;/span>Passw0rd &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>-e MYSQL_DATABASE&lt;span style="color:#f92672">=&lt;/span>mydb &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>-e MYSQL_USER&lt;span style="color:#f92672">=&lt;/span>luanrz &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>-e MYSQL_PASSWORD&lt;span style="color:#f92672">=&lt;/span>Passw0rd &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>-p 127.0.0.1:3306:3306 &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>-v ~/Data/App/MySQL/data:/var/lib/mysql &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>--name&lt;span style="color:#f92672">=&lt;/span>mysql &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>mysql
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># phpMyAdmin&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>docker run &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>-d &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>-e PMA_USER&lt;span style="color:#f92672">=&lt;/span>root &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>-e PMA_PASSWORD&lt;span style="color:#f92672">=&lt;/span>Passw0rd &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>-p 127.0.0.1:8880:80 &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>--link mysql:db &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>--name phpmyadmin &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>phpmyadmin
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="redis">Redis&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># Redis&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>docker run &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>-d &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>-p 127.0.0.1:6379:6379 &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>--name&lt;span style="color:#f92672">=&lt;/span>redis &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>redis
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="xxl-job">XXL-JOB&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>docker run &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>-d &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>-e PARAMS&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;--spring.datasource.url=jdbc:mysql://db:3306/xxl_job?useUnicode=true&amp;amp;characterEncoding=UTF-8&amp;amp;autoReconnect=true&amp;amp;serverTimezone=Asia/Shanghai --spring.datasource.password=Passw0rd&amp;#34;&lt;/span> &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>-p 127.0.0.1:8881:8080 &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>-v ~/Data/App/XXL-JOB/logs:/data/applogs/xxl-job &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>--name xxl-job-admin &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>--link mysql:db &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>xuxueli/xxl-job-admin:2.4.0
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
+&lt;p>XXL-JOB依赖于&lt;a href="#mysqlmariadb">MySQL&lt;/a>，首次启动&lt;code>XXL-JOB&lt;/code>时需要执行&lt;a href="https://github.com/xuxueli/xxl-job/blob/2.4.0/doc/db/tables_xxl_job.sql">对应SQL&lt;/a>。&lt;/p></description></item><item><title>Git命令备忘录</title><link>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/git%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/</link><pubDate>Wed, 19 Oct 2022 09:11:08 +0000</pubDate><guid>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/git%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/</guid><description>&lt;h2 id="删除远程分支">删除远程分支&lt;/h2>
+&lt;p>&lt;code>git push origin --del rzluan-orderchange/ndc_xml_api_v3&lt;/code>&lt;/p>
+&lt;h2 id="克隆指定分支到指定文件夹">克隆指定分支到指定文件夹&lt;/h2>
+&lt;p>&lt;code>git clone -b [branch_name] [git_url] [dir_path]&lt;/code>&lt;/p>
+&lt;h2 id="变更统计">变更统计&lt;/h2>
+&lt;pre tabindex="0">&lt;code>git log --author=rzluan --after=&amp;#34;2019-11-01 00:00:00&amp;#34; --before=&amp;#34;2019-11-30 23:59:59&amp;#34; --name-only | grep &amp;#39;^src/*&amp;#39; | sort | uniq
+git log --author=rzluan --after=&amp;#34;2019-11-01 00:00:00&amp;#34; --before=&amp;#34;2019-11-30 23:59:59&amp;#34; --numstat | grep &amp;#34;src&amp;#34; | awk &amp;#39;{a[$3]+=$1;b[$3]+=$2}END{for(j in a) print j,&amp;#34;代码变更&amp;#34;(a[j]+b[j])&amp;#34;行&amp;#34;}&amp;#39;
+git log --author=rzluan --after=&amp;#34;2019-11-01 00:00:00&amp;#34; --before=&amp;#34;2019-11-30 23:59:59&amp;#34; --numstat | grep &amp;#34;src&amp;#34; | awk &amp;#39;{a[$3]+=($1+$2)}END{for(j in a) b+=a[j]} END{print &amp;#34;总行数&amp;#34;,b}&amp;#39;
+&lt;/code>&lt;/pre>&lt;h2 id="修改commit记录">修改commit记录&lt;/h2>
+&lt;ol>
+&lt;li>
+&lt;p>修改提交时间：&lt;code>git commit --amend --date=&amp;quot;May 8 12:00:30 2020 +0800&amp;quot;&lt;/code>&lt;/p></description></item><item><title>GDB命令备忘录</title><link>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/gdb%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/</link><pubDate>Fri, 02 Apr 2021 09:50:12 +0000</pubDate><guid>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/gdb%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/</guid><description>&lt;h2 id="编译">编译&lt;/h2>
+&lt;p>&lt;code>gcc Hello.cpp&lt;/code> 生成可执行文件a.out&lt;/p>
+&lt;p>&lt;code>gcc -o Hello.o Hello.cpp&lt;/code> 生成可执行文件Hello.o&lt;/p>
+&lt;p>&lt;code>gcc -g -o Hello.o Hello.cpp&lt;/code> 生成可调试的可执行文件Hello.o&lt;/p>
+&lt;h2 id="调试">调试&lt;/h2>
+&lt;p>&lt;code>gdb Hello.o&lt;/code>&lt;/p>
+&lt;h2 id="常用gdb命令">常用GDB命令&lt;/h2>
+&lt;p>&lt;code>break&lt;/code> ：新增断点。后接一个参数，表示在指定位置增加断点，参数格式为：[源文件名:]&amp;lt;方法名&amp;gt; | [源文件名:]&amp;lt;行数&amp;gt;&lt;/p></description></item><item><title>IDEA命令备忘录</title><link>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/idea%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/</link><pubDate>Fri, 02 Apr 2021 09:50:12 +0000</pubDate><guid>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/idea%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/</guid><description>&lt;h2 id="editor-basics">Editor Basics&lt;/h2>
+&lt;h3 id="actions">Actions&lt;/h3>
+&lt;p>&lt;code>Ctrl + Shift + A&lt;/code>&lt;/p>
+&lt;h3 id="select">Select&lt;/h3>
+&lt;p>&lt;code>Ctrl + Shift + →&lt;/code> Select a word&lt;/p>
+&lt;p>&lt;code>Ctrl + Shift + ←&lt;/code> Select a word&lt;/p>
+&lt;p>&lt;code>Ctrl + W&lt;/code> Extend the select&lt;/p>
+&lt;p>&lt;code>Ctrl + Shift + W&lt;/code> Shrink the select&lt;/p>
+&lt;p>&lt;code>Ctrl + A &lt;/code> Select whole file&lt;/p>
+&lt;h3 id="comment-line">Comment Line&lt;/h3>
+&lt;p>&lt;code>Ctrl + /&lt;/code> Comment out or uncomment line(s)&lt;/p>
+&lt;h3 id="delete-line">Delete Line&lt;/h3>
+&lt;p>&lt;code>Ctrl + Y&lt;/code> Delete line(s)&lt;/p>
+&lt;p>&lt;code>Ctrl + Z&lt;/code> Restore the deleted line(s)&lt;/p>
+&lt;h3 id="duplicate">Duplicate&lt;/h3>
+&lt;p>&lt;code>Ctrl + D&lt;/code> Duplicate line(s)&lt;/p></description></item><item><title>Java命令备忘录</title><link>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/java%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/</link><pubDate>Fri, 02 Apr 2021 09:50:12 +0000</pubDate><guid>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/java%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/</guid><description>&lt;h2 id="java序列化">Java序列化&lt;/h2>
+&lt;p>&lt;code>new ObjectOutputStream(new FileOutputStream(&amp;quot;resp&amp;quot;)).writeObject(resp);&lt;/code>&lt;/p>
+&lt;h2 id="配置vm参数javaagent以支持切面编程">配置VM参数&amp;quot;javaagent&amp;quot;以支持切面编程&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">-&lt;/span> javaagent:&lt;span style="color:#f92672">/&lt;/span>home&lt;span style="color:#f92672">/&lt;/span>luanrzh&lt;span style="color:#f92672">/&lt;/span>.&lt;span style="color:#a6e22e">m2&lt;/span>&lt;span style="color:#f92672">/&lt;/span>repository&lt;span style="color:#f92672">/&lt;/span>org&lt;span style="color:#f92672">/&lt;/span>aspectj&lt;span style="color:#f92672">/&lt;/span>aspectjweaver&lt;span style="color:#f92672">/&lt;/span>1.&lt;span style="color:#a6e22e">9&lt;/span>.&lt;span style="color:#a6e22e">4&lt;/span>&lt;span style="color:#f92672">/&lt;/span>aspectjweaver&lt;span style="color:#f92672">-&lt;/span>1.&lt;span style="color:#a6e22e">9&lt;/span>.&lt;span style="color:#a6e22e">4&lt;/span>.&lt;span style="color:#a6e22e">jar&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="启用远程调试">启用远程调试&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>java &lt;span style="color:#f92672">-&lt;/span>jar &lt;span style="color:#960050;background-color:#1e0010">\&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">-&lt;/span>Dserver.&lt;span style="color:#a6e22e">port&lt;/span>&lt;span style="color:#f92672">=&lt;/span>8080 &lt;span style="color:#960050;background-color:#1e0010">\&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">-&lt;/span>agentlib:jdwp&lt;span style="color:#f92672">=&lt;/span>transport&lt;span style="color:#f92672">=&lt;/span>dt_socket,server&lt;span style="color:#f92672">=&lt;/span>y,suspend&lt;span style="color:#f92672">=&lt;/span>n,address&lt;span style="color:#f92672">=&lt;/span>8081 &lt;span style="color:#960050;background-color:#1e0010">\&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>parent&lt;span style="color:#f92672">-&lt;/span>0.&lt;span style="color:#a6e22e">0&lt;/span>.&lt;span style="color:#a6e22e">1&lt;/span>&lt;span style="color:#f92672">-&lt;/span>SNAPSHOT.&lt;span style="color:#a6e22e">jar&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="jasypt加密解密">jasypt加密解密&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>java &lt;span style="color:#f92672">-&lt;/span>cp jasypt&lt;span style="color:#f92672">-&lt;/span>1.&lt;span style="color:#a6e22e">9&lt;/span>.&lt;span style="color:#a6e22e">2&lt;/span>.&lt;span style="color:#a6e22e">jar&lt;/span> org.&lt;span style="color:#a6e22e">jasypt&lt;/span>.&lt;span style="color:#a6e22e">intf&lt;/span>.&lt;span style="color:#a6e22e">cli&lt;/span>.&lt;span style="color:#a6e22e">JasyptPBEStringEncryptionCLI&lt;/span> input&lt;span style="color:#f92672">=&lt;/span>123456 password&lt;span style="color:#f92672">=&lt;/span>1234&lt;span style="color:#f92672">-&lt;/span>1234&lt;span style="color:#f92672">-&lt;/span>1234&lt;span style="color:#f92672">-&lt;/span>1234 algorithm&lt;span style="color:#f92672">=&lt;/span>PBEWithMD5AndDES
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>java &lt;span style="color:#f92672">-&lt;/span>cp jasypt&lt;span style="color:#f92672">-&lt;/span>1.&lt;span style="color:#a6e22e">9&lt;/span>.&lt;span style="color:#a6e22e">2&lt;/span>.&lt;span style="color:#a6e22e">jar&lt;/span> org.&lt;span style="color:#a6e22e">jasypt&lt;/span>.&lt;span style="color:#a6e22e">intf&lt;/span>.&lt;span style="color:#a6e22e">cli&lt;/span>.&lt;span style="color:#a6e22e">JasyptPBEStringDecryptionCLI&lt;/span> input&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;jvp0W0qUkv0WmG/JzwyUTA==&amp;#34;&lt;/span> password&lt;span style="color:#f92672">=&lt;/span>1234&lt;span style="color:#f92672">-&lt;/span>1234&lt;span style="color:#f92672">-&lt;/span>1234&lt;span style="color:#f92672">-&lt;/span>1234 algorithm&lt;span style="color:#f92672">=&lt;/span>PBEWithMD5AndDES
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Vim命令备忘录</title><link>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/vim%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/</link><pubDate>Fri, 02 Apr 2021 09:50:12 +0000</pubDate><guid>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/vim%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/</guid><description>&lt;h2 id="浏览">浏览&lt;/h2>
+&lt;ul>
+&lt;li>&lt;code>ctrl-f&lt;/code> 向下一翻页（f = forword ）&lt;/li>
+&lt;li>&lt;code>ctrl-b&lt;/code> 向上一翻页（b = backward）&lt;/li>
+&lt;li>&lt;code>ctrl-d&lt;/code> 向下翻半页（d = down）&lt;/li>
+&lt;li>&lt;code>ctlr-u&lt;/code> 向上翻半页（u = up）&lt;/li>
+&lt;li>&lt;code>ctrl-e&lt;/code> 向下滚一行&lt;/li>
+&lt;li>&lt;code>ctrl-y&lt;/code> 向上滚一行&lt;/li>
+&lt;li>&lt;code>zz&lt;/code> 让光标所在的行居屏幕中央&lt;/li>
+&lt;li>&lt;code>zt&lt;/code> 让光标所在的行居屏幕最上一行 t=top&lt;/li>
+&lt;li>&lt;code>zb&lt;/code> 让光标所在的行居屏幕最下一行 b=bottom&lt;/li>
+&lt;/ul>
+&lt;h2 id="编辑">编辑&lt;/h2>
+&lt;ul>
+&lt;li>&lt;code>u&lt;/code> 撤销&lt;/li>
+&lt;li>&lt;code>Ctrl-r&lt;/code> 恢复撤销&lt;/li>
+&lt;/ul>
+&lt;h2 id="替换">替换&lt;/h2>
+&lt;p>命令备忘录：Vim&lt;/p></description></item></channel></rss>

@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>操作系统 on luanrz's blog</title><link>https://luanrz.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</link><description>Recent content in 操作系统 on luanrz's blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Thu, 03 Sep 2020 13:32:00 +0000</lastBuildDate><atom:link href="https://luanrz.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/index.xml" rel="self" type="application/rss+xml"/><item><title>骚气紫快走开——修改Ubuntu18.04的背景色</title><link>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/%E9%AA%9A%E6%B0%94%E7%B4%AB%E5%BF%AB%E8%B5%B0%E5%BC%80%E4%BF%AE%E6%94%B9ubuntu18.04%E7%9A%84%E8%83%8C%E6%99%AF%E8%89%B2/</link><pubDate>Thu, 03 Sep 2020 13:32:00 +0000</pubDate><guid>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/%E9%AA%9A%E6%B0%94%E7%B4%AB%E5%BF%AB%E8%B5%B0%E5%BC%80%E4%BF%AE%E6%94%B9ubuntu18.04%E7%9A%84%E8%83%8C%E6%99%AF%E8%89%B2/</guid><description>&lt;p>通过修改&amp;quot;GRUB界面&amp;quot;,&amp;ldquo;plymouth界面&amp;quot;以及&amp;quot;锁屏登陆界面&amp;rdquo;, 来规避Ubuntu18.04的紫色背景&lt;/p></description></item><item><title>ArchLinux常用软件</title><link>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/archlinux%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/</link><pubDate>Wed, 11 Dec 2019 22:33:10 +0000</pubDate><guid>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/archlinux%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/</guid><description>&lt;blockquote>
+&lt;p>参考自ArchLinux官方Wiki的&lt;a href="https://wiki.archlinuxcn.org/wiki/%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E5%88%97%E8%A1%A8">应用程序列表&lt;/a>。&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="工具">工具&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">软件&lt;/th>
+&lt;th style="text-align: left">描述&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">microsoft-edge-stable-bin&lt;/td>
+&lt;td style="text-align: left">Edge浏览器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">google-chrome&lt;/td>
+&lt;td style="text-align: left">谷歌浏览器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">firefox-i18n-zh-cn&lt;/td>
+&lt;td style="text-align: left">火狐浏览器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">nutstore&lt;/td>
+&lt;td style="text-align: left">坚果云&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">virtualbox&lt;/td>
+&lt;td style="text-align: left">Virtualbox虚拟机&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">filezilla&lt;/td>
+&lt;td style="text-align: left">FTP客户端&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">remmina&lt;/td>
+&lt;td style="text-align: left">远程桌面连接工具&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">calibre&lt;/td>
+&lt;td style="text-align: left">电子书&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">flameshot&lt;/td>
+&lt;td style="text-align: left">截图工具&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">keepassxc&lt;/td>
+&lt;td style="text-align: left">密码管理工具&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">synology-drive&lt;/td>
+&lt;td style="text-align: left">群晖Drive&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">qtscrcpy&lt;/td>
+&lt;td style="text-align: left">安卓投屏&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="办公">办公&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">软件&lt;/th>
+&lt;th style="text-align: left">描述&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">obsidian&lt;/td>
+&lt;td style="text-align: left">Markdown编辑器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">typora&lt;/td>
+&lt;td style="text-align: left">Markdown编辑器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">wps-office-cn&lt;/td>
+&lt;td style="text-align: left">WPS&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">libreoffice-fresh-zh-cn&lt;/td>
+&lt;td style="text-align: left">LibreOffice&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">thunderbird-i18n-zh-cn&lt;/td>
+&lt;td style="text-align: left">邮件客户端&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">wechat-universal-bwrap&lt;/td>
+&lt;td style="text-align: left">微信&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">linuxqq-nt-bwrap&lt;/td>
+&lt;td style="text-align: left">QQ&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">dingtalk-bin&lt;/td>
+&lt;td style="text-align: left">钉钉&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">wemeet-bin&lt;/td>
+&lt;td style="text-align: left">腾讯会议&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="开发">开发&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">软件&lt;/th>
+&lt;th style="text-align: left">描述&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">visual-studi-code&lt;/td>
+&lt;td style="text-align: left">VS Code&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">jetbrains-toolbox&lt;/td>
+&lt;td style="text-align: left">Jetbrains全家桶&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">dbeaver&lt;/td>
+&lt;td style="text-align: left">数据库客户端&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">redisinsight-bin&lt;/td>
+&lt;td style="text-align: left">Redis客户端&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">postman-bin&lt;/td>
+&lt;td style="text-align: left">Postman&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">jmeter&lt;/td>
+&lt;td style="text-align: left">性能测试工具&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">visualvm&lt;/td>
+&lt;td style="text-align: left">Java性能测试&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">jadx-gui-desktop&lt;/td>
+&lt;td style="text-align: left">Java反编译工具&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">recaf&lt;/td>
+&lt;td style="text-align: left">Java反编译工具&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">bytecode-viewer&lt;/td>
+&lt;td style="text-align: left">Java反编译工具&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">luyten&lt;/td>
+&lt;td style="text-align: left">Java反编译工具&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">keystore-explorer-bin&lt;/td>
+&lt;td style="text-align: left">Java证书工具&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">openlens&lt;/td>
+&lt;td style="text-align: left">kubernetes管理工具&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="系统">系统&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">软件&lt;/th>
+&lt;th style="text-align: left">描述&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">alacarte&lt;/td>
+&lt;td style="text-align: left">应用程序主菜单编辑软件&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">menulibre&lt;/td>
+&lt;td style="text-align: left">应用程序主菜单编辑软件&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">grub-customizer&lt;/td>
+&lt;td style="text-align: left">GRUB可视化编辑器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">gufw&lt;/td>
+&lt;td style="text-align: left">UFW防火墙可视化界面&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">hardinfo2&lt;/td>
+&lt;td style="text-align: left">系统信息查看工具&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">tilda&lt;/td>
+&lt;td style="text-align: left">下拉式终端模拟器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">guake&lt;/td>
+&lt;td style="text-align: left">下拉式终端模拟器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">yakuake&lt;/td>
+&lt;td style="text-align: left">下拉式终端模拟器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">xarchive&lt;/td>
+&lt;td style="text-align: left">解压缩工具&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">file-roller&lt;/td>
+&lt;td style="text-align: left">解压缩工具&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">ranger&lt;/td>
+&lt;td style="text-align: left">终端文件浏览器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">yazi&lt;/td>
+&lt;td style="text-align: left">终端文件浏览器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">pacseek&lt;/td>
+&lt;td style="text-align: left">AUR助手&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">octpi&lt;/td>
+&lt;td style="text-align: left">包管理器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">gparted&lt;/td>
+&lt;td style="text-align: left">磁盘分区管理器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">cpu-x&lt;/td>
+&lt;td style="text-align: left">CPU信息查看工具&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">gpu-viewer&lt;/td>
+&lt;td style="text-align: left">GPU信息查看工具&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">htop&lt;/td>
+&lt;td style="text-align: left">终端资源监视器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">arandr&lt;/td>
+&lt;td style="text-align: left">屏幕分辨率调整工具&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="gnome工具">GNOME工具&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">软件&lt;/th>
+&lt;th style="text-align: left">描述&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">baobab&lt;/td>
+&lt;td style="text-align: left">GNOME磁盘占用分析器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">evince&lt;/td>
+&lt;td style="text-align: left">GNOME文档查看器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">epiphany&lt;/td>
+&lt;td style="text-align: left">GNOME浏览器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">gnome-calculator&lt;/td>
+&lt;td style="text-align: left">GNOME计算器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">gnome-disk-utility&lt;/td>
+&lt;td style="text-align: left">GNOME磁盘管理&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">gnome-system-monitor&lt;/td>
+&lt;td style="text-align: left">GNOME系统监视器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">loupe&lt;/td>
+&lt;td style="text-align: left">GNOME图像查看器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">evolution&lt;/td>
+&lt;td style="text-align: left">GNOME邮件客户端&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">geary&lt;/td>
+&lt;td style="text-align: left">GNOME邮件客户端&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">gitg&lt;/td>
+&lt;td style="text-align: left">GNOME Git仓库浏览器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">seahorse&lt;/td>
+&lt;td style="text-align: left">GNOME密码与秘钥&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="娱乐">娱乐&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">软件&lt;/th>
+&lt;th style="text-align: left">描述&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">qqmusic-appimage&lt;/td>
+&lt;td style="text-align: left">QQ音乐&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">go-musicfox-git&lt;/td>
+&lt;td style="text-align: left">网易云音乐终端&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">qcm&lt;/td>
+&lt;td style="text-align: left">网易云音乐QT版&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">yesplaymusic&lt;/td>
+&lt;td style="text-align: left">网易云音乐VUE版&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">com.163.music.spark&lt;/td>
+&lt;td style="text-align: left">网易云音乐星火Wine版&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table></description></item><item><title>ArchLinux安装手册</title><link>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/archlinux%E5%AE%89%E8%A3%85%E6%89%8B%E5%86%8C/</link><pubDate>Wed, 11 Dec 2019 22:33:00 +0000</pubDate><guid>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/archlinux%E5%AE%89%E8%A3%85%E6%89%8B%E5%86%8C/</guid><description>&lt;ul>
+&lt;li>&lt;a href="#%E4%B8%80%E5%9F%BA%E7%A1%80%E7%8E%AF%E5%A2%83%E7%9A%84%E5%AE%89%E8%A3%85">ArchLinux基础环境的安装&lt;/a>，参考自ArchLinux官方Wiki的&lt;a href="https://wiki.archlinuxcn.org/wiki/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97">安装指南&lt;/a>与&lt;a href="https://wiki.archlinuxcn.org/wiki/%E5%BB%BA%E8%AE%AE%E9%98%85%E8%AF%BB">建议阅读&lt;/a>。&lt;/li>
+&lt;li>&lt;a href="#%E4%BA%8C%E5%9F%BA%E7%A1%80%E8%BD%AF%E4%BB%B6%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE">ArchLinux基础软件的安装与配置&lt;/a>，参考自ArchLinux官方Wiki的&lt;a href="https://wiki.archlinuxcn.org/wiki/%E5%BB%BA%E8%AE%AE%E9%98%85%E8%AF%BB">建议阅读&lt;/a>与&lt;a href="https://wiki.archlinuxcn.org/wiki/%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E5%88%97%E8%A1%A8">应用程序列表&lt;/a>。&lt;/li>
+&lt;/ul>
+&lt;h2 id="一基础环境的安装">一、基础环境的安装&lt;/h2>
+&lt;blockquote>
+&lt;p>最新版本的ArchLinux镜像已经默认集成了&lt;code>archinstall&lt;/code>安装脚本，可快速完成&lt;a href="#%E4%B8%80%E5%9F%BA%E7%A1%80%E7%8E%AF%E5%A2%83%E7%9A%84%E5%AE%89%E8%A3%85">ArchLinux基础环境的安装&lt;/a>，详见&lt;a href="https://wiki.archlinuxcn.org/wiki/Archinstall">官方文档&lt;/a>。&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="一硬盘分区">（一）硬盘分区&lt;/h3>
+&lt;p>（1）&lt;strong>创建引导分区和根分区&lt;/strong>&lt;/p>
+&lt;p>&lt;code>fdisk /dev/sda&lt;/code> （进入第一个硬盘）&lt;/p></description></item><item><title>树莓派配置</title><link>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/%E6%A0%91%E8%8E%93%E6%B4%BE%E9%85%8D%E7%BD%AE/</link><pubDate>Wed, 12 Dec 2018 21:57:00 +0000</pubDate><guid>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/%E6%A0%91%E8%8E%93%E6%B4%BE%E9%85%8D%E7%BD%AE/</guid><description>&lt;p>树莓派配置, 包括常用开发环境及部分实用工具的安装与配置&lt;/p>
+&lt;h2 id="安装raspbian系统至sd卡">安装raspbian系统至SD卡&lt;/h2>
+&lt;p>略&lt;/p>
+&lt;h2 id="选择国内仓库源">选择国内仓库源&lt;/h2>
+&lt;pre tabindex="0">&lt;code>sudo sed -i &amp;#39;s#://raspbian.raspberrypi.org#s://mirrors.ustc.edu.cn/raspbian#g&amp;#39; /etc/apt/sources.list
+sudo sed -i &amp;#39;s#://archive.raspberrypi.org/debian#s://mirrors.ustc.edu.cn/archive.raspberrypi.org/debian#g&amp;#39; /etc/apt/sourceslist.d/raspi.list
+&lt;/code>&lt;/pre>&lt;blockquote>
+&lt;p>参见链接&lt;a href="https://www.jianshu.com/p/67b9e6ebf8a0" title="作者：qcsunny">树莓派—raspbian软件源（全）&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="使用vnc协议无线连接桌面">使用VNC协议无线连接桌面&lt;/h2>
+&lt;p>系统已经默认安装RealVNC,直接启动即可&lt;/p>
+&lt;pre tabindex="0">&lt;code>vncserver
+&lt;/code>&lt;/pre>&lt;h2 id="使用rdp协议无线连接桌面">使用RDP协议无线连接桌面&lt;/h2>
+&lt;pre tabindex="0">&lt;code>sudo apt install tightvncserver xrdp
+&lt;/code>&lt;/pre>&lt;blockquote>
+&lt;p>安装tightvncserver将会自动卸载realvnc&lt;/p></description></item></channel></rss>

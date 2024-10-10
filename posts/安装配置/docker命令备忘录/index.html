@@ -1,0 +1,231 @@
+<!doctype html><html lang=zh dir=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Docker命令备忘录 | luanrz's blog</title>
+<meta name=keywords content="Linux,命令备忘录,Docker"><meta name=description content='MySQL(MariaDB)
+# MySQL
+docker run \
+-d \
+-e MYSQL_ROOT_PASSWORD=Passw0rd \
+-e MYSQL_DATABASE=mydb \
+-e MYSQL_USER=luanrz \
+-e MYSQL_PASSWORD=Passw0rd \
+-p 127.0.0.1:3306:3306 \
+-v ~/Data/App/MySQL/data:/var/lib/mysql \
+--name=mysql \
+mysql
+# phpMyAdmin
+docker run \
+-d \
+-e PMA_USER=root \
+-e PMA_PASSWORD=Passw0rd \
+-p 127.0.0.1:8880:80 \
+--link mysql:db \
+--name phpmyadmin \
+phpmyadmin
+Redis
+# Redis
+docker run \
+-d \
+-p 127.0.0.1:6379:6379 \
+--name=redis \
+redis
+XXL-JOB
+docker run \
+-d \
+-e PARAMS="--spring.datasource.url=jdbc:mysql://db:3306/xxl_job?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true&amp;serverTimezone=Asia/Shanghai --spring.datasource.password=Passw0rd" \
+-p 127.0.0.1:8881:8080 \
+-v ~/Data/App/XXL-JOB/logs:/data/applogs/xxl-job \
+--name xxl-job-admin \
+--link mysql:db \
+xuxueli/xxl-job-admin:2.4.0
+
+XXL-JOB依赖于MySQL，首次启动XXL-JOB时需要执行对应SQL。'><meta name=author content><link rel=canonical href=https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/docker%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/><link crossorigin=anonymous href=/assets/css/stylesheet.c3e23dce66ad4317842b9402c8fd981d1b47f5fbbc901a6f46a6f7f56c724960.css integrity="sha256-w+I9zmatQxeEK5QCyP2YHRtH9fu8kBpvRqb39WxySWA=" rel="preload stylesheet" as=style><link rel=icon href=https://luanrz.github.io/images/icon.jpg><link rel=icon type=image/png sizes=16x16 href=https://luanrz.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://luanrz.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://luanrz.github.io/apple-touch-icon.png><link rel=mask-icon href=https://luanrz.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=zh href=https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/docker%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--hljs-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style></noscript><script>const loadScript=(e,t)=>{var n=document.createElement("script");n.onerror=e=>{throw new URIError("The script "+e.target.src+" didn't load correctly.")},t&&(n.onload=t),document.head.insertAdjacentElement("beforeend",n),n.src=e},loadPlantUMLOnNeed=()=>{let e="language-plantuml";document.querySelectorAll("[class^="+e+"]").length>0&&loadScript("https://fastly.jsdelivr.net/gh/jmnote/plantuml-encoder@1.2.4/dist/plantuml-encoder.min.js",()=>{(function(){Array.prototype.forEach.call(document.querySelectorAll("[class^="+e+"]"),function(e){let t=document.createElement("IMG");t.loading="lazy",t.src="http://www.plantuml.com/plantuml/svg/~1"+plantumlEncoder.encode(e.innerText),e.parentNode.insertBefore(t,e),e.style.display="none"})})(),console.log("PlantUML init done")})};window.addEventListener("load",function(){loadPlantUMLOnNeed()})</script><meta property="og:title" content="Docker命令备忘录"><meta property="og:description" content='MySQL(MariaDB)
+# MySQL
+docker run \
+-d \
+-e MYSQL_ROOT_PASSWORD=Passw0rd \
+-e MYSQL_DATABASE=mydb \
+-e MYSQL_USER=luanrz \
+-e MYSQL_PASSWORD=Passw0rd \
+-p 127.0.0.1:3306:3306 \
+-v ~/Data/App/MySQL/data:/var/lib/mysql \
+--name=mysql \
+mysql
+# phpMyAdmin
+docker run \
+-d \
+-e PMA_USER=root \
+-e PMA_PASSWORD=Passw0rd \
+-p 127.0.0.1:8880:80 \
+--link mysql:db \
+--name phpmyadmin \
+phpmyadmin
+Redis
+# Redis
+docker run \
+-d \
+-p 127.0.0.1:6379:6379 \
+--name=redis \
+redis
+XXL-JOB
+docker run \
+-d \
+-e PARAMS="--spring.datasource.url=jdbc:mysql://db:3306/xxl_job?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true&amp;serverTimezone=Asia/Shanghai --spring.datasource.password=Passw0rd" \
+-p 127.0.0.1:8881:8080 \
+-v ~/Data/App/XXL-JOB/logs:/data/applogs/xxl-job \
+--name xxl-job-admin \
+--link mysql:db \
+xuxueli/xxl-job-admin:2.4.0
+
+XXL-JOB依赖于MySQL，首次启动XXL-JOB时需要执行对应SQL。'><meta property="og:type" content="article"><meta property="og:url" content="https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/docker%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2024-09-14T11:32:57+08:00"><meta property="article:modified_time" content="2024-09-14T11:32:57+08:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="Docker命令备忘录"><meta name=twitter:description content='MySQL(MariaDB)
+# MySQL
+docker run \
+-d \
+-e MYSQL_ROOT_PASSWORD=Passw0rd \
+-e MYSQL_DATABASE=mydb \
+-e MYSQL_USER=luanrz \
+-e MYSQL_PASSWORD=Passw0rd \
+-p 127.0.0.1:3306:3306 \
+-v ~/Data/App/MySQL/data:/var/lib/mysql \
+--name=mysql \
+mysql
+# phpMyAdmin
+docker run \
+-d \
+-e PMA_USER=root \
+-e PMA_PASSWORD=Passw0rd \
+-p 127.0.0.1:8880:80 \
+--link mysql:db \
+--name phpmyadmin \
+phpmyadmin
+Redis
+# Redis
+docker run \
+-d \
+-p 127.0.0.1:6379:6379 \
+--name=redis \
+redis
+XXL-JOB
+docker run \
+-d \
+-e PARAMS="--spring.datasource.url=jdbc:mysql://db:3306/xxl_job?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true&amp;serverTimezone=Asia/Shanghai --spring.datasource.password=Passw0rd" \
+-p 127.0.0.1:8881:8080 \
+-v ~/Data/App/XXL-JOB/logs:/data/applogs/xxl-job \
+--name xxl-job-admin \
+--link mysql:db \
+xuxueli/xxl-job-admin:2.4.0
+
+XXL-JOB依赖于MySQL，首次启动XXL-JOB时需要执行对应SQL。'><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://luanrz.github.io/posts/"},{"@type":"ListItem","position":3,"name":"Docker命令备忘录","item":"https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/docker%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Docker命令备忘录","name":"Docker命令备忘录","description":"MySQL(MariaDB) # MySQL docker run \\ -d \\ -e MYSQL_ROOT_PASSWORD=Passw0rd \\ -e MYSQL_DATABASE=mydb \\ -e MYSQL_USER=luanrz \\ -e MYSQL_PASSWORD=Passw0rd \\ -p 127.0.0.1:3306:3306 \\ -v ~/Data/App/MySQL/data:/var/lib/mysql \\ --name=mysql \\ mysql # phpMyAdmin docker run \\ -d \\ -e PMA_USER=root \\ -e PMA_PASSWORD=Passw0rd \\ -p 127.0.0.1:8880:80 \\ --link mysql:db \\ --name phpmyadmin \\ phpmyadmin Redis # Redis docker run \\ -d \\ -p 127.0.0.1:6379:6379 \\ --name=redis \\ redis XXL-JOB docker run \\ -d \\ -e PARAMS=\u0026#34;--spring.datasource.url=jdbc:mysql://db:3306/xxl_job?useUnicode=true\u0026amp;characterEncoding=UTF-8\u0026amp;autoReconnect=true\u0026amp;serverTimezone=Asia/Shanghai --spring.datasource.password=Passw0rd\u0026#34; \\ -p 127.0.0.1:8881:8080 \\ -v ~/Data/App/XXL-JOB/logs:/data/applogs/xxl-job \\ --name xxl-job-admin \\ --link mysql:db \\ xuxueli/xxl-job-admin:2.4.0 XXL-JOB依赖于MySQL，首次启动XXL-JOB时需要执行对应SQL。\n","keywords":["Linux","命令备忘录","Docker"],"articleBody":"MySQL(MariaDB) # MySQL docker run \\ -d \\ -e MYSQL_ROOT_PASSWORD=Passw0rd \\ -e MYSQL_DATABASE=mydb \\ -e MYSQL_USER=luanrz \\ -e MYSQL_PASSWORD=Passw0rd \\ -p 127.0.0.1:3306:3306 \\ -v ~/Data/App/MySQL/data:/var/lib/mysql \\ --name=mysql \\ mysql # phpMyAdmin docker run \\ -d \\ -e PMA_USER=root \\ -e PMA_PASSWORD=Passw0rd \\ -p 127.0.0.1:8880:80 \\ --link mysql:db \\ --name phpmyadmin \\ phpmyadmin Redis # Redis docker run \\ -d \\ -p 127.0.0.1:6379:6379 \\ --name=redis \\ redis XXL-JOB docker run \\ -d \\ -e PARAMS=\"--spring.datasource.url=jdbc:mysql://db:3306/xxl_job?useUnicode=true\u0026characterEncoding=UTF-8\u0026autoReconnect=true\u0026serverTimezone=Asia/Shanghai --spring.datasource.password=Passw0rd\" \\ -p 127.0.0.1:8881:8080 \\ -v ~/Data/App/XXL-JOB/logs:/data/applogs/xxl-job \\ --name xxl-job-admin \\ --link mysql:db \\ xuxueli/xxl-job-admin:2.4.0 XXL-JOB依赖于MySQL，首次启动XXL-JOB时需要执行对应SQL。\nWindows Docker Compose 创建docker-compose.yml文件：\nversion: \"3\" services: windows: image: dockurr/windows container_name: windows devices: - /dev/kvm cap_add: - NET_ADMIN ports: - 127.0.0.1:8006:8006 - 127.0.0.1:3399:3389/tcp - 127.0.0.1:3399:3389/udp stop_grace_period: 2m restart: on-failure environment: VERSION: \"http://winiso/ltsc10.iso\" RAM_SIZE: \"4G\" CPU_CORES: \"2\" DISK_SIZE: \"32G\" volumes: - ./win:/storage depends_on: - winiso winiso: image: nginx:alpine container_name: winiso restart: on-failure volumes: - ./iso:/usr/share/nginx/html 在当前目录下创建iso子目录，将ltsc10.iso放入其中，随后启动容器：\ndocker compose up -d 在浏览器中访问http://127.0.0.1:8006，执行windows安装流程。安装完成后开启远程桌面访问，后续可通过Remmina等支持RDP协议的工具连接3399端口访问远程桌面。\nDocker Run 准备本地iso镜像下载容器（可选） 后续创建Windows容器时，需要从远程服务器下载iso镜像，可新建本地iso镜像下载容器，以提升后续下载速度。\n在当前目录下创建iso子目录，将ltsc10.iso放入其中，随后创建自定义网络与iso镜像下载容器：\n创建自定义网络的目的是启用Docker的DNS，以便Windows容器能够通过容器名访问镜像下载容器提供的服务。\n# 创建自定义网络 docker network create windows_network # 创建镜像下载容器 docker run \\ --name=winiso \\ -d \\ -v ./iso:/usr/share/nginx/html \\ --net windows_network \\ nginx:alpine 启动Windows容器 docker run \\ --name windows \\ -it \\ -p 127.0.0.1:8006:8006 \\ -p 127.0.0.1:3399:3389 \\ --device=/dev/kvm \\ --cap-add NET_ADMIN \\ --stop-timeout 120 \\ --net windows_network \\ -e VERSION=\"http://winiso/ltsc10.iso\" \\ -e RAM_SIZE=\"4G\" \\ -e CPU_CORES=\"2\" \\ -e DISK_SIZE=\"32G\" \\ -v ./win:/storage \\ dockurr/windows --net需要与镜像下载容器winiso处于同一个网络(windows_network)。 -e VERSION可指定windows镜像版本，指定为本地镜像下载容器服务路径可提升下载速度。 安装windows 在浏览器中访问http://127.0.0.1:8006，执行windows安装流程。安装完成后开启远程桌面访问，后续可通过Remmina等支持RDP协议的工具连接3399端口访问远程桌面。\n移除临时容器（可选） docker rm -f winiso 移除临时网络（可选） # docker network connect bridge windows docker network disconnect windows_network windows docker network rm windows_network 当前Windows容器在首次启动时将NetworkMode配置为windows_network，通过上述命令移除windows_network后，重启Windows容器会提示找不到windows_network而报错。因此，需重建Windows容器：\ndocker rm -f windows docker run \\ --name windows \\ -d \\ -p 127.0.0.1:3399:3389 \\ --device=/dev/kvm \\ --cap-add NET_ADMIN \\ --stop-timeout 120 \\ -e VERSION=\"http://winiso/ltsc10.iso\" \\ -e RAM_SIZE=\"4G\" \\ -e CPU_CORES=\"2\" \\ -e DISK_SIZE=\"32G\" \\ -v ./win:/storage \\ dockurr/windows 重建Windows容器时，将直接基于./win中的内容启动容器。同时，以下几个配置已不再需要：-p 127.0.0.1:8006:8006 、--net windows_network。\n参见官方Github页面与这篇文章 。\n","wordCount":"1097","inLanguage":"zh","datePublished":"2024-09-14T11:32:57+08:00","dateModified":"2024-09-14T11:32:57+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/docker%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/"},"publisher":{"@type":"Organization","name":"luanrz's blog","logo":{"@type":"ImageObject","url":"https://luanrz.github.io/images/icon.jpg"}}}</script></head><body id=top><script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add("dark"):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove("dark"):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.body.classList.add("dark")</script><header class=header><nav class=nav><div class=logo><a href=https://luanrz.github.io/ accesskey=h title="luanrz's blog (Alt + H)">luanrz's blog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button><ul class=lang-switch><li>|</li></ul></div></div><ul id=menu><li><a href=https://luanrz.github.io/ title=🏠首页><span>🏠首页</span></a></li><li><a href=https://luanrz.github.io/search/ title="🔍搜索 (Alt + /)" accesskey=/><span>🔍搜索</span></a></li><li><a href=https://luanrz.github.io/archives/ title=⏱️归档><span>⏱️归档</span></a></li><li><a href=https://luanrz.github.io/categories/ title=🔖分类><span>🔖分类</span></a></li><li><a href=https://luanrz.github.io/tags/ title=🏷️标签><span>🏷️标签</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class=post-title>Docker命令备忘录</h1><div class=post-meta><span title='2024-09-14 11:32:57 +0800 +0800'>2024-09-14</span>&nbsp;·&nbsp;3 分钟&nbsp;·&nbsp;1097 字</div></header><aside id=toc-container class="toc-container wide"><div class=toc><details open><summary accesskey=c title="(Alt + C)"><span class=details>目录</span></summary><div class=inner><ul><li><a href=#mysqlmariadb aria-label=MySQL(MariaDB)>MySQL(MariaDB)</a></li><li><a href=#redis aria-label=Redis>Redis</a></li><li><a href=#xxl-job aria-label=XXL-JOB>XXL-JOB</a></li><li><a href=#windows aria-label=Windows>Windows</a><ul><li><a href=#docker-compose aria-label="Docker Compose">Docker Compose</a></li><li><a href=#docker-run aria-label="Docker Run">Docker Run</a></li></ul></li></ul></div></details></div></aside><script>let activeElement,elements;window.addEventListener("DOMContentLoaded",function(){checkTocPosition(),elements=document.querySelectorAll("h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]"),activeElement=elements[0];const t=encodeURI(activeElement.getAttribute("id")).toLowerCase();document.querySelector(`.inner ul li a[href="#${t}"]`).classList.add("active")},!1),window.addEventListener("resize",function(){checkTocPosition()},!1),window.addEventListener("scroll",()=>{activeElement=Array.from(elements).find(e=>{if(getOffsetTop(e)-window.pageYOffset>0&&getOffsetTop(e)-window.pageYOffset<window.innerHeight/2)return e})||activeElement,elements.forEach(e=>{const t=encodeURI(e.getAttribute("id")).toLowerCase();e===activeElement?document.querySelector(`.inner ul li a[href="#${t}"]`).classList.add("active"):document.querySelector(`.inner ul li a[href="#${t}"]`).classList.remove("active")})},!1);const main=parseInt(getComputedStyle(document.body).getPropertyValue("--article-width"),10),toc=parseInt(getComputedStyle(document.body).getPropertyValue("--toc-width"),10),gap=parseInt(getComputedStyle(document.body).getPropertyValue("--gap"),10);function checkTocPosition(){const e=document.body.scrollWidth;e-main-toc*2-gap*4>0?document.getElementById("toc-container").classList.add("wide"):document.getElementById("toc-container").classList.remove("wide")}function getOffsetTop(e){if(!e.getClientRects().length)return 0;let t=e.getBoundingClientRect(),n=e.ownerDocument.defaultView;return t.top+n.pageYOffset}</script><div class=post-content><h3 id=mysqlmariadb>MySQL(MariaDB)<a hidden class=anchor aria-hidden=true href=#mysqlmariadb>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span><span style=color:#75715e># MySQL</span>
+</span></span><span style=display:flex><span>docker run <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-d <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-e MYSQL_ROOT_PASSWORD<span style=color:#f92672>=</span>Passw0rd <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-e MYSQL_DATABASE<span style=color:#f92672>=</span>mydb <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-e MYSQL_USER<span style=color:#f92672>=</span>luanrz <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-e MYSQL_PASSWORD<span style=color:#f92672>=</span>Passw0rd <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-p 127.0.0.1:3306:3306 <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-v ~/Data/App/MySQL/data:/var/lib/mysql <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>--name<span style=color:#f92672>=</span>mysql <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>mysql
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span><span style=color:#75715e># phpMyAdmin</span>
+</span></span><span style=display:flex><span>docker run <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-d <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-e PMA_USER<span style=color:#f92672>=</span>root <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-e PMA_PASSWORD<span style=color:#f92672>=</span>Passw0rd <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-p 127.0.0.1:8880:80 <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>--link mysql:db <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>--name phpmyadmin <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>phpmyadmin
+</span></span></code></pre></div><h3 id=redis>Redis<a hidden class=anchor aria-hidden=true href=#redis>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span><span style=color:#75715e># Redis</span>
+</span></span><span style=display:flex><span>docker run <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-d <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-p 127.0.0.1:6379:6379 <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>--name<span style=color:#f92672>=</span>redis <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>redis
+</span></span></code></pre></div><h3 id=xxl-job>XXL-JOB<a hidden class=anchor aria-hidden=true href=#xxl-job>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>docker run <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-d <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-e PARAMS<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;--spring.datasource.url=jdbc:mysql://db:3306/xxl_job?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true&amp;serverTimezone=Asia/Shanghai --spring.datasource.password=Passw0rd&#34;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-p 127.0.0.1:8881:8080 <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-v ~/Data/App/XXL-JOB/logs:/data/applogs/xxl-job <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>--name xxl-job-admin <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>--link mysql:db <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>xuxueli/xxl-job-admin:2.4.0
+</span></span></code></pre></div><blockquote><p>XXL-JOB依赖于<a href=#mysqlmariadb>MySQL</a>，首次启动<code>XXL-JOB</code>时需要执行<a href=https://github.com/xuxueli/xxl-job/blob/2.4.0/doc/db/tables_xxl_job.sql>对应SQL</a>。</p></blockquote><h3 id=windows>Windows<a hidden class=anchor aria-hidden=true href=#windows>#</a></h3><h4 id=docker-compose>Docker Compose<a hidden class=anchor aria-hidden=true href=#docker-compose>#</a></h4><p>创建<code>docker-compose.yml</code>文件：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>version</span>: <span style=color:#e6db74>&#34;3&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>services</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>windows</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>image</span>: <span style=color:#ae81ff>dockurr/windows</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>container_name</span>: <span style=color:#ae81ff>windows</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>devices</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>/dev/kvm</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>cap_add</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>NET_ADMIN</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>ports</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>127.0.0.1</span>:<span style=color:#ae81ff>8006</span>:<span style=color:#ae81ff>8006</span>
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>127.0.0.1</span>:<span style=color:#ae81ff>3399</span>:<span style=color:#ae81ff>3389</span><span style=color:#ae81ff>/tcp</span>
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>127.0.0.1</span>:<span style=color:#ae81ff>3399</span>:<span style=color:#ae81ff>3389</span><span style=color:#ae81ff>/udp</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>stop_grace_period</span>: <span style=color:#ae81ff>2m</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>restart</span>: <span style=color:#66d9ef>on</span>-<span style=color:#ae81ff>failure</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>environment</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>VERSION</span>: <span style=color:#e6db74>&#34;http://winiso/ltsc10.iso&#34;</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>RAM_SIZE</span>: <span style=color:#e6db74>&#34;4G&#34;</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>CPU_CORES</span>: <span style=color:#e6db74>&#34;2&#34;</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>DISK_SIZE</span>: <span style=color:#e6db74>&#34;32G&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>volumes</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>./win:/storage</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>depends_on</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#ae81ff>winiso</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>winiso</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>image</span>: <span style=color:#ae81ff>nginx:alpine</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>container_name</span>: <span style=color:#ae81ff>winiso</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>restart</span>: <span style=color:#66d9ef>on</span>-<span style=color:#ae81ff>failure</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>volumes</span>:
+</span></span><span style=display:flex><span>     - <span style=color:#ae81ff>./iso:/usr/share/nginx/html</span>
+</span></span></code></pre></div><p>在当前目录下创建<code>iso</code>子目录，将<code>ltsc10.iso</code>放入其中，随后启动容器：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>docker compose up -d
+</span></span></code></pre></div><p>在浏览器中访问<code>http://127.0.0.1:8006</code>，执行windows安装流程。安装完成后开启远程桌面访问，后续可通过<code>Remmina</code>等支持<code>RDP</code>协议的工具连接<code>3399</code>端口访问远程桌面。</p><h4 id=docker-run>Docker Run<a hidden class=anchor aria-hidden=true href=#docker-run>#</a></h4><ol><li>准备本地iso镜像下载容器（可选）</li></ol><p>后续创建Windows容器时，需要从远程服务器下载iso镜像，可新建本地iso镜像下载容器，以提升后续下载速度。</p><p>在当前目录下创建<code>iso</code>子目录，将<code>ltsc10.iso</code>放入其中，随后创建自定义网络与iso镜像下载容器：</p><blockquote><p>创建自定义网络的目的是启用Docker的DNS，以便Windows容器能够通过容器名访问镜像下载容器提供的服务。</p></blockquote><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span><span style=color:#75715e># 创建自定义网络</span>
+</span></span><span style=display:flex><span>docker network create windows_network
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 创建镜像下载容器</span>
+</span></span><span style=display:flex><span>docker run <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>--name<span style=color:#f92672>=</span>winiso <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-d <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-v ./iso:/usr/share/nginx/html <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>--net windows_network <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>nginx:alpine
+</span></span></code></pre></div><ol start=2><li>启动Windows容器</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>docker run <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>--name windows <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-it <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-p 127.0.0.1:8006:8006 <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-p 127.0.0.1:3399:3389 <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>--device<span style=color:#f92672>=</span>/dev/kvm <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>--cap-add NET_ADMIN <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>--stop-timeout <span style=color:#ae81ff>120</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>--net windows_network <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-e VERSION<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;http://winiso/ltsc10.iso&#34;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-e RAM_SIZE<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;4G&#34;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-e CPU_CORES<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;2&#34;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-e DISK_SIZE<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;32G&#34;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-v ./win:/storage <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>dockurr/windows
+</span></span></code></pre></div><ul><li><code>--net</code>需要与镜像下载容器<code>winiso</code>处于同一个网络(<code>windows_network</code>)。</li><li><code>-e VERSION</code>可指定windows镜像版本，指定为本地镜像下载容器服务路径可提升下载速度。</li></ul><ol start=3><li>安装windows</li></ol><p>在浏览器中访问<code>http://127.0.0.1:8006</code>，执行windows安装流程。安装完成后开启远程桌面访问，后续可通过<code>Remmina</code>等支持<code>RDP</code>协议的工具连接<code>3399</code>端口访问远程桌面。</p><ol start=4><li>移除临时容器（可选）</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>docker rm -f winiso
+</span></span></code></pre></div><ol start=5><li>移除临时网络（可选）</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span><span style=color:#75715e># docker network connect bridge windows</span>
+</span></span><span style=display:flex><span>docker network disconnect windows_network windows
+</span></span><span style=display:flex><span>docker network rm windows_network
+</span></span></code></pre></div><p>当前Windows容器在首次启动时将NetworkMode配置为windows_network，通过上述命令移除windows_network后，重启Windows容器会提示找不到windows_network而报错。因此，需重建Windows容器：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>docker rm -f windows
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>docker run <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>--name windows <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-d <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-p 127.0.0.1:3399:3389 <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>--device<span style=color:#f92672>=</span>/dev/kvm <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>--cap-add NET_ADMIN <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>--stop-timeout <span style=color:#ae81ff>120</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-e VERSION<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;http://winiso/ltsc10.iso&#34;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-e RAM_SIZE<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;4G&#34;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-e CPU_CORES<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;2&#34;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-e DISK_SIZE<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;32G&#34;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-v ./win:/storage <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>dockurr/windows
+</span></span></code></pre></div><p>重建Windows容器时，将直接基于<code>./win</code>中的内容启动容器。同时，以下几个配置已不再需要：<code>-p 127.0.0.1:8006:8006 </code>、<code>--net windows_network</code>。</p><blockquote><p>参见<a href=https://github.com/dockurr/docker-windows>官方Github页面</a>与<a href=https://zhuanlan.zhihu.com/p/686351917>这篇文章
+</a>。</p></blockquote></div><footer class=post-footer><ul class=post-tags><li><a href=https://luanrz.github.io/tags/linux/>Linux</a></li><li><a href=https://luanrz.github.io/tags/%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/>命令备忘录</a></li><li><a href=https://luanrz.github.io/tags/docker/>Docker</a></li></ul><nav class=paginav><a class=prev href=https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/linux%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/><span class=title>« 上一页</span><br><span>Linux命令备忘录</span>
+</a><a class=next href=https://luanrz.github.io/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9F%A5%E8%AF%86%E5%A4%A7%E7%BA%B2/><span class=title>下一页 »</span><br><span>数据结构知识大纲</span></a></nav></footer></article></main><footer class=footer><span>&copy; 2024 <a href=https://luanrz.github.io/>luanrz's blog</a></span>
+<span>Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</a><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="复制";function s(){t.innerHTML="已复制！",setTimeout(()=>{t.innerHTML="复制"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>

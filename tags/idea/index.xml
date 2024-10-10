@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>IDEA on luanrz's blog</title><link>https://luanrz.github.io/tags/idea/</link><description>Recent content in IDEA on luanrz's blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 02 Apr 2021 09:50:12 +0000</lastBuildDate><atom:link href="https://luanrz.github.io/tags/idea/index.xml" rel="self" type="application/rss+xml"/><item><title>IDEA命令备忘录</title><link>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/idea%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/</link><pubDate>Fri, 02 Apr 2021 09:50:12 +0000</pubDate><guid>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/idea%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/</guid><description>&lt;h2 id="editor-basics">Editor Basics&lt;/h2>
+&lt;h3 id="actions">Actions&lt;/h3>
+&lt;p>&lt;code>Ctrl + Shift + A&lt;/code>&lt;/p>
+&lt;h3 id="select">Select&lt;/h3>
+&lt;p>&lt;code>Ctrl + Shift + →&lt;/code> Select a word&lt;/p>
+&lt;p>&lt;code>Ctrl + Shift + ←&lt;/code> Select a word&lt;/p>
+&lt;p>&lt;code>Ctrl + W&lt;/code> Extend the select&lt;/p>
+&lt;p>&lt;code>Ctrl + Shift + W&lt;/code> Shrink the select&lt;/p>
+&lt;p>&lt;code>Ctrl + A &lt;/code> Select whole file&lt;/p>
+&lt;h3 id="comment-line">Comment Line&lt;/h3>
+&lt;p>&lt;code>Ctrl + /&lt;/code> Comment out or uncomment line(s)&lt;/p>
+&lt;h3 id="delete-line">Delete Line&lt;/h3>
+&lt;p>&lt;code>Ctrl + Y&lt;/code> Delete line(s)&lt;/p>
+&lt;p>&lt;code>Ctrl + Z&lt;/code> Restore the deleted line(s)&lt;/p>
+&lt;h3 id="duplicate">Duplicate&lt;/h3>
+&lt;p>&lt;code>Ctrl + D&lt;/code> Duplicate line(s)&lt;/p></description></item><item><title>IDEA插件开发环境搭建</title><link>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/idea%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</link><pubDate>Sun, 03 May 2020 12:18:00 +0000</pubDate><guid>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/idea%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</guid><description>&lt;p>本文介绍了手动下载并安装IDEA插件开发环境依赖的过程, 以解决IDEA插件开发环境过程中下载Gradle包过慢的问题&lt;!-- raw HTML omitted -->如果你的网络环境可以正常下载依赖包, 本文对你来说是通篇废话, 请忽略.&lt;/p></description></item></channel></rss>
