@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>IDEA on luanrz's blog</title><link>https://luanrz.github.io/tags/idea/</link><description>Recent content in IDEA on luanrz's blog</description><generator>Hugo -- 0.140.2</generator><language>zh-cn</language><lastBuildDate>Tue, 31 Dec 2024 11:05:53 +0800</lastBuildDate><atom:link href="https://luanrz.github.io/tags/idea/index.xml" rel="self" type="application/rss+xml"/><item><title>IDEA命令备忘录</title><link>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/idea%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/</link><pubDate>Tue, 31 Dec 2024 11:05:53 +0800</pubDate><guid>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/idea%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/</guid><description>&lt;h2 id="容易混淆的快捷键">容易混淆的快捷键&lt;/h2>
+&lt;blockquote>
+&lt;p>完整常用快捷键详见 &lt;a href="https://www.jetbrains.com/help/idea/reference-keymap-win-default.html?keymap=Windows">Predefined Windows keymap&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Key&lt;/th>
+&lt;th>Shortcut&lt;/th>
+&lt;th>Action&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>F2&lt;/code>&lt;/td>
+&lt;td>&lt;code>Ctrl F2&lt;/code>&lt;/td>
+&lt;td>Stop&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F6&lt;/code>&lt;/td>
+&lt;td>&lt;code>Shift F6&lt;/code>&lt;/td>
+&lt;td>Rename&amp;hellip;&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F6&lt;/code>&lt;/td>
+&lt;td>&lt;code>Ctrl F6&lt;/code>&lt;/td>
+&lt;td>Change Signature&amp;hellip;&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F6&lt;/code>&lt;/td>
+&lt;td>&lt;code>F6&lt;/code>&lt;/td>
+&lt;td>Move&amp;hellip;&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F7&lt;/code>&lt;/td>
+&lt;td>&lt;code>Alt F7&lt;/code>&lt;/td>
+&lt;td>Find Usages&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F7&lt;/code>&lt;/td>
+&lt;td>&lt;del>&lt;code>Ctrl Alt F7&lt;/code>&lt;/del>&lt;/td>
+&lt;td>Show Usages&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F7&lt;/code>&lt;/td>
+&lt;td>&lt;code>Ctrl Shift F7&lt;/code>&lt;/td>
+&lt;td>Highlight Usages in File&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F7&lt;/code>&lt;/td>
+&lt;td>&lt;code>F7&lt;/code>&lt;/td>
+&lt;td>Step Into / Next Difference&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F7&lt;/code>&lt;/td>
+&lt;td>&lt;code>Shift F7&lt;/code>&lt;/td>
+&lt;td>Smart Step Into / Previous Difference&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F7&lt;/code>&lt;/td>
+&lt;td>&lt;code>Alt Shift F7&lt;/code>&lt;/td>
+&lt;td>Force Step Into&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F8&lt;/code>&lt;/td>
+&lt;td>&lt;code>F8&lt;/code>&lt;/td>
+&lt;td>Step Over&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F8&lt;/code>&lt;/td>
+&lt;td>&lt;code>Alt Shift F8&lt;/code>&lt;/td>
+&lt;td>Force Step Over&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F8&lt;/code>&lt;/td>
+&lt;td>&lt;code>Shift F8&lt;/code>&lt;/td>
+&lt;td>Step Out&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F8&lt;/code>&lt;/td>
+&lt;td>&lt;code>Alt F8&lt;/code>&lt;/td>
+&lt;td>Evaluate Expression&amp;hellip;&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F8&lt;/code>&lt;/td>
+&lt;td>&lt;del>&lt;code>Ctrl Alt F8&lt;/code>&lt;/del>&lt;/td>
+&lt;td>Quick Evaluate Expression&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F8&lt;/code>&lt;/td>
+&lt;td>&lt;code>Ctrl F8&lt;/code>&lt;/td>
+&lt;td>Toggle Line Breakpoint&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F8&lt;/code>&lt;/td>
+&lt;td>&lt;code>Ctrl Alt Shift F8&lt;/code>&lt;/td>
+&lt;td>Toggle Temporary Line Breakpoint&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F8&lt;/code>&lt;/td>
+&lt;td>&lt;code>Ctrl Shift F8&lt;/code>&lt;/td>
+&lt;td>View Breakpoints&amp;hellip; / Edit Breakpoint&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F9&lt;/code>&lt;/td>
+&lt;td>&lt;code>Ctrl F9&lt;/code>&lt;/td>
+&lt;td>Build Project&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F9&lt;/code>&lt;/td>
+&lt;td>&lt;code>Ctrl Shift F9&lt;/code>&lt;/td>
+&lt;td>Rebuild&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F9&lt;/code>&lt;/td>
+&lt;td>&lt;code>Shift F9&lt;/code>&lt;/td>
+&lt;td>Debug context configuration&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F9&lt;/code>&lt;/td>
+&lt;td>&lt;code>Alt Shift F9&lt;/code>&lt;/td>
+&lt;td>Debug&amp;hellip;&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F9&lt;/code>&lt;/td>
+&lt;td>&lt;code>F9&lt;/code>&lt;/td>
+&lt;td>Resume Program&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F9&lt;/code>&lt;/td>
+&lt;td>&lt;code>Alt F9&lt;/code>&lt;/td>
+&lt;td>Run To Cursor&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F9&lt;/code>&lt;/td>
+&lt;td>&lt;del>&lt;code>Ctrl Alt F9&lt;/code>&lt;/del>&lt;/td>
+&lt;td>Force Run To Cursor&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F10&lt;/code>&lt;/td>
+&lt;td>&lt;code>Shift F10&lt;/code>&lt;/td>
+&lt;td>Run context configuration&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F10&lt;/code>&lt;/td>
+&lt;td>&lt;code>Alt Shift F10&lt;/code>&lt;/td>
+&lt;td>Run&amp;hellip;&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F11&lt;/code>&lt;/td>
+&lt;td>&lt;code>F11&lt;/code>&lt;/td>
+&lt;td>Toggle Anonymous Bookmark&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F11&lt;/code>&lt;/td>
+&lt;td>&lt;code>Ctrl F11&lt;/code>&lt;/td>
+&lt;td>Toggle Bookmark with&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F11&lt;/code>&lt;/td>
+&lt;td>&lt;code>Shift F11&lt;/code>&lt;/td>
+&lt;td>Show All Bookmarks&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F11&lt;/code>&lt;/td>
+&lt;td>&lt;code>Ctrl Shift F11&lt;/code>&lt;/td>
+&lt;td>Show Mnemonic Bookmarks&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F12&lt;/code>&lt;/td>
+&lt;td>&lt;code>Ctrl F12&lt;/code>&lt;/td>
+&lt;td>File Structure&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F12&lt;/code>&lt;/td>
+&lt;td>&lt;code>Ctrl Shift F12&lt;/code>&lt;/td>
+&lt;td>Hide All Tool Windows&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F12&lt;/code>&lt;/td>
+&lt;td>&lt;code>F12&lt;/code>&lt;/td>
+&lt;td>Jump to Last Tool Window&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F12&lt;/code>&lt;/td>
+&lt;td>&lt;code>Alt F12&lt;/code>&lt;/td>
+&lt;td>Show Terminal window&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Enter&lt;/code>&lt;/td>
+&lt;td>&lt;code>Alt Enter&lt;/code>&lt;/td>
+&lt;td>Show Intention Actions&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Enter&lt;/code>&lt;/td>
+&lt;td>&lt;code>Shift Enter&lt;/code>&lt;/td>
+&lt;td>Start New Line&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Enter&lt;/code>&lt;/td>
+&lt;td>&lt;code>Ctrl Alt Enter&lt;/code>&lt;/td>
+&lt;td>Start New Line Before Current&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Enter&lt;/code>&lt;/td>
+&lt;td>&lt;code>Ctrl Shift Enter&lt;/code>&lt;/td>
+&lt;td>Complete Current Statement&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>←&lt;/code>/&lt;code>→&lt;/code>&lt;/td>
+&lt;td>&lt;code>Ctrl ←&lt;/code> / &lt;code>→&lt;/code>&lt;/td>
+&lt;td>Move Caret to Previous/Next Word&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>←&lt;/code>/&lt;code>→&lt;/code>&lt;/td>
+&lt;td>&lt;code>Shift ←&lt;/code> / &lt;code>→&lt;/code>&lt;/td>
+&lt;td>Left/Right with Selection&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>←&lt;/code>/&lt;code>→&lt;/code>&lt;/td>
+&lt;td>&lt;code>Ctrl Shift ←&lt;/code> / &lt;code>→&lt;/code>&lt;/td>
+&lt;td>Move Caret to Previous/Next Word with Selection&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>←&lt;/code>/&lt;code>→&lt;/code>&lt;/td>
+&lt;td>&lt;code>Ctrl Alt Shift ←&lt;/code> / &lt;code>→&lt;/code>&lt;/td>
+&lt;td>Move Statement Left/Right / Stretch to Left/Right&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>←&lt;/code>/&lt;code>→&lt;/code>&lt;/td>
+&lt;td>&lt;code>Ctrl Alt ←&lt;/code> / &lt;code>→&lt;/code>&lt;/td>
+&lt;td>Back/Forward&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>←&lt;/code>/&lt;code>→&lt;/code>&lt;/td>
+&lt;td>&lt;code>Alt ←&lt;/code> / &lt;code>→&lt;/code>&lt;/td>
+&lt;td>Select Previous/Next Tab&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>↑&lt;/code>/&lt;code>↓&lt;/code>&lt;/td>
+&lt;td>&lt;code>Alt ↑&lt;/code> / &lt;code>↓&lt;/code>&lt;/td>
+&lt;td>Previous/Next Method&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>↑&lt;/code>/&lt;code>↓&lt;/code>&lt;/td>
+&lt;td>&lt;code>Shift ↑&lt;/code> / &lt;code>↓&lt;/code>&lt;/td>
+&lt;td>Up/Down with Selection&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>↑&lt;/code>/&lt;code>↓&lt;/code>&lt;/td>
+&lt;td>&lt;code>Ctrl Shift ↑&lt;/code> / &lt;code>↓&lt;/code>&lt;/td>
+&lt;td>Move Statement Up/Down&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>↑&lt;/code>/&lt;code>↓&lt;/code>&lt;/td>
+&lt;td>&lt;code>Alt Shift ↑&lt;/code> / &lt;code>↓&lt;/code>&lt;/td>
+&lt;td>Move Line Up/Down&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>↑&lt;/code>/&lt;code>↓&lt;/code>&lt;/td>
+&lt;td>&lt;code>Ctrl Alt ↑&lt;/code> / &lt;code>↓&lt;/code>&lt;/td>
+&lt;td>Previous/Next Occurrence&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>↑&lt;/code>/&lt;code>↓&lt;/code>&lt;/td>
+&lt;td>&lt;code>Ctrl Alt Shift ↑&lt;/code> / &lt;code>↓&lt;/code>&lt;/td>
+&lt;td>Previous/Next Change / Stretch to Top/Bottom&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>`&lt;/td>
+&lt;td>&lt;del>Alt `&lt;/del>&lt;/td>
+&lt;td>VCS Operations Popup&amp;hellip;&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="系统快捷键清除">系统快捷键清除&lt;/h2>
+&lt;p>1）XFCE：&lt;/p></description></item><item><title>IDEA插件开发环境搭建</title><link>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/idea%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</link><pubDate>Sun, 03 May 2020 12:18:00 +0000</pubDate><guid>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/idea%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</guid><description>&lt;p>本文介绍了手动下载并安装IDEA插件开发环境依赖的过程, 以解决IDEA插件开发环境过程中下载Gradle包过慢的问题&lt;!-- raw HTML omitted -->如果你的网络环境可以正常下载依赖包, 本文对你来说是通篇废话, 请忽略.&lt;/p></description></item></channel></rss>
