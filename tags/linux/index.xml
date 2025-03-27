@@ -1,0 +1,1006 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Linux on luanrz's blog</title><link>https://luanrz.github.io/tags/linux/</link><description>Recent content in Linux on luanrz's blog</description><generator>Hugo -- 0.145.0</generator><language>zh-cn</language><lastBuildDate>Tue, 31 Dec 2024 11:05:53 +0800</lastBuildDate><atom:link href="https://luanrz.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml"/><item><title>IDEA命令备忘录</title><link>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/idea%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/</link><pubDate>Tue, 31 Dec 2024 11:05:53 +0800</pubDate><guid>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/idea%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/</guid><description>&lt;h2 id="容易混淆的快捷键">容易混淆的快捷键&lt;/h2>
+&lt;blockquote>
+&lt;p>完整常用快捷键详见 &lt;a href="https://www.jetbrains.com/help/idea/reference-keymap-win-default.html?keymap=Windows">Predefined Windows keymap&lt;/a>&lt;/p>&lt;/blockquote>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Key&lt;/th>
+&lt;th>Shortcut&lt;/th>
+&lt;th>Action&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>F2&lt;/code>&lt;/td>
+&lt;td>&lt;code>Ctrl F2&lt;/code>&lt;/td>
+&lt;td>Stop&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F6&lt;/code>&lt;/td>
+&lt;td>&lt;code>Shift F6&lt;/code>&lt;/td>
+&lt;td>Rename&amp;hellip;&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F6&lt;/code>&lt;/td>
+&lt;td>&lt;code>Ctrl F6&lt;/code>&lt;/td>
+&lt;td>Change Signature&amp;hellip;&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F6&lt;/code>&lt;/td>
+&lt;td>&lt;code>F6&lt;/code>&lt;/td>
+&lt;td>Move&amp;hellip;&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F7&lt;/code>&lt;/td>
+&lt;td>&lt;code>Alt F7&lt;/code>&lt;/td>
+&lt;td>Find Usages&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F7&lt;/code>&lt;/td>
+&lt;td>&lt;del>&lt;code>Ctrl Alt F7&lt;/code>&lt;/del>&lt;/td>
+&lt;td>Show Usages&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F7&lt;/code>&lt;/td>
+&lt;td>&lt;code>Ctrl Shift F7&lt;/code>&lt;/td>
+&lt;td>Highlight Usages in File&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F7&lt;/code>&lt;/td>
+&lt;td>&lt;code>F7&lt;/code>&lt;/td>
+&lt;td>Step Into / Next Difference&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F7&lt;/code>&lt;/td>
+&lt;td>&lt;code>Shift F7&lt;/code>&lt;/td>
+&lt;td>Smart Step Into / Previous Difference&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F7&lt;/code>&lt;/td>
+&lt;td>&lt;code>Alt Shift F7&lt;/code>&lt;/td>
+&lt;td>Force Step Into&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F8&lt;/code>&lt;/td>
+&lt;td>&lt;code>F8&lt;/code>&lt;/td>
+&lt;td>Step Over&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F8&lt;/code>&lt;/td>
+&lt;td>&lt;code>Alt Shift F8&lt;/code>&lt;/td>
+&lt;td>Force Step Over&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F8&lt;/code>&lt;/td>
+&lt;td>&lt;code>Shift F8&lt;/code>&lt;/td>
+&lt;td>Step Out&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F8&lt;/code>&lt;/td>
+&lt;td>&lt;code>Alt F8&lt;/code>&lt;/td>
+&lt;td>Evaluate Expression&amp;hellip;&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F8&lt;/code>&lt;/td>
+&lt;td>&lt;del>&lt;code>Ctrl Alt F8&lt;/code>&lt;/del>&lt;/td>
+&lt;td>Quick Evaluate Expression&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F8&lt;/code>&lt;/td>
+&lt;td>&lt;code>Ctrl F8&lt;/code>&lt;/td>
+&lt;td>Toggle Line Breakpoint&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F8&lt;/code>&lt;/td>
+&lt;td>&lt;code>Ctrl Alt Shift F8&lt;/code>&lt;/td>
+&lt;td>Toggle Temporary Line Breakpoint&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F8&lt;/code>&lt;/td>
+&lt;td>&lt;code>Ctrl Shift F8&lt;/code>&lt;/td>
+&lt;td>View Breakpoints&amp;hellip; / Edit Breakpoint&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F9&lt;/code>&lt;/td>
+&lt;td>&lt;code>Ctrl F9&lt;/code>&lt;/td>
+&lt;td>Build Project&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F9&lt;/code>&lt;/td>
+&lt;td>&lt;code>Ctrl Shift F9&lt;/code>&lt;/td>
+&lt;td>Rebuild&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F9&lt;/code>&lt;/td>
+&lt;td>&lt;code>Shift F9&lt;/code>&lt;/td>
+&lt;td>Debug context configuration&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F9&lt;/code>&lt;/td>
+&lt;td>&lt;code>Alt Shift F9&lt;/code>&lt;/td>
+&lt;td>Debug&amp;hellip;&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F9&lt;/code>&lt;/td>
+&lt;td>&lt;code>F9&lt;/code>&lt;/td>
+&lt;td>Resume Program&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F9&lt;/code>&lt;/td>
+&lt;td>&lt;code>Alt F9&lt;/code>&lt;/td>
+&lt;td>Run To Cursor&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F9&lt;/code>&lt;/td>
+&lt;td>&lt;del>&lt;code>Ctrl Alt F9&lt;/code>&lt;/del>&lt;/td>
+&lt;td>Force Run To Cursor&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F10&lt;/code>&lt;/td>
+&lt;td>&lt;code>Shift F10&lt;/code>&lt;/td>
+&lt;td>Run context configuration&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F10&lt;/code>&lt;/td>
+&lt;td>&lt;code>Alt Shift F10&lt;/code>&lt;/td>
+&lt;td>Run&amp;hellip;&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F11&lt;/code>&lt;/td>
+&lt;td>&lt;code>F11&lt;/code>&lt;/td>
+&lt;td>Toggle Anonymous Bookmark&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F11&lt;/code>&lt;/td>
+&lt;td>&lt;code>Ctrl F11&lt;/code>&lt;/td>
+&lt;td>Toggle Bookmark with&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F11&lt;/code>&lt;/td>
+&lt;td>&lt;code>Shift F11&lt;/code>&lt;/td>
+&lt;td>Show All Bookmarks&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F11&lt;/code>&lt;/td>
+&lt;td>&lt;code>Ctrl Shift F11&lt;/code>&lt;/td>
+&lt;td>Show Mnemonic Bookmarks&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F12&lt;/code>&lt;/td>
+&lt;td>&lt;code>Ctrl F12&lt;/code>&lt;/td>
+&lt;td>File Structure&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F12&lt;/code>&lt;/td>
+&lt;td>&lt;code>Ctrl Shift F12&lt;/code>&lt;/td>
+&lt;td>Hide All Tool Windows&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F12&lt;/code>&lt;/td>
+&lt;td>&lt;code>F12&lt;/code>&lt;/td>
+&lt;td>Jump to Last Tool Window&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>F12&lt;/code>&lt;/td>
+&lt;td>&lt;code>Alt F12&lt;/code>&lt;/td>
+&lt;td>Show Terminal window&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Enter&lt;/code>&lt;/td>
+&lt;td>&lt;code>Alt Enter&lt;/code>&lt;/td>
+&lt;td>Show Intention Actions&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Enter&lt;/code>&lt;/td>
+&lt;td>&lt;code>Shift Enter&lt;/code>&lt;/td>
+&lt;td>Start New Line&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Enter&lt;/code>&lt;/td>
+&lt;td>&lt;code>Ctrl Alt Enter&lt;/code>&lt;/td>
+&lt;td>Start New Line Before Current&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>Enter&lt;/code>&lt;/td>
+&lt;td>&lt;code>Ctrl Shift Enter&lt;/code>&lt;/td>
+&lt;td>Complete Current Statement&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>←&lt;/code>/&lt;code>→&lt;/code>&lt;/td>
+&lt;td>&lt;code>Ctrl ←&lt;/code> / &lt;code>→&lt;/code>&lt;/td>
+&lt;td>Move Caret to Previous/Next Word&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>←&lt;/code>/&lt;code>→&lt;/code>&lt;/td>
+&lt;td>&lt;code>Shift ←&lt;/code> / &lt;code>→&lt;/code>&lt;/td>
+&lt;td>Left/Right with Selection&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>←&lt;/code>/&lt;code>→&lt;/code>&lt;/td>
+&lt;td>&lt;code>Ctrl Shift ←&lt;/code> / &lt;code>→&lt;/code>&lt;/td>
+&lt;td>Move Caret to Previous/Next Word with Selection&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>←&lt;/code>/&lt;code>→&lt;/code>&lt;/td>
+&lt;td>&lt;code>Ctrl Alt Shift ←&lt;/code> / &lt;code>→&lt;/code>&lt;/td>
+&lt;td>Move Statement Left/Right / Stretch to Left/Right&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>←&lt;/code>/&lt;code>→&lt;/code>&lt;/td>
+&lt;td>&lt;code>Ctrl Alt ←&lt;/code> / &lt;code>→&lt;/code>&lt;/td>
+&lt;td>Back/Forward&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>←&lt;/code>/&lt;code>→&lt;/code>&lt;/td>
+&lt;td>&lt;code>Alt ←&lt;/code> / &lt;code>→&lt;/code>&lt;/td>
+&lt;td>Select Previous/Next Tab&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>↑&lt;/code>/&lt;code>↓&lt;/code>&lt;/td>
+&lt;td>&lt;code>Alt ↑&lt;/code> / &lt;code>↓&lt;/code>&lt;/td>
+&lt;td>Previous/Next Method&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>↑&lt;/code>/&lt;code>↓&lt;/code>&lt;/td>
+&lt;td>&lt;code>Shift ↑&lt;/code> / &lt;code>↓&lt;/code>&lt;/td>
+&lt;td>Up/Down with Selection&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>↑&lt;/code>/&lt;code>↓&lt;/code>&lt;/td>
+&lt;td>&lt;code>Ctrl Shift ↑&lt;/code> / &lt;code>↓&lt;/code>&lt;/td>
+&lt;td>Move Statement Up/Down&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>↑&lt;/code>/&lt;code>↓&lt;/code>&lt;/td>
+&lt;td>&lt;code>Alt Shift ↑&lt;/code> / &lt;code>↓&lt;/code>&lt;/td>
+&lt;td>Move Line Up/Down&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>↑&lt;/code>/&lt;code>↓&lt;/code>&lt;/td>
+&lt;td>&lt;code>Ctrl Alt ↑&lt;/code> / &lt;code>↓&lt;/code>&lt;/td>
+&lt;td>Previous/Next Occurrence&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>↑&lt;/code>/&lt;code>↓&lt;/code>&lt;/td>
+&lt;td>&lt;code>Ctrl Alt Shift ↑&lt;/code> / &lt;code>↓&lt;/code>&lt;/td>
+&lt;td>Previous/Next Change / Stretch to Top/Bottom&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>`&lt;/td>
+&lt;td>&lt;del>Alt `&lt;/del>&lt;/td>
+&lt;td>VCS Operations Popup&amp;hellip;&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="系统快捷键清除">系统快捷键清除&lt;/h2>
+&lt;p>1）XFCE：&lt;/p></description></item><item><title>Vim命令备忘录</title><link>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/vim%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/</link><pubDate>Thu, 12 Dec 2024 15:23:55 +0800</pubDate><guid>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/vim%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/</guid><description>&lt;h1 id="光标移动">光标移动&lt;/h1>
+&lt;h2 id="移动计数">移动计数&lt;/h2>
+&lt;ul>
+&lt;li>&lt;code>[Number] [Motion]&lt;/code> 重复动作多次，如&lt;code>6j&lt;/code>向下移动6行&lt;/li>
+&lt;/ul>
+&lt;h2 id="字符导航">字符导航&lt;/h2>
+&lt;ul>
+&lt;li>&lt;code>h&lt;/code> 向左移动光标&lt;/li>
+&lt;li>&lt;code>j&lt;/code> 向下移动光标&lt;/li>
+&lt;li>&lt;code>k&lt;/code> 向上移动光标&lt;/li>
+&lt;li>&lt;code>l&lt;/code> 向右移动光标&lt;/li>
+&lt;/ul>
+&lt;h2 id="单词导航">单词导航&lt;/h2>
+&lt;ul>
+&lt;li>&lt;code>w&lt;/code> 移动光标到下一个单词的开头&lt;/li>
+&lt;li>&lt;code>e&lt;/code> 移动光标到当前单词的结尾&lt;/li>
+&lt;li>&lt;code>b&lt;/code> 移动光标到上一个单词的开头&lt;/li>
+&lt;li>&lt;code>ge&lt;/code> 移动光标到上一个单词的结尾&lt;/li>
+&lt;/ul>
+&lt;h2 id="行导航">行导航&lt;/h2>
+&lt;ul>
+&lt;li>&lt;code>0&lt;/code> 跳到本行第一个字符&lt;/li>
+&lt;li>&lt;code>^&lt;/code> 跳到本行第一个非空字符&lt;/li>
+&lt;li>&lt;code>$&lt;/code> 跳到本行最后一个字符&lt;/li>
+&lt;li>&lt;code>g_&lt;/code> 跳到本行最后一个非空字符&lt;/li>
+&lt;li>&lt;code>[Number]|&lt;/code> 跳到本行指定列&lt;/li>
+&lt;li>&lt;code>f&lt;/code> 在同一行向后搜索第一个匹配&lt;/li>
+&lt;li>&lt;code>F&lt;/code> 在同一行向前搜索第一个匹配&lt;/li>
+&lt;li>&lt;code>t&lt;/code> 在同一行向后搜索第一个匹配，并停在匹配前&lt;/li>
+&lt;li>&lt;code>T&lt;/code> 在同一行向前搜索第一个匹配，并停在匹配前&lt;/li>
+&lt;li>&lt;code>;&lt;/code> 在同一行重复最近一次搜索&lt;/li>
+&lt;li>&lt;code>,&lt;/code> 在同一行向相反方向重复最近一次搜索&lt;/li>
+&lt;/ul>
+&lt;h2 id="句子和段落导航">句子和段落导航&lt;/h2>
+&lt;ul>
+&lt;li>&lt;code>(&lt;/code> 跳到前一个句子&lt;/li>
+&lt;li>&lt;code>)&lt;/code> 跳到下一个句子&lt;/li>
+&lt;li>&lt;code>{&lt;/code> 跳转到上一个段落&lt;/li>
+&lt;li>&lt;code>}&lt;/code> 跳转到下一个段落&lt;/li>
+&lt;/ul>
+&lt;h2 id="匹配导航">匹配导航&lt;/h2>
+&lt;ul>
+&lt;li>&lt;code>%&lt;/code> 查找配对的括号 &lt;code>)&lt;/code>、&lt;code>]&lt;/code>、&lt;code>}&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;h2 id="行号导航">行号导航&lt;/h2>
+&lt;ul>
+&lt;li>&lt;code>gg&lt;/code> 跳转到第一行&lt;/li>
+&lt;li>&lt;code>G&lt;/code> 跳转到最后一行&lt;/li>
+&lt;li>&lt;code>[Number] G&lt;/code> 跳转到指定行，如 &lt;code>6G&lt;/code> 移动到第6行&lt;/li>
+&lt;li>&lt;code>ctrl-g&lt;/code> 显示当前光标所在行位置以及文件状态信息&lt;/li>
+&lt;li>&lt;code>:set relativenumber number&lt;/code> 展示当前行号和其他行相对当前行的行号&lt;/li>
+&lt;/ul>
+&lt;h2 id="窗格导航">窗格导航&lt;/h2>
+&lt;ul>
+&lt;li>&lt;code>H&lt;/code> 跳转到屏幕的顶部&lt;/li>
+&lt;li>&lt;code>M&lt;/code> 跳转到屏幕的中间&lt;/li>
+&lt;li>&lt;code>L&lt;/code> 跳转到屏幕的底部&lt;/li>
+&lt;li>&lt;code>nH&lt;/code> 跳转到距离顶部n行的位置&lt;/li>
+&lt;li>&lt;code>nL&lt;/code> 跳转到距离底部n行的位置&lt;/li>
+&lt;/ul>
+&lt;h2 id="滚动">滚动&lt;/h2>
+&lt;ul>
+&lt;li>&lt;code>ctrl-e&lt;/code> 向下滚一行&lt;/li>
+&lt;li>&lt;code>ctrl-d&lt;/code> 向下翻半页（d = down）&lt;/li>
+&lt;li>&lt;code>ctrl-f&lt;/code> 向下一翻页（f = forword ）&lt;/li>
+&lt;li>&lt;code>ctrl-y&lt;/code> 向上滚一行&lt;/li>
+&lt;li>&lt;code>ctlr-u&lt;/code> 向上翻半页（u = up）&lt;/li>
+&lt;li>&lt;code>ctrl-b&lt;/code> 向上一翻页（b = backward）&lt;/li>
+&lt;li>&lt;code>zz&lt;/code> 让光标所在的行居屏幕中央&lt;/li>
+&lt;li>&lt;code>zt&lt;/code> 让光标所在的行居屏幕最上一行（t = top）&lt;/li>
+&lt;li>&lt;code>zb&lt;/code> 让光标所在的行居屏幕最下一行（b = bottom）&lt;/li>
+&lt;/ul>
+&lt;h2 id="搜索导航">搜索导航&lt;/h2>
+&lt;ul>
+&lt;li>&lt;code>/&lt;/code> 向后搜索一个匹配&lt;/li>
+&lt;li>&lt;code>?&lt;/code> 向前搜素一个匹配&lt;/li>
+&lt;li>&lt;code>n&lt;/code> 重复上一次搜索(和上一次方向相同)&lt;/li>
+&lt;li>&lt;code>N&lt;/code> 重复上一次搜索(和上一次方向相反)&lt;/li>
+&lt;li>&lt;code>*&lt;/code> 向后查找光标所在的完整单词&lt;/li>
+&lt;li>&lt;code>#&lt;/code> 向前查找光标所在的完整单词&lt;/li>
+&lt;li>&lt;code>g*&lt;/code> 向后搜索光标所在的单词&lt;/li>
+&lt;li>&lt;code>g#&lt;/code> 向前搜索光标所在的单词&lt;/li>
+&lt;li>&lt;code>:set hlsearch&lt;/code> 设置搜索高亮&lt;/li>
+&lt;li>&lt;code>:set incsearch&lt;/code> 设置增量搜索，输入时不断匹配输入内容&lt;/li>
+&lt;/ul>
+&lt;h2 id="位置标记">位置标记&lt;/h2>
+&lt;ul>
+&lt;li>&lt;code>m[Mark]&lt;/code> 用标签标记一个位置&lt;/li>
+&lt;li>&lt;code>'[Mark]&lt;/code> 跳转到指定标签的行&lt;/li>
+&lt;li>&lt;code> `[Mark]&lt;/code> 精确回到指定标签的位置(行和列)&lt;/li>
+&lt;li>&lt;code>:marks&lt;/code> 查看所有标记&lt;/li>
+&lt;/ul>
+&lt;h2 id="跳转">跳转&lt;/h2>
+&lt;ul>
+&lt;li>&lt;code>:jumps&lt;/code> 查看跳转列表&lt;/li>
+&lt;li>&lt;code>ctrl-i&lt;/code> 跳转到之后的位置&lt;/li>
+&lt;li>&lt;code>ctrl-o&lt;/code> 跳转到之前的位置&lt;/li>
+&lt;/ul>
+&lt;h1 id="编辑">编辑&lt;/h1>
+&lt;ul>
+&lt;li>&lt;code>i&lt;/code> 在光标处，进入插入模式&lt;/li>
+&lt;li>&lt;code>a&lt;/code> 在光标所在单词之后，进入插入模式&lt;/li>
+&lt;li>&lt;code>A&lt;/code> 在光标所在行的行末，进入插入模式&lt;/li>
+&lt;li>&lt;code>o&lt;/code> 在光标下方另起一行，进入插入模式&lt;/li>
+&lt;li>&lt;code>O&lt;/code> 在光标上方另起一行，进入插入模式&lt;/li>
+&lt;li>&lt;code>c&lt;/code> 更改（删除，并进入插入模式）&lt;/li>
+&lt;li>&lt;code>d&lt;/code> 删除&lt;/li>
+&lt;li>&lt;code>y&lt;/code> 复制&lt;/li>
+&lt;li>&lt;code>p&lt;/code> 粘贴&lt;/li>
+&lt;li>&lt;code>u&lt;/code> 撤销&lt;/li>
+&lt;li>&lt;code>ctrl-r&lt;/code> 恢复撤销&lt;/li>
+&lt;li>&lt;code>x&lt;/code> 删除光标后的一个字符&lt;/li>
+&lt;li>&lt;code>s&lt;/code> 删除光标后的一个字符，进入插入模式&lt;/li>
+&lt;li>&lt;code>r&lt;/code> 替换光标后的一个字符&lt;/li>
+&lt;li>&lt;code>R&lt;/code> 连续替换光标后的多个字符&lt;/li>
+&lt;/ul>
+&lt;h1 id="替换">替换&lt;/h1>
+&lt;ul>
+&lt;li>&lt;code>:%s/old/new&lt;/code> 将第一个查找到的old替换为new&lt;/li>
+&lt;li>&lt;code>:%s/old/new/g&lt;/code> 将所有的old替换为new&lt;/li>
+&lt;li>&lt;code>:%s/old/new/gc&lt;/code> 将所有的old替换为new，替换时需要确认&lt;/li>
+&lt;li>&lt;code>[Number],[Number]s/old/new/g&lt;/code> 将指定两行的old替换为new&lt;/li>
+&lt;/ul>
+&lt;h1 id="其它">其它&lt;/h1>
+&lt;ul>
+&lt;li>&lt;code>:! [COMMAND]&lt;/code> 执行外部命令&lt;/li>
+&lt;li>&lt;code>:w [FILENAME]&lt;/code> 另存为文件&lt;/li>
+&lt;li>&lt;code>v :w [FILENAME]&lt;/code> 在可视模式下，将选中内容另存为文件&lt;/li>
+&lt;li>&lt;code>:r [FILENAME]&lt;/code> 粘贴文件内容&lt;/li>
+&lt;li>&lt;code>:r ![COMMOND]&lt;/code> 粘贴外部命令输出&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>参考文档&lt;/p></description></item><item><title>Linux命令备忘录</title><link>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/linux%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/</link><pubDate>Wed, 09 Oct 2024 14:15:29 +0800</pubDate><guid>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/linux%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/</guid><description>&lt;h2 id="会话管理使用screen恢复掉线的shell会话">会话管理——使用&lt;code>screen&lt;/code>恢复掉线的shell会话&lt;/h2>
+&lt;p>&lt;code>screen -S myScreen&lt;/code>&lt;/p>
+&lt;p>&lt;code>screen -r myScreen&lt;/code>&lt;/p>
+&lt;h2 id="显示当前目录所占用的磁盘空间">显示当前目录所占用的磁盘空间&lt;/h2>
+&lt;p>&lt;code>du -h --max-depth=1&lt;/code>&lt;/p>
+&lt;h2 id="访问nfs服务">访问NFS服务&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># ArchLinux下安装nfs-utils，不然没有showmount命令&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo pacman -S nfs-utils
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 显示指定IP上挂载的卷&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>showmount -e 192.168.1.105
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 开始挂载&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo mount -t nfs -o proto&lt;span style="color:#f92672">=&lt;/span>tcp,nolock 192.168.1.105:/volume1/homes homes/
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="访问smb服务">访问SMB服务&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 安装&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo pacman -S smbclient
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 显示共享目录&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>smbclient -L 192.168.0.100 -U username%password
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 进入上述共享目录中的directory目录&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>smbclient //192.168.0.100/directory -U username%password
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="一键删除所有项目下的target">一键删除所有项目下的target&lt;/h2>
+&lt;p>&lt;code>find . -name target | awk '{print &amp;quot;rm -rf &amp;quot;$1}' | sh&lt;/code>&lt;/p></description></item><item><title>Docker命令备忘录</title><link>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/docker%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/</link><pubDate>Sat, 14 Sep 2024 11:32:57 +0800</pubDate><guid>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/docker%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/</guid><description>&lt;h3 id="mysqlmariadb">MySQL(MariaDB)&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># MySQL&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>docker run &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>-d &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>-e MYSQL_ROOT_PASSWORD&lt;span style="color:#f92672">=&lt;/span>Passw0rd &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>-e MYSQL_DATABASE&lt;span style="color:#f92672">=&lt;/span>mydb &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>-e MYSQL_USER&lt;span style="color:#f92672">=&lt;/span>luanrz &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>-e MYSQL_PASSWORD&lt;span style="color:#f92672">=&lt;/span>Passw0rd &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>-p 127.0.0.1:3306:3306 &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>-v ~/Data/App/MySQL/data:/var/lib/mysql &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>--name&lt;span style="color:#f92672">=&lt;/span>mysql &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>mysql
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># phpMyAdmin&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>docker run &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>-d &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>-e PMA_USER&lt;span style="color:#f92672">=&lt;/span>root &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>-e PMA_PASSWORD&lt;span style="color:#f92672">=&lt;/span>Passw0rd &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>-p 127.0.0.1:8880:80 &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>--link mysql:db &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>--name phpmyadmin &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>phpmyadmin
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="redis">Redis&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># Redis&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>docker run &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>-d &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>-p 127.0.0.1:6379:6379 &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>--name&lt;span style="color:#f92672">=&lt;/span>redis &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>redis
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="xxl-job">XXL-JOB&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>docker run &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>-d &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>-e PARAMS&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;--spring.datasource.url=jdbc:mysql://db:3306/xxl_job?useUnicode=true&amp;amp;characterEncoding=UTF-8&amp;amp;autoReconnect=true&amp;amp;serverTimezone=Asia/Shanghai --spring.datasource.password=Passw0rd&amp;#34;&lt;/span> &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>-p 127.0.0.1:8881:8080 &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>-v ~/Data/App/XXL-JOB/logs:/data/applogs/xxl-job &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>--name xxl-job-admin &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>--link mysql:db &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>xuxueli/xxl-job-admin:2.4.0
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
+&lt;p>XXL-JOB依赖于&lt;a href="#mysqlmariadb">MySQL&lt;/a>，首次启动&lt;code>XXL-JOB&lt;/code>时需要执行&lt;a href="https://github.com/xuxueli/xxl-job/blob/2.4.0/doc/db/tables_xxl_job.sql">对应SQL&lt;/a>。&lt;/p></description></item><item><title>Git命令备忘录</title><link>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/git%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/</link><pubDate>Wed, 19 Oct 2022 09:11:08 +0000</pubDate><guid>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/git%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/</guid><description>&lt;h2 id="删除远程分支">删除远程分支&lt;/h2>
+&lt;p>&lt;code>git push origin --del rzluan-orderchange/ndc_xml_api_v3&lt;/code>&lt;/p>
+&lt;h2 id="克隆指定分支到指定文件夹">克隆指定分支到指定文件夹&lt;/h2>
+&lt;p>&lt;code>git clone -b [branch_name] [git_url] [dir_path]&lt;/code>&lt;/p>
+&lt;h2 id="变更统计">变更统计&lt;/h2>
+&lt;pre tabindex="0">&lt;code>git log --author=rzluan --after=&amp;#34;2019-11-01 00:00:00&amp;#34; --before=&amp;#34;2019-11-30 23:59:59&amp;#34; --name-only | grep &amp;#39;^src/*&amp;#39; | sort | uniq
+git log --author=rzluan --after=&amp;#34;2019-11-01 00:00:00&amp;#34; --before=&amp;#34;2019-11-30 23:59:59&amp;#34; --numstat | grep &amp;#34;src&amp;#34; | awk &amp;#39;{a[$3]+=$1;b[$3]+=$2}END{for(j in a) print j,&amp;#34;代码变更&amp;#34;(a[j]+b[j])&amp;#34;行&amp;#34;}&amp;#39;
+git log --author=rzluan --after=&amp;#34;2019-11-01 00:00:00&amp;#34; --before=&amp;#34;2019-11-30 23:59:59&amp;#34; --numstat | grep &amp;#34;src&amp;#34; | awk &amp;#39;{a[$3]+=($1+$2)}END{for(j in a) b+=a[j]} END{print &amp;#34;总行数&amp;#34;,b}&amp;#39;
+&lt;/code>&lt;/pre>&lt;h2 id="修改commit记录">修改commit记录&lt;/h2>
+&lt;ol>
+&lt;li>
+&lt;p>修改提交时间：&lt;code>git commit --amend --date=&amp;quot;May 8 12:00:30 2020 +0800&amp;quot;&lt;/code>&lt;/p></description></item><item><title>Hugo快速上手</title><link>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/hugo%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/</link><pubDate>Mon, 17 Oct 2022 20:50:15 +0800</pubDate><guid>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/hugo%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/</guid><description>&lt;p>Hugo是使用Go语言实现的静态博客生成工具，它的构建速度比Hexo更快。&lt;/p>
+&lt;h2 id="一安装hugo">一、安装Hugo&lt;/h2>
+&lt;p>以Linux与Mac为例，Hugo安装指令如下所示：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>pacman -S hugo &lt;span style="color:#75715e"># ArchLinux&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>brew install hugo &lt;span style="color:#75715e">#MacOS&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>在命令行输入&lt;code>hugo version&lt;/code>，正确显示了版本号，即证明安装成功了。更详细的安装过程可参见&lt;a href="https://gohugo.io/getting-started/installing/">hugo官方安装教程&lt;/a>&lt;/p></description></item><item><title>远程开发的4种解决方案</title><link>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91%E7%9A%844%E7%A7%8D%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</link><pubDate>Mon, 04 Jul 2022 10:28:27 +0000</pubDate><guid>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91%E7%9A%844%E7%A7%8D%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</guid><description>&lt;p>出于安全或性能等原因，公司将开发环境部署在了内网云环境中，内网云环境与外网完全隔离，且所有的开发环境资源（如数据库、Redis等）只能通过内网云环境访问，本地物理机无法直接访问这些测试资源，只能通过RDP协议间接访问内网云环境中的桌面，这给开发工作带来了极大的不便。为了能够直接在本地物理机进行开发，接下来将介绍4种远程开发的方法：&lt;/p>
+&lt;ol>
+&lt;li>使用nginx反向代理持续暴露远程资源&lt;/li>
+&lt;li>使用ssh转发临时暴露资源&lt;/li>
+&lt;li>使用Microsoft的Visual-Studio-Code远程开发工具&lt;/li>
+&lt;li>使用Jetbrains的Projector或Gateway远程开发工具&lt;/li>
+&lt;/ol></description></item><item><title>常用包管理器配置</title><link>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/%E5%B8%B8%E7%94%A8%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8%E9%85%8D%E7%BD%AE/</link><pubDate>Fri, 16 Jul 2021 09:39:43 +0000</pubDate><guid>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/%E5%B8%B8%E7%94%A8%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8%E9%85%8D%E7%BD%AE/</guid><description>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>包管理器&lt;/th>
+&lt;th>适用语言&lt;/th>
+&lt;th>主配置文件路径&lt;/th>
+&lt;th>官方首页&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;a href="#pip">pip&lt;/a>&lt;/td>
+&lt;td>Python&lt;/td>
+&lt;td>~/.config/pip/pip.conf&lt;/td>
+&lt;td>&lt;a href="https://pypi.org/">pypi.org&lt;/a>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;a href="#npm">npm&lt;/a>&lt;/td>
+&lt;td>NodeJs&lt;/td>
+&lt;td>~/.npmrc&lt;/td>
+&lt;td>&lt;a href="https://www.npmjs.com/">www.npmjs.com&lt;/a>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;a href="#yarn">yarn&lt;/a>&lt;/td>
+&lt;td>NodeJs&lt;/td>
+&lt;td>~/.yarnrc&lt;/td>
+&lt;td>&lt;a href="https://yarnpkg.com/">yarnpkg.com&lt;/a>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;a href="#maven">maven&lt;/a>&lt;/td>
+&lt;td>Java&lt;/td>
+&lt;td>~/.m2/settings.xml&lt;/td>
+&lt;td>&lt;a href="https://maven.apache.org/">maven.apache.org&lt;/a>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;a href="#gradle">gradle&lt;/a>&lt;/td>
+&lt;td>Java&lt;/td>
+&lt;td>${ProjectPath}/build.gradle&lt;/td>
+&lt;td>&lt;a href="https://gradle.org/">gradle.org&lt;/a>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;a href="#go">go&lt;/a>&lt;/td>
+&lt;td>Go&lt;/td>
+&lt;td>~/.config/go/env&lt;/td>
+&lt;td>&lt;a href="https://golang.google.cn/">golang.google.cn&lt;/a>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;a href="#docker">docker&lt;/a>&lt;/td>
+&lt;td>Go&lt;/td>
+&lt;td>/etc/docker/daemon.json&lt;/td>
+&lt;td>&lt;a href="https://www.docker.com/">www.docker.com&lt;/a>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table></description></item><item><title>GDB命令备忘录</title><link>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/gdb%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/</link><pubDate>Fri, 02 Apr 2021 09:50:12 +0000</pubDate><guid>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/gdb%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/</guid><description>&lt;h2 id="编译">编译&lt;/h2>
+&lt;p>&lt;code>gcc Hello.cpp&lt;/code> 生成可执行文件a.out&lt;/p>
+&lt;p>&lt;code>gcc -o Hello.o Hello.cpp&lt;/code> 生成可执行文件Hello.o&lt;/p>
+&lt;p>&lt;code>gcc -g -o Hello.o Hello.cpp&lt;/code> 生成可调试的可执行文件Hello.o&lt;/p>
+&lt;h2 id="调试">调试&lt;/h2>
+&lt;p>&lt;code>gdb Hello.o&lt;/code>&lt;/p>
+&lt;h2 id="常用gdb命令">常用GDB命令&lt;/h2>
+&lt;p>&lt;code>break&lt;/code> ：新增断点。后接一个参数，表示在指定位置增加断点，参数格式为：[源文件名:]&amp;lt;方法名&amp;gt; | [源文件名:]&amp;lt;行数&amp;gt;&lt;/p></description></item><item><title>Java命令备忘录</title><link>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/java%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/</link><pubDate>Fri, 02 Apr 2021 09:50:12 +0000</pubDate><guid>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/java%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/</guid><description>&lt;h2 id="java序列化">Java序列化&lt;/h2>
+&lt;p>&lt;code>new ObjectOutputStream(new FileOutputStream(&amp;quot;resp&amp;quot;)).writeObject(resp);&lt;/code>&lt;/p>
+&lt;h2 id="配置vm参数javaagent以支持切面编程">配置VM参数&amp;quot;javaagent&amp;quot;以支持切面编程&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">-&lt;/span> javaagent:&lt;span style="color:#f92672">/&lt;/span>home&lt;span style="color:#f92672">/&lt;/span>luanrzh&lt;span style="color:#f92672">/&lt;/span>.&lt;span style="color:#a6e22e">m2&lt;/span>&lt;span style="color:#f92672">/&lt;/span>repository&lt;span style="color:#f92672">/&lt;/span>org&lt;span style="color:#f92672">/&lt;/span>aspectj&lt;span style="color:#f92672">/&lt;/span>aspectjweaver&lt;span style="color:#f92672">/&lt;/span>1.&lt;span style="color:#a6e22e">9&lt;/span>.&lt;span style="color:#a6e22e">4&lt;/span>&lt;span style="color:#f92672">/&lt;/span>aspectjweaver&lt;span style="color:#f92672">-&lt;/span>1.&lt;span style="color:#a6e22e">9&lt;/span>.&lt;span style="color:#a6e22e">4&lt;/span>.&lt;span style="color:#a6e22e">jar&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="启用远程调试">启用远程调试&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>java &lt;span style="color:#f92672">-&lt;/span>jar &lt;span style="color:#960050;background-color:#1e0010">\&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">-&lt;/span>Dserver.&lt;span style="color:#a6e22e">port&lt;/span>&lt;span style="color:#f92672">=&lt;/span>8080 &lt;span style="color:#960050;background-color:#1e0010">\&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">-&lt;/span>agentlib:jdwp&lt;span style="color:#f92672">=&lt;/span>transport&lt;span style="color:#f92672">=&lt;/span>dt_socket,server&lt;span style="color:#f92672">=&lt;/span>y,suspend&lt;span style="color:#f92672">=&lt;/span>n,address&lt;span style="color:#f92672">=&lt;/span>8081 &lt;span style="color:#960050;background-color:#1e0010">\&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>parent&lt;span style="color:#f92672">-&lt;/span>0.&lt;span style="color:#a6e22e">0&lt;/span>.&lt;span style="color:#a6e22e">1&lt;/span>&lt;span style="color:#f92672">-&lt;/span>SNAPSHOT.&lt;span style="color:#a6e22e">jar&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="jasypt加密解密">jasypt加密解密&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>java &lt;span style="color:#f92672">-&lt;/span>cp jasypt&lt;span style="color:#f92672">-&lt;/span>1.&lt;span style="color:#a6e22e">9&lt;/span>.&lt;span style="color:#a6e22e">2&lt;/span>.&lt;span style="color:#a6e22e">jar&lt;/span> org.&lt;span style="color:#a6e22e">jasypt&lt;/span>.&lt;span style="color:#a6e22e">intf&lt;/span>.&lt;span style="color:#a6e22e">cli&lt;/span>.&lt;span style="color:#a6e22e">JasyptPBEStringEncryptionCLI&lt;/span> input&lt;span style="color:#f92672">=&lt;/span>123456 password&lt;span style="color:#f92672">=&lt;/span>1234&lt;span style="color:#f92672">-&lt;/span>1234&lt;span style="color:#f92672">-&lt;/span>1234&lt;span style="color:#f92672">-&lt;/span>1234 algorithm&lt;span style="color:#f92672">=&lt;/span>PBEWithMD5AndDES
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>java &lt;span style="color:#f92672">-&lt;/span>cp jasypt&lt;span style="color:#f92672">-&lt;/span>1.&lt;span style="color:#a6e22e">9&lt;/span>.&lt;span style="color:#a6e22e">2&lt;/span>.&lt;span style="color:#a6e22e">jar&lt;/span> org.&lt;span style="color:#a6e22e">jasypt&lt;/span>.&lt;span style="color:#a6e22e">intf&lt;/span>.&lt;span style="color:#a6e22e">cli&lt;/span>.&lt;span style="color:#a6e22e">JasyptPBEStringDecryptionCLI&lt;/span> input&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;jvp0W0qUkv0WmG/JzwyUTA==&amp;#34;&lt;/span> password&lt;span style="color:#f92672">=&lt;/span>1234&lt;span style="color:#f92672">-&lt;/span>1234&lt;span style="color:#f92672">-&lt;/span>1234&lt;span style="color:#f92672">-&lt;/span>1234 algorithm&lt;span style="color:#f92672">=&lt;/span>PBEWithMD5AndDES
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>i3wm配置</title><link>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/i3wm%E9%85%8D%E7%BD%AE/</link><pubDate>Fri, 04 Sep 2020 16:21:00 +0000</pubDate><guid>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/i3wm%E9%85%8D%E7%BD%AE/</guid><description>&lt;p>i3wm是Linux下的一款窗口管理器(Windowns Manager), 通常简称为i3。 本文档基于Archlinux(其它发行版大同小异), 简单介绍了i3的常用软件与配置。&lt;/p></description></item><item><title>骚气紫快走开——修改Ubuntu18.04的背景色</title><link>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/%E9%AA%9A%E6%B0%94%E7%B4%AB%E5%BF%AB%E8%B5%B0%E5%BC%80%E4%BF%AE%E6%94%B9ubuntu18.04%E7%9A%84%E8%83%8C%E6%99%AF%E8%89%B2/</link><pubDate>Thu, 03 Sep 2020 13:32:00 +0000</pubDate><guid>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/%E9%AA%9A%E6%B0%94%E7%B4%AB%E5%BF%AB%E8%B5%B0%E5%BC%80%E4%BF%AE%E6%94%B9ubuntu18.04%E7%9A%84%E8%83%8C%E6%99%AF%E8%89%B2/</guid><description>&lt;p>通过修改&amp;quot;GRUB界面&amp;quot;,&amp;ldquo;plymouth界面&amp;quot;以及&amp;quot;锁屏登陆界面&amp;rdquo;, 来规避Ubuntu18.04的紫色背景&lt;/p></description></item><item><title>Termux配置</title><link>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/termux%E9%85%8D%E7%BD%AE/</link><pubDate>Thu, 12 Dec 2019 22:33:02 +0000</pubDate><guid>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/termux%E9%85%8D%E7%BD%AE/</guid><description>&lt;p>Termux是Android下的一款Linux环境, 本文简要介绍了Termux的部分实用配置&lt;/p>
+&lt;h2 id="termux初始配置">Termux初始配置&lt;/h2>
+&lt;ul>
+&lt;li>允许外部存储&lt;/li>
+&lt;/ul>
+&lt;p>&lt;code>termux-setup-storage&lt;/code>&lt;/p>
+&lt;ul>
+&lt;li>修改termux镜像源&lt;/li>
+&lt;/ul>
+&lt;p>&lt;code>export EDITOR=vi &amp;amp;&amp;amp; apt edit-sources&lt;/code>&lt;/p>
+&lt;pre tabindex="0">&lt;code> -----------------------------------------------------------
+http://mirrors.tuna.tsinghua.edu.cn/termux
+-----------------------------------------------------------
+&lt;/code>&lt;/pre>&lt;p>&lt;code>apt update &amp;amp;&amp;amp; upgrade&lt;/code>&lt;/p></description></item><item><title>ArchLinu下LAMP的安装</title><link>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/archlinu%E4%B8%8Blamp%E7%9A%84%E5%AE%89%E8%A3%85/</link><pubDate>Wed, 11 Dec 2019 22:33:15 +0000</pubDate><guid>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/archlinu%E4%B8%8Blamp%E7%9A%84%E5%AE%89%E8%A3%85/</guid><description>&lt;h3 id="1-apache与php">&lt;strong>1. apache与php&lt;/strong>&lt;/h3>
+&lt;p>&lt;code>pacman -S php-apache&lt;/code> （安装apache、php、php扩展:libphp）&lt;/p>
+&lt;p>&lt;code>mousepad /etc/httpd/conf/httpd.conf&lt;/code> （配置apache——php扩展）&lt;/p>
+&lt;blockquote>
+&lt;p>参见&lt;a href="https://wiki.archlinux.org/index.php/Apache_HTTP_Server#PHP">Archlinux wiki&lt;/a>&lt;/p>&lt;/blockquote>
+&lt;pre tabindex="0">&lt;code>------------------------------
+#LoadModule mpm_event_module modules/mod_mpm_event.so（注释）
+LoadModule mpm_prefork_module modules/mod_mpm_prefork.so
+（去掉注释）
+.
+LoadModule php7_module modules/libphp7.so
+AddHandler php7-script php （将这一行放在LoadModule 的末尾）
+.
+Include conf/extra/php7_module.conf （将这一行放到Include列表的末尾）
+------------------------------
+&lt;/code>&lt;/pre>&lt;blockquote>
+&lt;p>使用命令：“php -S localhost:8000 -t public_html/ ”可以独立运行PHP&lt;/p></description></item><item><title>ArchLinux常用软件</title><link>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/archlinux%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/</link><pubDate>Wed, 11 Dec 2019 22:33:10 +0000</pubDate><guid>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/archlinux%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/</guid><description>&lt;blockquote>
+&lt;p>参考自ArchLinux官方Wiki的&lt;a href="https://wiki.archlinuxcn.org/wiki/%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E5%88%97%E8%A1%A8">应用程序列表&lt;/a>。&lt;/p>&lt;/blockquote>
+&lt;h3 id="工具">工具&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>软件&lt;/th>
+&lt;th>描述&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>microsoft-edge-stable-bin&lt;/td>
+&lt;td>Edge浏览器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>google-chrome&lt;/td>
+&lt;td>谷歌浏览器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>firefox-i18n-zh-cn&lt;/td>
+&lt;td>火狐浏览器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>nutstore&lt;/td>
+&lt;td>坚果云&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>virtualbox&lt;/td>
+&lt;td>Virtualbox虚拟机&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>filezilla&lt;/td>
+&lt;td>FTP客户端&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>remmina&lt;/td>
+&lt;td>远程桌面连接工具&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>calibre&lt;/td>
+&lt;td>电子书&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>flameshot&lt;/td>
+&lt;td>截图工具&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>keepassxc&lt;/td>
+&lt;td>密码管理工具&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>synology-drive&lt;/td>
+&lt;td>群晖Drive&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>qtscrcpy&lt;/td>
+&lt;td>安卓投屏&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>rsync&lt;/td>
+&lt;td>文件同步工具&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>unison&lt;/td>
+&lt;td>文件同步工具&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>syncthing&lt;/td>
+&lt;td>文件同步工具&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>inotify-tools&lt;/td>
+&lt;td>文件变化监控工具&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>cherry-studio&lt;/td>
+&lt;td>大模型AI客户端&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>chatbox&lt;/td>
+&lt;td>大模型AI客户端&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>ollama&lt;/td>
+&lt;td>大模型AI服务端&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="办公">办公&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>软件&lt;/th>
+&lt;th>描述&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>obsidian&lt;/td>
+&lt;td>Markdown编辑器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>typora&lt;/td>
+&lt;td>Markdown编辑器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>wps-office-cn&lt;/td>
+&lt;td>WPS&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>libreoffice-fresh-zh-cn&lt;/td>
+&lt;td>LibreOffice&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>thunderbird-i18n-zh-cn&lt;/td>
+&lt;td>邮件客户端&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>wechat-universal-bwrap&lt;/td>
+&lt;td>微信&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>linuxqq-nt-bwrap&lt;/td>
+&lt;td>QQ&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>dingtalk-bin&lt;/td>
+&lt;td>钉钉&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>wemeet-bin&lt;/td>
+&lt;td>腾讯会议&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="开发">开发&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>软件&lt;/th>
+&lt;th>描述&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>visual-studi-code&lt;/td>
+&lt;td>VS Code&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>jetbrains-toolbox&lt;/td>
+&lt;td>Jetbrains全家桶&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>dbeaver&lt;/td>
+&lt;td>数据库客户端&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>redisinsight-bin&lt;/td>
+&lt;td>Redis客户端&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>postman-bin&lt;/td>
+&lt;td>Postman&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>jmeter&lt;/td>
+&lt;td>性能测试工具&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>visualvm&lt;/td>
+&lt;td>Java性能测试&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>jadx-gui-desktop&lt;/td>
+&lt;td>Java反编译工具&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>recaf&lt;/td>
+&lt;td>Java反编译工具&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>bytecode-viewer&lt;/td>
+&lt;td>Java反编译工具&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>luyten&lt;/td>
+&lt;td>Java反编译工具&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>keystore-explorer-bin&lt;/td>
+&lt;td>Java证书工具&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>openlens&lt;/td>
+&lt;td>kubernetes管理工具&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="系统">系统&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>软件&lt;/th>
+&lt;th>描述&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>alacarte&lt;/td>
+&lt;td>应用程序主菜单编辑软件&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>menulibre&lt;/td>
+&lt;td>应用程序主菜单编辑软件&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>grub-customizer&lt;/td>
+&lt;td>GRUB可视化编辑器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>gufw&lt;/td>
+&lt;td>UFW防火墙可视化界面&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>hardinfo2&lt;/td>
+&lt;td>系统信息查看工具&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>tilda&lt;/td>
+&lt;td>下拉式终端模拟器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>guake&lt;/td>
+&lt;td>下拉式终端模拟器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>yakuake&lt;/td>
+&lt;td>下拉式终端模拟器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>xarchive&lt;/td>
+&lt;td>解压缩工具&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>file-roller&lt;/td>
+&lt;td>解压缩工具&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>ranger&lt;/td>
+&lt;td>终端文件浏览器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>yazi&lt;/td>
+&lt;td>终端文件浏览器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>pacseek&lt;/td>
+&lt;td>AUR助手&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>octpi&lt;/td>
+&lt;td>包管理器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>gparted&lt;/td>
+&lt;td>磁盘分区管理器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>cpu-x&lt;/td>
+&lt;td>CPU信息查看工具&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>gpu-viewer&lt;/td>
+&lt;td>GPU信息查看工具&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>htop&lt;/td>
+&lt;td>终端资源监视器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>arandr&lt;/td>
+&lt;td>屏幕分辨率调整工具&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="gnome工具">GNOME工具&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>软件&lt;/th>
+&lt;th>描述&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>baobab&lt;/td>
+&lt;td>GNOME磁盘占用分析器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>evince&lt;/td>
+&lt;td>GNOME文档查看器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>epiphany&lt;/td>
+&lt;td>GNOME浏览器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>gnome-calculator&lt;/td>
+&lt;td>GNOME计算器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>gnome-disk-utility&lt;/td>
+&lt;td>GNOME磁盘管理&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>gnome-system-monitor&lt;/td>
+&lt;td>GNOME系统监视器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>loupe&lt;/td>
+&lt;td>GNOME图像查看器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>evolution&lt;/td>
+&lt;td>GNOME邮件客户端&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>geary&lt;/td>
+&lt;td>GNOME邮件客户端&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>gitg&lt;/td>
+&lt;td>GNOME Git仓库浏览器&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>seahorse&lt;/td>
+&lt;td>GNOME密码与秘钥&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="娱乐">娱乐&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>软件&lt;/th>
+&lt;th>描述&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>qqmusic-appimage&lt;/td>
+&lt;td>QQ音乐&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>go-musicfox-git&lt;/td>
+&lt;td>网易云音乐终端&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>qcm&lt;/td>
+&lt;td>网易云音乐QT版&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>yesplaymusic&lt;/td>
+&lt;td>网易云音乐VUE版&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>com.163.music.spark&lt;/td>
+&lt;td>网易云音乐星火Wine版&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table></description></item><item><title>ArchLinux安装手册</title><link>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/archlinux%E5%AE%89%E8%A3%85%E6%89%8B%E5%86%8C/</link><pubDate>Wed, 11 Dec 2019 22:33:00 +0000</pubDate><guid>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/archlinux%E5%AE%89%E8%A3%85%E6%89%8B%E5%86%8C/</guid><description>&lt;ul>
+&lt;li>&lt;a href="#%E4%B8%80%E5%9F%BA%E7%A1%80%E7%8E%AF%E5%A2%83%E7%9A%84%E5%AE%89%E8%A3%85">ArchLinux基础环境的安装&lt;/a>，参考自ArchLinux官方Wiki的&lt;a href="https://wiki.archlinuxcn.org/wiki/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97">安装指南&lt;/a>与&lt;a href="https://wiki.archlinuxcn.org/wiki/%E5%BB%BA%E8%AE%AE%E9%98%85%E8%AF%BB">建议阅读&lt;/a>。&lt;/li>
+&lt;li>&lt;a href="#%E4%BA%8C%E5%9F%BA%E7%A1%80%E8%BD%AF%E4%BB%B6%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE">ArchLinux基础软件的安装与配置&lt;/a>，参考自ArchLinux官方Wiki的&lt;a href="https://wiki.archlinuxcn.org/wiki/%E5%BB%BA%E8%AE%AE%E9%98%85%E8%AF%BB">建议阅读&lt;/a>与&lt;a href="https://wiki.archlinuxcn.org/wiki/%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E5%88%97%E8%A1%A8">应用程序列表&lt;/a>。&lt;/li>
+&lt;/ul>
+&lt;h2 id="一基础环境的安装">一、基础环境的安装&lt;/h2>
+&lt;blockquote>
+&lt;p>最新版本的ArchLinux镜像已经默认集成了&lt;code>archinstall&lt;/code>安装脚本，可快速完成&lt;a href="#%E4%B8%80%E5%9F%BA%E7%A1%80%E7%8E%AF%E5%A2%83%E7%9A%84%E5%AE%89%E8%A3%85">ArchLinux基础环境的安装&lt;/a>，详见&lt;a href="https://wiki.archlinuxcn.org/wiki/Archinstall">官方文档&lt;/a>。&lt;/p>&lt;/blockquote>
+&lt;h3 id="一硬盘分区">（一）硬盘分区&lt;/h3>
+&lt;p>（1）&lt;strong>创建引导分区和根分区&lt;/strong>&lt;/p>
+&lt;p>&lt;code>fdisk /dev/sda&lt;/code> （进入第一个硬盘）&lt;/p></description></item><item><title>树莓派配置</title><link>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/%E6%A0%91%E8%8E%93%E6%B4%BE%E9%85%8D%E7%BD%AE/</link><pubDate>Wed, 12 Dec 2018 21:57:00 +0000</pubDate><guid>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/%E6%A0%91%E8%8E%93%E6%B4%BE%E9%85%8D%E7%BD%AE/</guid><description>&lt;p>树莓派配置, 包括常用开发环境及部分实用工具的安装与配置&lt;/p>
+&lt;h2 id="安装raspbian系统至sd卡">安装raspbian系统至SD卡&lt;/h2>
+&lt;p>略&lt;/p>
+&lt;h2 id="选择国内仓库源">选择国内仓库源&lt;/h2>
+&lt;pre tabindex="0">&lt;code>sudo sed -i &amp;#39;s#://raspbian.raspberrypi.org#s://mirrors.ustc.edu.cn/raspbian#g&amp;#39; /etc/apt/sources.list
+sudo sed -i &amp;#39;s#://archive.raspberrypi.org/debian#s://mirrors.ustc.edu.cn/archive.raspberrypi.org/debian#g&amp;#39; /etc/apt/sourceslist.d/raspi.list
+&lt;/code>&lt;/pre>&lt;blockquote>
+&lt;p>参见链接&lt;a href="https://www.jianshu.com/p/67b9e6ebf8a0" title="作者：qcsunny">树莓派—raspbian软件源（全）&lt;/a>&lt;/p>&lt;/blockquote>
+&lt;h2 id="使用vnc协议无线连接桌面">使用VNC协议无线连接桌面&lt;/h2>
+&lt;p>系统已经默认安装RealVNC,直接启动即可&lt;/p>
+&lt;pre tabindex="0">&lt;code>vncserver
+&lt;/code>&lt;/pre>&lt;h2 id="使用rdp协议无线连接桌面">使用RDP协议无线连接桌面&lt;/h2>
+&lt;pre tabindex="0">&lt;code>sudo apt install tightvncserver xrdp
+&lt;/code>&lt;/pre>&lt;blockquote>
+&lt;p>安装tightvncserver将会自动卸载realvnc&lt;/p></description></item><item><title>Vim插件管理配置</title><link>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/vim%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86%E9%85%8D%E7%BD%AE/</link><pubDate>Tue, 20 Nov 2018 17:05:00 +0000</pubDate><guid>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/vim%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86%E9%85%8D%E7%BD%AE/</guid><description>&lt;p>本文介绍管理Vim与Neovim插件的两种方式：&lt;/p>
+&lt;ul>
+&lt;li>Vim：&lt;a href="#%E4%B8%80%E4%BD%BF%E7%94%A8package%E7%AE%A1%E7%90%86vim%E6%8F%92%E4%BB%B6">&lt;code>package&lt;/code>&lt;/a>&lt;/li>
+&lt;li>Neovim：&lt;a href="#%E4%BA%8C%E4%BD%BF%E7%94%A8lazynvim%E7%AE%A1%E7%90%86neovim%E6%8F%92%E4%BB%B6">&lt;code>lazy.nvim&lt;/code>&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>&lt;a href="#%E9%99%84%E5%BD%95">附录&lt;/a>中也提供了两种管理vim插件的可选项。&lt;/p>&lt;/blockquote>
+&lt;h2 id="一使用package管理vim插件">一、使用package管理Vim插件&lt;/h2>
+&lt;p>&lt;code>package&lt;/code>是Vim8内置的插件管理工具。Vim会自动加载&lt;code>~/.vim/pack/*/start/&lt;/code>下的插件（其中，&lt;code>*&lt;/code>可以是任意值，如：github）。&lt;/p></description></item><item><title>Nginx反向代理配置</title><link>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/</link><pubDate>Sun, 11 Nov 2018 14:50:00 +0000</pubDate><guid>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/</guid><description>&lt;p>以PC机上的Tomcat环境与树莓派上的LNMP环境整合过程为例, 演示Nginx反向代理简单配置过程&lt;/p>
+&lt;blockquote>
+&lt;p>整合PC机上的Tomcat环境与树莓派上的LNMP环境&lt;/p></description></item><item><title>Centos7.4下LAMP的安装</title><link>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/centos7.4%E4%B8%8Blamp%E7%9A%84%E5%AE%89%E8%A3%85/</link><pubDate>Wed, 28 Mar 2018 14:17:00 +0000</pubDate><guid>https://luanrz.github.io/posts/%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/centos7.4%E4%B8%8Blamp%E7%9A%84%E5%AE%89%E8%A3%85/</guid><description>&lt;p>Centos7.4下Apache.Mysql,PHP及phpMyAdmin的安装与配置&lt;/p>
+&lt;h3 id="linuxapachemysqlphp安装总结centos74">Linux+Apache+MySQL+PHP安装总结（centos7.4）&lt;/h3>
+&lt;h4 id="一linux">一、linux&lt;/h4>
+&lt;p>linux系统为centos7.4版本。&lt;/p>
+&lt;h4 id="二apche">二、Apche&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>yum install httpd -y &lt;span style="color:#75715e">#（安装apache）&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>systemctl start httpd &lt;span style="color:#75715e">#（启动apache，也可以是service httpd start）&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="三mysql">三、Mysql&lt;/h4>
+&lt;p>Centos7.4版本下安装mariadb（MySQL的一个开源分支）。&lt;/p></description></item></channel></rss>
