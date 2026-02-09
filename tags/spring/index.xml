@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Spring on luanrz's blog</title><link>https://luanrz.github.io/tags/spring/</link><description>Recent content in Spring on luanrz's blog</description><generator>Hugo -- 0.155.3</generator><language>zh-cn</language><lastBuildDate>Tue, 05 Dec 2023 20:47:23 +0800</lastBuildDate><atom:link href="https://luanrz.github.io/tags/spring/index.xml" rel="self" type="application/rss+xml"/><item><title>构建Java云原生镜像：基于SpringBoot的GraalVM镜像</title><link>https://luanrz.github.io/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/%E6%9E%84%E5%BB%BAjava%E4%BA%91%E5%8E%9F%E7%94%9F%E9%95%9C%E5%83%8F%E5%9F%BA%E4%BA%8Espringboot%E7%9A%84graalvm%E9%95%9C%E5%83%8F/</link><pubDate>Tue, 05 Dec 2023 20:47:23 +0800</pubDate><guid>https://luanrz.github.io/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/%E6%9E%84%E5%BB%BAjava%E4%BA%91%E5%8E%9F%E7%94%9F%E9%95%9C%E5%83%8F%E5%9F%BA%E4%BA%8Espringboot%E7%9A%84graalvm%E9%95%9C%E5%83%8F/</guid><description>&lt;h2 id="一引入graalvm组件"&gt;一、引入graalvm组件&lt;/h2&gt;
+&lt;p&gt;在任意&lt;a href="https://luanrz.github.io/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/%E6%9E%84%E5%BB%BAjava%E4%BA%91%E5%8E%9F%E7%94%9F%E9%95%9C%E5%83%8F%E5%9F%BA%E4%BA%8Espringboot%E7%9A%84%E5%88%86%E5%B1%82%E9%95%9C%E5%83%8F/#一准备一个springboot项目"&gt;SpringBoot项目&lt;/a&gt;的基础上，引入以下graalvm的maven插件：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-xml" data-lang="xml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;&amp;lt;plugin&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.graalvm.buildtools&lt;span style="color:#f92672"&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;native-maven-plugin&lt;span style="color:#f92672"&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;&amp;lt;/plugin&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="二使用springboot插件构建镜像"&gt;二、使用SpringBoot插件构建镜像&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;spring-boot-maven-plugin&lt;/code&gt;插件下的&lt;code&gt;build-image&lt;/code&gt;执行目标提供了一键生成镜像的功能，如下所示：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mvn -Pnative spring-boot:build-image
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;执行该命令需要先启动Docker，执行完成后，会自动生成Docker镜像。&lt;/p&gt;</description></item><item><title>构建Java云原生镜像：基于SpringBoot的分层镜像</title><link>https://luanrz.github.io/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/%E6%9E%84%E5%BB%BAjava%E4%BA%91%E5%8E%9F%E7%94%9F%E9%95%9C%E5%83%8F%E5%9F%BA%E4%BA%8Espringboot%E7%9A%84%E5%88%86%E5%B1%82%E9%95%9C%E5%83%8F/</link><pubDate>Tue, 05 Dec 2023 17:30:23 +0800</pubDate><guid>https://luanrz.github.io/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/%E6%9E%84%E5%BB%BAjava%E4%BA%91%E5%8E%9F%E7%94%9F%E9%95%9C%E5%83%8F%E5%9F%BA%E4%BA%8Espringboot%E7%9A%84%E5%88%86%E5%B1%82%E9%95%9C%E5%83%8F/</guid><description>&lt;p&gt;Java应用上云接入K8S的第一步便是构建镜像，其最简单的方法就是直接将整个jar包打入Docker镜像。除此之外，SpringBoot还提供了一种分层镜像的方式，能够将基本不变的外部依赖包与经常发生变动的应用文件隔离成了不同的Docker层，在二次构建过程中，不变的外部依赖包的Docker层会默认使用缓存，以带来更快的构建速度。&lt;/p&gt;</description></item><item><title>SpringCloud与K8S中的服务网关</title><link>https://luanrz.github.io/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/springcloud%E4%B8%8Ek8s%E4%B8%AD%E7%9A%84%E6%9C%8D%E5%8A%A1%E7%BD%91%E5%85%B3/</link><pubDate>Fri, 12 May 2023 20:00:00 +0800</pubDate><guid>https://luanrz.github.io/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/springcloud%E4%B8%8Ek8s%E4%B8%AD%E7%9A%84%E6%9C%8D%E5%8A%A1%E7%BD%91%E5%85%B3/</guid><description>&lt;p&gt;微服务中的服务网关至少有以下作用：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;转发（服务路由与负载均衡）&lt;/li&gt;
+&lt;li&gt;鉴权（身份认证与权限校验）&lt;/li&gt;
+&lt;li&gt;限流（流量控制与熔断）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;它们在SpringCloud和K8S中有着不同的实现方式：&lt;/p&gt;</description></item><item><title>SpringCloud与K8S中的配置管理</title><link>https://luanrz.github.io/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/springcloud%E4%B8%8Ek8s%E4%B8%AD%E7%9A%84%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86/</link><pubDate>Wed, 10 May 2023 20:00:00 +0800</pubDate><guid>https://luanrz.github.io/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/springcloud%E4%B8%8Ek8s%E4%B8%AD%E7%9A%84%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86/</guid><description>&lt;p&gt;微服务中的配置管理在SpringCloud和K8S中有着不同的实现方式：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;SpringCloud&lt;/th&gt;
+&lt;th&gt;K8S&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;配置管理&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;配置中心&lt;/strong&gt;（SpringCloudConfig、Nacos等）&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;ConfigMap、Secret&lt;/strong&gt;等&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;下面将基于&lt;code&gt;Nacos&lt;/code&gt;与&lt;code&gt;ConfigMap&lt;/code&gt;分别介绍SpinrgCloud与K8S中配置管理的过程。&lt;/p&gt;</description></item><item><title>SpringCloud与K8S中的服务调用</title><link>https://luanrz.github.io/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/springcloud%E4%B8%8Ek8s%E4%B8%AD%E7%9A%84%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8/</link><pubDate>Mon, 08 May 2023 10:19:50 +0800</pubDate><guid>https://luanrz.github.io/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/springcloud%E4%B8%8Ek8s%E4%B8%AD%E7%9A%84%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8/</guid><description>&lt;p&gt;微服务中的服务调用至少需要考虑以下几个方面：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;服务注册：动态存储服务的访问地址&lt;/li&gt;
+&lt;li&gt;服务发现：动态获取服务的访问地址&lt;/li&gt;
+&lt;li&gt;负载均衡：按照一定的规则获取同一服务的不同实例&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;它们在SpringCloud和K8S中有着不同的实现方式：&lt;/p&gt;</description></item><item><title>SpringData入门</title><link>https://luanrz.github.io/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/springdata%E5%85%A5%E9%97%A8/</link><pubDate>Thu, 13 Apr 2023 12:22:31 +0800</pubDate><guid>https://luanrz.github.io/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/springdata%E5%85%A5%E9%97%A8/</guid><description>&lt;p&gt;Spring家族提供了一套完整且方便的访问数据库的方式。其中，&lt;a href="https://spring.io/projects/spring-framework"&gt;Spring Framework&lt;/a&gt;为数据库访问提供了底层支持，&lt;a href="https://spring.io/projects/spring-data"&gt;Spring Data&lt;/a&gt;为数据库访问封装了Repository等实用工具，&lt;a href="https://spring.io/projects/spring-boot"&gt;Spring Boot&lt;/a&gt;则简化了数据库组件的配置。&lt;/p&gt;</description></item><item><title>Spring的7个使用场景</title><link>https://luanrz.github.io/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/spring%E7%9A%847%E4%B8%AA%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/</link><pubDate>Thu, 31 Mar 2022 09:31:48 +0000</pubDate><guid>https://luanrz.github.io/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/spring%E7%9A%847%E4%B8%AA%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/</guid><description>&lt;p&gt;&lt;a href="https://spring.io"&gt;Spring官网&lt;/a&gt;中描述了Spring能做的7件事，如下所示：&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code class="language-plantuml" data-lang="plantuml"&gt;@startmindmap
+* Spring
+* Microservices（微服务）
+* Reactive（响应式）
+* Cloud（云）
+* Web apps（网页应用）
+* Serverless（无服务器）
+* Event Driven（事件驱动）
+* Batch（批处理）
+@endmindmap
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;下面将简单介绍各场景的概念与其关联的项目。&lt;/p&gt;</description></item></channel></rss>

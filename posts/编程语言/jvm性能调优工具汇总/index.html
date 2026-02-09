@@ -1,0 +1,114 @@
+<!doctype html><html lang=zh dir=auto data-theme=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>JVM性能调优工具汇总 | luanrz's blog</title><meta name=keywords content="Java,JVM"><meta name=description content="一、命令行工具
+
+  
+      
+          序号
+          名称
+          功能
+      
+  
+  
+      
+          1
+          jps
+          虚拟机进程状况工具，主要用于查找vmid，是后续命令的基础
+      
+      
+          2
+          jstat
+          虚拟机统计信息监视工具，查找虚拟机进程中类加载、内存、GC等信息
+      
+      
+          3
+          jinfo
+          Java配置信息工具，实时查看和调整虚拟机各项参数
+      
+      
+          4
+          jmap
+          Java内存映像工具，生成堆转储快照（headump、dump），与jhat配合使用
+      
+      
+          5
+          jhat
+          虚拟机堆转储快照分析工具，分析jmap生成的堆转储快照文件，与jmap配合使用
+      
+      
+          6
+          jstack
+          Java堆栈跟踪工具，生成虚拟机当前时刻的线程快照（threaddump、javacore）
+      
+      
+          7
+          jcmd
+          Java命令行工具集，整合了上述众多命令
+      
+      
+          8
+          clhsdb
+          HotSpot命令行调试器，也整合了上述众多命令
+      
+  
+
+
+JDK9之后的变化：jhat与clhsdb被移除，clhsdb的功能被纳入了jhsdb"><meta name=author content><link rel=canonical href=https://luanrz.github.io/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/jvm%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98%E5%B7%A5%E5%85%B7%E6%B1%87%E6%80%BB/><link crossorigin=anonymous href=/assets/css/stylesheet.5ed58f4ac5cb2b1025742e6161056c468c3232b9bfc72705b7f9f2da355ff7f3.css integrity="sha256-XtWPSsXLKxAldC5hYQVsRowyMrm/xycFt/ny2jVf9/M=" rel="preload stylesheet" as=style><link rel=icon href=https://luanrz.github.io/images/icon.jpg><link rel=icon type=image/png sizes=16x16 href=https://luanrz.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://luanrz.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://luanrz.github.io/apple-touch-icon.png><link rel=mask-icon href=https://luanrz.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=zh href=https://luanrz.github.io/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/jvm%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98%E5%B7%A5%E5%85%B7%E6%B1%87%E6%80%BB/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51);color-scheme:dark}.list{background:var(--theme)}.toc{background:var(--entry)}}@media(prefers-color-scheme:light){.list::-webkit-scrollbar-thumb{border-color:var(--code-bg)}}</style></noscript><script>localStorage.getItem("pref-theme")==="dark"?document.querySelector("html").dataset.theme="dark":localStorage.getItem("pref-theme")==="light"?document.querySelector("html").dataset.theme="light":window.matchMedia("(prefers-color-scheme: dark)").matches?document.querySelector("html").dataset.theme="dark":document.querySelector("html").dataset.theme="light"</script><script>const loadScript=(e,t)=>{var n=document.createElement("script");n.onerror=e=>{throw new URIError("The script "+e.target.src+" didn't load correctly.")},t&&(n.onload=t),document.head.insertAdjacentElement("beforeend",n),n.src=e},loadPlantUMLOnNeed=()=>{let e="language-plantuml";document.querySelectorAll("[class^="+e+"]").length>0&&loadScript("https://fastly.jsdelivr.net/gh/jmnote/plantuml-encoder@1.2.4/dist/plantuml-encoder.min.js",()=>{(function(){Array.prototype.forEach.call(document.querySelectorAll("[class^="+e+"]"),function(e){let t=document.createElement("IMG");t.loading="lazy",t.src="http://www.plantuml.com/plantuml/svg/~1"+plantumlEncoder.encode(e.innerText),e.parentNode.insertBefore(t,e),e.style.display="none"})})(),console.log("PlantUML init done")})};window.addEventListener("load",function(){loadPlantUMLOnNeed()})</script><meta property="og:url" content="https://luanrz.github.io/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/jvm%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98%E5%B7%A5%E5%85%B7%E6%B1%87%E6%80%BB/"><meta property="og:site_name" content="luanrz's blog"><meta property="og:title" content="JVM性能调优工具汇总"><meta property="og:description" content="一、命令行工具 序号 名称 功能 1 jps 虚拟机进程状况工具，主要用于查找vmid，是后续命令的基础 2 jstat 虚拟机统计信息监视工具，查找虚拟机进程中类加载、内存、GC等信息 3 jinfo Java配置信息工具，实时查看和调整虚拟机各项参数 4 jmap Java内存映像工具，生成堆转储快照（headump、dump），与jhat配合使用 5 jhat 虚拟机堆转储快照分析工具，分析jmap生成的堆转储快照文件，与jmap配合使用 6 jstack Java堆栈跟踪工具，生成虚拟机当前时刻的线程快照（threaddump、javacore） 7 jcmd Java命令行工具集，整合了上述众多命令 8 clhsdb HotSpot命令行调试器，也整合了上述众多命令 JDK9之后的变化：jhat与clhsdb被移除，clhsdb的功能被纳入了jhsdb"><meta property="og:locale" content="zh-cn"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2021-12-31T10:25:57+00:00"><meta property="article:modified_time" content="2021-12-31T10:25:57+00:00"><meta property="article:tag" content="Java"><meta property="article:tag" content="JVM"><meta name=twitter:card content="summary"><meta name=twitter:title content="JVM性能调优工具汇总"><meta name=twitter:description content="一、命令行工具
+
+  
+      
+          序号
+          名称
+          功能
+      
+  
+  
+      
+          1
+          jps
+          虚拟机进程状况工具，主要用于查找vmid，是后续命令的基础
+      
+      
+          2
+          jstat
+          虚拟机统计信息监视工具，查找虚拟机进程中类加载、内存、GC等信息
+      
+      
+          3
+          jinfo
+          Java配置信息工具，实时查看和调整虚拟机各项参数
+      
+      
+          4
+          jmap
+          Java内存映像工具，生成堆转储快照（headump、dump），与jhat配合使用
+      
+      
+          5
+          jhat
+          虚拟机堆转储快照分析工具，分析jmap生成的堆转储快照文件，与jmap配合使用
+      
+      
+          6
+          jstack
+          Java堆栈跟踪工具，生成虚拟机当前时刻的线程快照（threaddump、javacore）
+      
+      
+          7
+          jcmd
+          Java命令行工具集，整合了上述众多命令
+      
+      
+          8
+          clhsdb
+          HotSpot命令行调试器，也整合了上述众多命令
+      
+  
+
+
+JDK9之后的变化：jhat与clhsdb被移除，clhsdb的功能被纳入了jhsdb"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://luanrz.github.io/posts/"},{"@type":"ListItem","position":3,"name":"JVM性能调优工具汇总","item":"https://luanrz.github.io/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/jvm%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98%E5%B7%A5%E5%85%B7%E6%B1%87%E6%80%BB/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"JVM性能调优工具汇总","name":"JVM性能调优工具汇总","description":"一、命令行工具 序号 名称 功能 1 jps 虚拟机进程状况工具，主要用于查找vmid，是后续命令的基础 2 jstat 虚拟机统计信息监视工具，查找虚拟机进程中类加载、内存、GC等信息 3 jinfo Java配置信息工具，实时查看和调整虚拟机各项参数 4 jmap Java内存映像工具，生成堆转储快照（headump、dump），与jhat配合使用 5 jhat 虚拟机堆转储快照分析工具，分析jmap生成的堆转储快照文件，与jmap配合使用 6 jstack Java堆栈跟踪工具，生成虚拟机当前时刻的线程快照（threaddump、javacore） 7 jcmd Java命令行工具集，整合了上述众多命令 8 clhsdb HotSpot命令行调试器，也整合了上述众多命令 JDK9之后的变化：jhat与clhsdb被移除，clhsdb的功能被纳入了jhsdb\n","keywords":["Java","JVM"],"articleBody":"一、命令行工具 序号 名称 功能 1 jps 虚拟机进程状况工具，主要用于查找vmid，是后续命令的基础 2 jstat 虚拟机统计信息监视工具，查找虚拟机进程中类加载、内存、GC等信息 3 jinfo Java配置信息工具，实时查看和调整虚拟机各项参数 4 jmap Java内存映像工具，生成堆转储快照（headump、dump），与jhat配合使用 5 jhat 虚拟机堆转储快照分析工具，分析jmap生成的堆转储快照文件，与jmap配合使用 6 jstack Java堆栈跟踪工具，生成虚拟机当前时刻的线程快照（threaddump、javacore） 7 jcmd Java命令行工具集，整合了上述众多命令 8 clhsdb HotSpot命令行调试器，也整合了上述众多命令 JDK9之后的变化：jhat与clhsdb被移除，clhsdb的功能被纳入了jhsdb\n二、可视化工具 序号 名称 功能 1 JHSDB 基于服务性代理的调试工具，JDK内置（从JDK9开始提供） 2 JConsole Java监视与管理控制台，JDK内置 3 VisualVM 多合一故障处理工具，需要单独下载 4 JMC 可持续在线的监控工具，需要单独下载 参考文档\n《深入理解Java虚拟机第3版 周志明 著》 ","wordCount":"454","inLanguage":"zh","datePublished":"2021-12-31T10:25:57Z","dateModified":"2021-12-31T10:25:57Z","mainEntityOfPage":{"@type":"WebPage","@id":"https://luanrz.github.io/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/jvm%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98%E5%B7%A5%E5%85%B7%E6%B1%87%E6%80%BB/"},"publisher":{"@type":"Organization","name":"luanrz's blog","logo":{"@type":"ImageObject","url":"https://luanrz.github.io/images/icon.jpg"}}}</script></head><body id=top><header class=header><nav class=nav><div class=logo><a href=https://luanrz.github.io/ accesskey=h title="luanrz's blog (Alt + H)">luanrz's blog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme">
+<svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+<svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://luanrz.github.io/ title=首页><span>首页</span></a></li><li><a href=https://luanrz.github.io/search/ title="搜索 (Alt + /)" accesskey=/><span>搜索</span></a></li><li><a href=https://luanrz.github.io/archives/ title=归档><span>归档</span></a></li><li><a href=https://luanrz.github.io/categories/ title=分类><span>分类</span></a></li><li><a href=https://luanrz.github.io/tags/ title=标签><span>标签</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent">JVM性能调优工具汇总</h1><div class=post-meta><span title='2021-12-31 10:25:57 +0000 UTC'>2021-12-31</span>&nbsp;·&nbsp;<span>1 分钟</span>&nbsp;·&nbsp;<span>454 字</span></div></header><aside id=toc-container class="toc-container wide"><div class=toc><details open><summary accesskey=c title="(Alt + C)"><span class=details>目录</span></summary><div class=inner><ul><li><a href=#%e4%b8%80%e5%91%bd%e4%bb%a4%e8%a1%8c%e5%b7%a5%e5%85%b7 aria-label=一、命令行工具>一、命令行工具</a></li><li><a href=#%e4%ba%8c%e5%8f%af%e8%a7%86%e5%8c%96%e5%b7%a5%e5%85%b7 aria-label=二、可视化工具>二、可视化工具</a></li></ul></div></details></div></aside><script>let activeElement,elements;window.addEventListener("DOMContentLoaded",function(){checkTocPosition(),elements=document.querySelectorAll("h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]"),activeElement=elements[0];const t=encodeURI(activeElement.getAttribute("id")).toLowerCase();document.querySelector(`.inner ul li a[href="#${t}"]`).classList.add("active")},!1),window.addEventListener("resize",function(){checkTocPosition()},!1),window.addEventListener("scroll",()=>{activeElement=Array.from(elements).find(e=>{if(getOffsetTop(e)-window.pageYOffset>0&&getOffsetTop(e)-window.pageYOffset<window.innerHeight/2)return e})||activeElement,elements.forEach(e=>{const t=encodeURI(e.getAttribute("id")).toLowerCase();e===activeElement?document.querySelector(`.inner ul li a[href="#${t}"]`).classList.add("active"):document.querySelector(`.inner ul li a[href="#${t}"]`).classList.remove("active")})},!1);const main=parseInt(getComputedStyle(document.body).getPropertyValue("--article-width"),10),toc=parseInt(getComputedStyle(document.body).getPropertyValue("--toc-width"),10),gap=parseInt(getComputedStyle(document.body).getPropertyValue("--gap"),10);function checkTocPosition(){const e=document.body.scrollWidth;e-main-toc*2-gap*4>0?document.getElementById("toc-container").classList.add("wide"):document.getElementById("toc-container").classList.remove("wide")}function getOffsetTop(e){if(!e.getClientRects().length)return 0;let t=e.getBoundingClientRect(),n=e.ownerDocument.defaultView;return t.top+n.pageYOffset}</script><div class=post-content><h2 id=一命令行工具>一、命令行工具<a hidden class=anchor aria-hidden=true href=#一命令行工具>#</a></h2><table><thead><tr><th>序号</th><th>名称</th><th>功能</th></tr></thead><tbody><tr><td>1</td><td><code>jps</code></td><td>虚拟机进程状况工具，主要用于查找vmid，是后续命令的基础</td></tr><tr><td>2</td><td><code>jstat</code></td><td>虚拟机统计信息监视工具，查找虚拟机进程中类加载、内存、GC等信息</td></tr><tr><td>3</td><td><code>jinfo</code></td><td>Java配置信息工具，实时查看和调整虚拟机各项参数</td></tr><tr><td>4</td><td><code>jmap</code></td><td>Java内存映像工具，生成堆转储快照（headump、dump），与<code>jhat</code>配合使用</td></tr><tr><td>5</td><td><code>jhat</code></td><td>虚拟机堆转储快照分析工具，分析<code>jmap</code>生成的堆转储快照文件，与<code>jmap</code>配合使用</td></tr><tr><td>6</td><td><code>jstack</code></td><td>Java堆栈跟踪工具，生成虚拟机当前时刻的线程快照（threaddump、javacore）</td></tr><tr><td>7</td><td><code>jcmd</code></td><td>Java命令行工具集，整合了上述众多命令</td></tr><tr><td>8</td><td><code>clhsdb</code></td><td>HotSpot命令行调试器，也整合了上述众多命令</td></tr></tbody></table><blockquote><p>JDK9之后的变化：<code>jhat</code>与<code>clhsdb</code>被移除，<code>clhsdb</code>的功能被纳入了<code>jhsdb</code></p></blockquote><h2 id=二可视化工具>二、可视化工具<a hidden class=anchor aria-hidden=true href=#二可视化工具>#</a></h2><table><thead><tr><th>序号</th><th>名称</th><th>功能</th></tr></thead><tbody><tr><td>1</td><td><code>JHSDB</code></td><td>基于服务性代理的调试工具，JDK内置（从JDK9开始提供）</td></tr><tr><td>2</td><td><code>JConsole</code></td><td>Java监视与管理控制台，JDK内置</td></tr><tr><td>3</td><td><code>VisualVM</code></td><td>多合一故障处理工具，需要单独<a href=https://visualvm.github.io/>下载</a></td></tr><tr><td>4</td><td><code>JMC</code></td><td>可持续在线的监控工具，需要单独<a href=https://www.oracle.com/javase/jmc/>下载</a></td></tr></tbody></table><blockquote><p>参考文档</p></blockquote><ol><li>《深入理解Java虚拟机第3版 周志明 著》</li></ol></div><footer class=post-footer><ul class=post-tags><li><a href=https://luanrz.github.io/tags/java/>Java</a></li><li><a href=https://luanrz.github.io/tags/jvm/>JVM</a></li></ul><nav class=paginav><a class=prev href=https://luanrz.github.io/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/spring%E7%9A%847%E4%B8%AA%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/><span class=title>« 上一页</span><br><span>Spring的7个使用场景</span>
+</a><a class=next href=https://luanrz.github.io/posts/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/java8%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/><span class=title>下一页 »</span><br><span>Java8函数式编程入门</span></a></nav></footer></article></main><footer class=footer><span>&copy; 2026 <a href=https://luanrz.github.io/>luanrz's blog</a></span> ·
+<span>Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+<a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>
+</a><script>let menu=document.getElementById("menu");if(menu){const e=localStorage.getItem("menu-scroll-position");e&&(menu.scrollLeft=parseInt(e,10)),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}}document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{const e=document.querySelector("html");e.dataset.theme==="dark"?(e.dataset.theme="light",localStorage.setItem("pref-theme","light")):(e.dataset.theme="dark",localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="复制";function s(){t.innerHTML="已复制！",setTimeout(()=>{t.innerHTML="复制"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>
